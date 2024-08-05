@@ -1,44 +1,59 @@
-# Next.js 14+ Boilerplate
+# School Management Admin Dashboard
 
-This is a [Next.js](https://nextjs.org/) boilerplate built with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app)
+### Overview
+This document provides planning for requirements, technical stack, and estimation details for NextJs practice. You can refer to the details design here: [School Management Admin Dashboard](https://www.figma.com/design/vROuABqVtKpHFXLYNEJ60n/School-Management-Admin-Dashboard-UI-(Community)?node-id=151-31183&t=aataHFgbIeWeBaX5-0)
 
-### Features
+### Targets
+- Apply NextJS key features:
+    - Cache
+    - Streaming data
+    - Dynamic router
+    - Layout
+    - Optimize image, font
 
-This boilerplate includes:
-- ⚡ [Next.js](https://nextjs.org/) with App Router support
-- 🔥 Type checking [TypeScript](https://www.typescriptlang.org/)
-- 💎 Integrate with [Tailwind CSS](https://tailwindcss.com/)
-- [tailwind-merge](https://github.com/dcastil/tailwind-merge) for efficiently merge Tailwind CSS classes without style conflicts
-- ✅ Strict Mode for TypeScript and React 18
-- 📏 Linter with [ESLint](https://eslint.org/)
-- 💖 Code Formatter with [Prettier](https://prettier.io/)
-- 🦊 [Husky](https://github.com/typicode/husky) for Git Hooks
-- 🚫 [Lint-staged](https://github.com/lint-staged/lint-staged) for running linters on Git staged files
-- 🦺 Unit Testing with Jest and React Testing Library
-- ☂️ Code coverage with [V8](https://v8.dev/blog/javascript-code-coverage)
-- 🎉 Storybook for UI development
+### Team size
+- 1 dev (Duy Ngo)
 
+### Timeline
+- Estimate time: **5/8/2024 - 14/8/2024**
+- Working days: **8 days**
+
+### Editor
+- VSCode
+
+### Technical Stack
+- [TypeScript](https://www.typescriptlang.org/):
+    - By understanding JavaScript, TypeScript saves you time catching errors and providing fixes before you run code
+- [Next.js](https://nextjs.org/):
+    - Next.js is a React framework for building full-stack web applications. You use React Components to build user interfaces, and Next.js for additional features and optimizations.
+- [React](https://react.dev/reference/react):
+    - ReactJS is a JavaScript library for building user interfaces.
+- [Chakra UI](https://tailwindcss.com/): 
+    - ChakraUI is a simple, modular, and accessible component library that gives you the building blocks you need to build your React applications.
+- [JSON server](https://github.com/typicode/json-server): 
+    - JSON is an acronym for JavaScript Object Notation. JSON Server is a lightweight and easy-to-use Node.js tool that simulates a RESTful API using a JSON file as the data source.
+- [React hook form](https://www.react-hook-form.com/):
+    - Simple form validation with React Hook Form.
+- [Storybook](https://storybook.js.org/):
+    - Storybook is purpose-built to help you develop complex UIs faster with greater durability and lower maintenance
+- [Jest](https://jestjs.io/):
+    - Jest is a delightful JavaScript Testing Framework with a focus on simplicity.
+- [Testing Library](https://testing-library.com/):
+    React Testing Library builds on top of the DOM Testing Library by adding APIs for working with React components
+
+### Requirements
+- CRUD teachers, student
+- Search teacher, student
+- View detail teacher, student
 
 ## How to run
-
-### Prerequisites
-
-Make sure you install packages with correct version below:
-  - [node v18.18.2+](https://nodejs.org/en/download/package-manager)
-  - [pnpm 9.1.2+](https://pnpm.io/installation)
-
-- **Note:**
-    - Please add `.env` into root of project source code, refer `.env.sample`.
-    - Refer: Here's the [sample mockAPI project](https://mockapi.io/clone/665e8a3f1e9017dc16f05e15), feel free to **clone** then use in your project
-
-Check and update config image hosting on `next.config.mjs` file follow [Next.js document](https://nextjs.org/docs/messages/next-image-unconfigured-host)
 
 ### Get source code
 
 | Command                                                                                              | Action                    |
 | :----------------------------------------------------------------------------------------------------| :------------------------ |
-| `git clone --depth=1 git@gitlab.asoft-python.com:huy.nguyenvan/nextjs-boilerplate.git nextjs-project`| Clone Repository with SSH |
-| `$ cd nextjs-project`                                                                                | Redirect to folder        |
+| `git clone git@gitlab.asoft-python.com:duy.ngo/nextjs-training.git`                                  | Clone Repository with SSH |
+| `$ cd nextjs-training`                                                                               | Redirect to folder        |
 
 ### Build and Run app
 
@@ -51,33 +66,3 @@ Check and update config image hosting on `next.config.mjs` file follow [Next.js 
 | `$ pnpm storybook` | Run Storybook.                                | http://localhost:6006 |
 | `$ pnpm test`      | Run Unit Test                                 | N/A                   |
 | `$ pnpm coverage`  | Generate code coverage                        | N/A                   |
-
-### Project structure
-```shell
-.
-├── README.md                       # README file
-├── .husky                          # Husky configuration
-├── .storybook                      # Storybook folder
-├── .vscode                         # VSCode configuration
-├── public                          # Public assets folder
-├── src
-│   ├── api                         # Handle data with API: GET, POST, PUT, DELETE
-│   ├── app                         # Next.js App (App Router)
-│   ├── components                  # React components
-│   ├── constants                   # App constants
-│   ├── icons                       # Icons folder
-│   ├── layouts                     # React components for app layout
-│   ├── models                      # Model type definitions
-│   ├── types                       # Type definitions
-│   ├── ui                          # React components by feature
-│   ├── utils                       # Utilities folder
-├── .eslintrc.json                  # ESLint configuration
-├── .lintstagedrc                   # Lint-stage
-├── .prettierrc                     # Prettier configuration
-├── jest.config.ts                  # Jest configuration
-├── next.config.mjs                 # Next.js configuration
-├── next.config.mjs                 # Next.js configuration
-├── postcss.config.mjs              # Post CSS configuration
-├── tailwind.config.ts              # Tailwind CSS configuration
-└── tsconfig.json                   # TypeScript configuration
-```
