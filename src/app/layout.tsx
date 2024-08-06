@@ -1,10 +1,13 @@
+// Libs
+import { ReactNode } from 'react';
+
 // Providers
 import { ChakraProvider } from '@/provider';
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="en">
