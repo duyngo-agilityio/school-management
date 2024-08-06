@@ -1,7 +1,7 @@
 import { extendTheme } from '@chakra-ui/react';
 
 // Themes
-import { Button, Input, Text } from './components';
+import { Avatar, Button, Input, Text, Profile } from './components';
 import { fonts, fontSizes, radius } from './typographies';
 import { colors } from './colors';
 
@@ -10,10 +10,12 @@ const theme = extendTheme({
   fonts,
   fontSizes,
   radii: radius,
-  component: {
+  components: {
     Button,
     Input,
     Text,
+    Avatar,
+    Profile,
   },
 });
 
