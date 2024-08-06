@@ -29,7 +29,7 @@ const Profile = ({
   return (
     <Flex __css={styles.wrapper}>
       {id ? (
-        <Flex flexDir="column" justify="center" alignItems="center" gap="12px">
+        <Flex flexDir="column" alignItems="center" gap="12px">
           <Text variant="tertiary">{id}</Text>
           <Avatar src={src} {...(styles.avatar as PartsStyleInterpolation)} />
         </Flex>
@@ -37,7 +37,7 @@ const Profile = ({
         <Avatar src={src} {...(styles.avatar as PartsStyleInterpolation)} />
       )}
       {subTitle ? (
-        <Flex flexDir="column" justify="center" gap="4px">
+        <Flex flexDir="column" alignItems="center" gap="4px">
           <Text {...(styles.title as PartsStyleInterpolation)}>{title}</Text>
           <Text variant="subTitle">{subTitle}</Text>
         </Flex>
