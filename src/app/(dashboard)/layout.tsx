@@ -1,7 +1,7 @@
-import { Box, Flex } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 
 // Components
+import { Box, Flex } from '@chakra-ui/react';
 import { SideBar } from '@/components';
 
 const RootLayout = ({ children }: { children: ReactNode }) => {

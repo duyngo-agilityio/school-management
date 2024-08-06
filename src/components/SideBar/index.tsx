@@ -5,6 +5,7 @@ import React from 'react';
 
 // Components
 import { Box } from '@chakra-ui/react';
+import Profile from '../Profile';
 
 const Sidebar = () => {
   return (
@@ -15,7 +16,12 @@ const Sidebar = () => {
       pos="fixed"
       h="full"
     >
-      {/* TODO: Implement Brand and Nav component */}
+      <Profile
+        src="/logo.png"
+        title="Udemy Inter. school"
+        variant="sm"
+      />
+      {/* TODO: Implement Nav component */}
     </Box>
   );
 };
