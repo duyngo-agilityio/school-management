@@ -1,8 +1,32 @@
 import { defineStyleConfig } from '@chakra-ui/react';
 
 export const Text = defineStyleConfig({
-  baseStyle: {
-    color: 'textPrimary',
+  variants: {
+    primary: {
+      color: 'textPrimary',
+      fontSize: 'md',
+      fontWeight: 'bold',
+    },
+    tertiary: {
+      color: 'textTertiary',
+      fontSize: 'md',
+      fontWeight: 'bold',
+    },
+    title: {
+      color: 'textTitle',
+      fontSize: 'md',
+      fontWeight: 'bold',
+    },
+    subTitle: {
+      color: 'textSubTitle',
+      fontSize: 'sm',
+      fontWeight: 'bold',
+    },
+    light: {
+      color: 'textLight',
+      fontSize: 'sm',
+      fontWeight: 'semiBold',
+    },
   },
 
   sizes: {
