@@ -6,7 +6,7 @@ import React from 'react';
 // Components
 import { Box } from '@chakra-ui/react';
 
-export default function Sidebar() {
+const Sidebar = () => {
   return (
     <Box
       bg="backgroundPrimary"
@@ -18,4 +18,6 @@ export default function Sidebar() {
       {/* TODO: Implement Brand and Nav component */}
     </Box>
   );
-}
+};
+
+export default Sidebar;
