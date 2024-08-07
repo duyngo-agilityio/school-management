@@ -1,11 +1,9 @@
 'use client';
 
-// Libs
-import React from 'react';
-
 // Components
 import { Box } from '@chakra-ui/react';
 import Profile from '../Profile';
+import Navbar from '../Navbar';
 
 const Sidebar = () => {
   return (
@@ -17,9 +15,9 @@ const Sidebar = () => {
       h="full"
     >
       <Box borderBottom="1px" borderBottomColor="borderSecondary">
-        <Profile src="/logo.png" title="Udemy Inter. school" variant="md" />
+        <Profile src="/logo.png" title="Udemy Inter. school" variant="sm" />
       </Box>
-      {/* TODO: Implement Nav component */}
+      <Navbar />
     </Box>
   );
 };
