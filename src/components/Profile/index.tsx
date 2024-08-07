@@ -4,47 +4,62 @@
 import {
   Avatar,
   Flex,
-  PartsStyleInterpolation,
+  FlexProps,
   Text,
-  useMultiStyleConfig,
+  useStyleConfig,
 } from '@chakra-ui/react';
+
+type TCustomFlex = 'xs' | 'sm' | 'md' | 'lg';
 
 interface ProfileProps {
   title: string;
-  variant: string;
+  variant: TCustomFlex;
   src: string;
   id?: string;
   subTitle?: string;
 }
 
-const Profile = ({
-  id,
-  title,
-  src,
-  subTitle,
-  variant = 'fieldRow',
-}: ProfileProps) => {
-  const styles = useMultiStyleConfig('Profile', { variant });
+interface CustomFlexProps extends FlexProps {
+  variant?: TCustomFlex;
+}
+
+const CustomFlex = ({ variant, ...props }: CustomFlexProps) => {
+  const styles = useStyleConfig('CustomFlex', { variant });
+
+  return <Flex __css={styles} {...props} />;
+};
+
+const Profile = ({ id, title, src, subTitle, variant }: ProfileProps) => {
+  const variantText = `profile_${variant}`;
+
+  const renderAvatar = id ? (
+    <Flex
+      flexDir="column"
+      justifyContent="center"
+      alignItems="center"
+      gap="12px"
+    >
+      <Text variant="tertiary">{id}</Text>
+      <Avatar src={src} size={variant} />
+    </Flex>
+  ) : (
+    <Avatar src={src} size={variant} />
+  );
+
+  const renderTitle = subTitle ? (
+    <Flex flexDir="column" alignItems="center" gap="4px">
+      <Text variant={variantText}>{title}</Text>
+      <Text variant="subTitle">{subTitle}</Text>
+    </Flex>
+  ) : (
+    <Text variant={variantText}>{title}</Text>
+  );
 
   return (
-    <Flex __css={styles.wrapper}>
-      {id ? (
-        <Flex flexDir="column" alignItems="center" gap="12px">
-          <Text variant="tertiary">{id}</Text>
-          <Avatar src={src} {...(styles.avatar as PartsStyleInterpolation)} />
-        </Flex>
-      ) : (
-        <Avatar src={src} {...(styles.avatar as PartsStyleInterpolation)} />
-      )}
-      {subTitle ? (
-        <Flex flexDir="column" alignItems="center" gap="4px">
-          <Text {...(styles.title as PartsStyleInterpolation)}>{title}</Text>
-          <Text variant="subTitle">{subTitle}</Text>
-        </Flex>
-      ) : (
-        <Text {...(styles.title as PartsStyleInterpolation)}>{title}</Text>
-      )}
-    </Flex>
+    <CustomFlex variant={variant}>
+      {renderAvatar}
+      {renderTitle}
+    </CustomFlex>
   );
 };
 

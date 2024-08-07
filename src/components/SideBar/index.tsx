@@ -16,11 +16,9 @@ const Sidebar = () => {
       pos="fixed"
       h="full"
     >
-      <Profile
-        src="/logo.png"
-        title="Udemy Inter. school"
-        variant="sm"
-      />
+      <Box borderBottom="1px" borderBottomColor="borderSecondary">
+        <Profile src="/logo.png" title="Udemy Inter. school" variant="md" />
+      </Box>
       {/* TODO: Implement Nav component */}
     </Box>
   );

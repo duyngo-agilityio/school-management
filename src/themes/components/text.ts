@@ -27,6 +27,19 @@ export const Text = defineStyleConfig({
       fontSize: 'sm',
       fontWeight: 'semiBold',
     },
+    profile_xs: {
+      fontSize: '12px',
+      fontWeight: 'medium',
+    },
+    profile_sm: {
+      color: 'textLight',
+    },
+    profile_md: {
+      color: 'textTitle',
+    },
+    profile_lg: {
+      color: 'title',
+    },
   },
 
   sizes: {

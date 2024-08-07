@@ -2,25 +2,25 @@ import { defineStyleConfig } from '@chakra-ui/react';
 
 export const Avatar = defineStyleConfig({
   sizes: {
-    sm: {
+    xs: {
       container: {
         width: '24px',
         height: '24px',
       },
     },
-    md: {
+    sm: {
       container: {
         width: '65px',
         height: '65px',
       },
     },
-    lg: {
+    md: {
       container: {
         width: '180px',
         height: '180px',
       },
     },
-    xl: {
+    lg: {
       container: {
         width: '280px',
         height: '280px',
