@@ -1,10 +1,10 @@
 import React from 'react';
 
 // Components
-import { Box } from '@chakra-ui/react';
+import { SearchStudents } from '@/components';
 
 const Students = () => {
-  return <Box>Students</Box>;
+  return <SearchStudents />;
 };
 
 export default Students;
