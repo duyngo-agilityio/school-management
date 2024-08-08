@@ -14,14 +14,12 @@ const SearchTeachers = () => {
   const handleDeleteSearchValue = () => {};
 
   return (
-    <div>
-      <SearchInput
-        defaultValue=""
-        placeholder={INPUT_PLACEHOLDER.TEACHER}
-        onSearch={handleSearchValue}
-        onClick={handleDeleteSearchValue}
-      />
-    </div>
+    <SearchInput
+      defaultValue=""
+      placeholder={INPUT_PLACEHOLDER.TEACHER}
+      onSearch={handleSearchValue}
+      onClick={handleDeleteSearchValue}
+    />
   );
 };
 

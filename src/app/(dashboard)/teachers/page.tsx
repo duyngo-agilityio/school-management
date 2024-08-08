@@ -6,9 +6,7 @@ import { SearchTeachers } from '@/components';
 
 const Teachers = () => {
   return (
-    <Box>
       <SearchTeachers />
-    </Box>
   );
 };
 

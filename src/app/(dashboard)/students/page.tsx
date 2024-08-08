@@ -5,11 +5,7 @@ import { Box } from '@chakra-ui/react';
 import { SearchStudents } from '@/components';
 
 const Students = () => {
-  return (
-    <Box>
-      <SearchStudents />
-    </Box>
-  );
+  return <SearchStudents />;
 };
 
 export default Students;
