@@ -8,7 +8,7 @@ export const Button = defineStyleConfig({
 
   variants: {
     primary: { 
-      color: 'textLight',
+      color: 'textSecondary',
       bgColor: 'backgroundBlueHaveLock',
     },
 

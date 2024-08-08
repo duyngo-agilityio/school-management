@@ -1,47 +1,47 @@
 import { defineStyleConfig } from '@chakra-ui/react';
 
 export const Text = defineStyleConfig({
+  defaultProps: {
+    size: 'lg',
+  },
   variants: {
     primary: {
       color: 'textPrimary',
-      fontSize: 'md',
-      fontWeight: 'bold',
+      fontWeight: 'semiBold',
+    },
+    secondary: {
+      color: 'textSecondary',
+      fontWeight: 'semiBold',
     },
     tertiary: {
       color: 'textTertiary',
-      fontSize: 'md',
-      fontWeight: 'bold',
+    },
+    quaternary: {
+      color: 'textDark',
+      fontWeight: 'medium',
     },
     title: {
       color: 'textTitle',
-      fontSize: 'md',
       fontWeight: 'bold',
     },
     subTitle: {
       color: 'textSubTitle',
-      fontSize: 'sm',
-      fontWeight: 'bold',
     },
-    light: {
-      color: 'textLight',
-      fontSize: 'sm',
-      fontWeight: 'semiBold',
-    },
+    // Custom for Profile
     profile_xs: {
       fontSize: '12px',
       fontWeight: 'medium',
     },
     profile_sm: {
-      color: 'textLight',
+      color: 'textSecondary',
     },
     profile_md: {
       color: 'textTitle',
     },
     profile_lg: {
-      color: 'title',
+      color: 'textTitle',
     },
   },
-
   sizes: {
     xs: {
       fontSize: 'xs',
