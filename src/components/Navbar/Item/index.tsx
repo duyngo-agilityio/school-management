@@ -35,7 +35,7 @@ const NavItem = ({ icon, children, href, isActive, ...rest }: NavItemProps) => (
         color: 'white',
       }}
       {...(isActive && {
-        color: 'textLight',
+        color: 'textSecondary',
         bg: 'backgroundBlueHaveLock',
       })}
       {...rest}

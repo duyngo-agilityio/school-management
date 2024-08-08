@@ -1,39 +1,24 @@
-export const customColors = {
-  blueZodiac: '#152259',
-  blueKoamaru: '#13296A',
-  blueHavelock: '#509CDB',
-  solitude: '#EBF6FF',
-  linkWater: '#EFF3FA',
-  grayCod: '#1A1A1A',
-  grayTundora: '#424242',
-  grayEmperor: '#4F4F4F',
-  gray: '#8A8A8A',
-  silverChalice: '#A7A7A7',
-  silver: '#BDBDBD',
-  seashell: '#F1F1F1',
-  whiteHint: '#FCFAFA',
-  white: '#FFFFFF',
-};
+import { customColors } from '@/constants';
 
 export const colors = {
   // Text
-  textPrimary: customColors.grayEmperor,
-  textSecondary: customColors.gray,
-  textLight: customColors.white,
-  textTitle: customColors.grayCod,
-  textSubTitle: customColors.silverChalice,
-  textTertiary: customColors.grayTundora,
+  textPrimary: customColors.emperor,
+  textSecondary: customColors.pure,
+  textTertiary: customColors.tundora,
+  textDark: customColors.ash,
+  textTitle: customColors.cod,
+  textSubTitle: customColors.slate,
 
   // Background
-  backgroundPrimary: customColors.blueZodiac,
-  backgroundSecondary: customColors.white,
-  backgroundWhiteHint: customColors.whiteHint,
+  backgroundPrimary: customColors.zodiac,
+  backgroundSecondary: customColors.pure,
+  backgroundWhiteHint: customColors.snow,
   backgroundSolitude: customColors.solitude,
-  backgroundBlueHaveLock: customColors.blueHavelock,
+  backgroundBlueHaveLock: customColors.havelock,
   backgroundSeashell: customColors.seashell,
-  backgroundSilver: customColors.silver,
+  backgroundSilver: customColors.aluminum,
 
   // Border
-  borderPrimary: customColors.silverChalice,
-  borderSecondary: customColors.silver,
+  borderPrimary: customColors.slate,
+  borderSecondary: customColors.aluminum,
 };
