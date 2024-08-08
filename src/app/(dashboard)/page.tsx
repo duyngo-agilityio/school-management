@@ -1,10 +1,10 @@
 import React from 'react';
 
 // Components
-import { Box } from '@chakra-ui/react';
+import { FeatureContent } from '@/components';
 
 const Dashboard = () => {
-  return <Box>Dashboard</Box>;
+  return <FeatureContent />;
 };
 
 export default Dashboard;
