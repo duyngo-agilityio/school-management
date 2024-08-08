@@ -17,6 +17,7 @@ export const colors = {
   backgroundBlueHaveLock: customColors.havelock,
   backgroundSeashell: customColors.seashell,
   backgroundSilver: customColors.aluminum,
+  backgroundLinkWater: customColors.linkWater,
 
   // Border
   borderPrimary: customColors.slate,
