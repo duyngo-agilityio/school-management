@@ -1,10 +1,15 @@
 import React from 'react';
 
 // Components
-import { SearchStudents } from '@/components';
+import { SearchStudents, TableStudent } from '@/components';
 
 const Students = () => {
-  return <SearchStudents />;
+  return (
+    <>
+      <SearchStudents />
+      <TableStudent />
+    </>
+  );
 };
 
 export default Students;
