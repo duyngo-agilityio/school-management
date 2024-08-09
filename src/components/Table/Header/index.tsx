@@ -10,7 +10,7 @@ interface TableHeaderProps {
 
 const TableHeader = ({ columns }: TableHeaderProps) => {
   const renderColumns = columns.map(({ field, headerName }) => (
-    <Th key={field}>{headerName}</Th>
+    <Th key={field} borderBottom="none">{headerName}</Th>
   ));
 
   return (

@@ -1,11 +1,12 @@
-import React from 'react';
-
 // Components
-import { SearchTeachers } from '@/components';
+import { SearchTeachers, TableTeacher } from '@/components';
 
 const Teachers = () => {
   return (
+    <>
       <SearchTeachers />
+      <TableTeacher />
+    </>
   );
 };
 

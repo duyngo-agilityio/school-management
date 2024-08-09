@@ -1,12 +1,12 @@
+'use client';
+
+import { useState } from 'react';
+
 // Components
-import {
-  TableContainer,
-  Tbody,
-  Td,
-  Tr,
-  Table as ChakraTable,
-} from '@chakra-ui/react';
+import { TableContainer, Tbody, Table as ChakraTable } from '@chakra-ui/react';
 import TableHeader from './Header';
+import TableRow from './Row';
+import TableCell from './Cell';
 
 // Types
 import { IFiledNameColumns, TDataType } from '@/types';
@@ -16,34 +16,43 @@ interface TableProps {
   data: TDataType[];
 }
 
-const Table = ({ columns }: TableProps) => {
+const Table = ({ columns, data }: TableProps) => {
+  const [selectedId, setSelectedId] = useState<string>('');
+
+  const handleClickRow = (id: string) => () => {
+    setSelectedId(id);
+  };
+
   return (
     <TableContainer>
-      <ChakraTable variant="striped" colorScheme="teal">
+      <ChakraTable>
         <TableHeader columns={columns} />
-        {/* Mock data */}
         <Tbody>
-          <Tr>
-            <Td>inches</Td>
-            <Td>millimetres (mm)</Td>
-            <Td>millimetres (mm)</Td>
-            <Td>millimetres (mm)</Td>
-            <Td isNumeric>25.4</Td>
-          </Tr>
-          <Tr>
-            <Td>feet</Td>
-            <Td>centimetres (cm)</Td>
-            <Td>centimetres (cm)</Td>
-            <Td>centimetres (cm)</Td>
-            <Td isNumeric>30.48</Td>
-          </Tr>
-          <Tr>
-            <Td>yards</Td>
-            <Td>metres (m)</Td>
-            <Td>metres (m)</Td>
-            <Td>metres (m)</Td>
-            <Td isNumeric>0.91444</Td>
-          </Tr>
+          {data.map((item, index) => {
+            const activeRow = selectedId === item.id;
+            const bgColor = activeRow
+              ? 'backgroundBlueHaveLock'
+              : index % 2 === 0
+                ? 'backgroundSolitude'
+                : '';
+
+            const textColor = activeRow ? 'textSecondary' : 'textPrimary';
+
+            return (
+              <TableRow
+                key={item.id}
+                onClickRow={handleClickRow(item.id)}
+                bg={bgColor}
+                color={textColor}
+                cursor="pointer"
+                borderBottom="none"
+              >
+                {columns.map((column) => (
+                  <TableCell key={column.field} column={column} item={item} />
+                ))}
+              </TableRow>
+            );
+          })}
         </Tbody>
       </ChakraTable>
     </TableContainer>
