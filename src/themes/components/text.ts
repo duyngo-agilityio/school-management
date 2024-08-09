@@ -29,10 +29,11 @@ export const Text = defineStyleConfig({
     },
     // Custom for Profile
     profile_xs: {
-      fontSize: '12px',
+      fontSize: 'xs',
       fontWeight: 'medium',
     },
     profile_sm: {
+      fontSize: 'sm',
       color: 'textSecondary',
     },
     profile_md: {

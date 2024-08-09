@@ -21,8 +21,18 @@ const whitePallet = {
   pure: '#FFFFFF',
 };
 
+const redPallet = {
+  roman: '#DB5050',
+};
+
+const yellowPallet = {
+  anzac: '#DBBD50',
+};
+
 export const customColors = {
   ...bluePallet,
   ...whitePallet,
   ...grayPallet,
+  ...redPallet,
+  ...yellowPallet,
 } as const;

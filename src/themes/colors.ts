@@ -18,6 +18,8 @@ export const colors = {
   backgroundSeashell: customColors.seashell,
   backgroundSilver: customColors.aluminum,
   backgroundLinkWater: customColors.linkWater,
+  backgroundRoman: customColors.roman,
+  backgroundAnzac: customColors.anzac,
 
   // Border
   borderPrimary: customColors.slate,
