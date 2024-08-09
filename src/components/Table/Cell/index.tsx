@@ -18,8 +18,13 @@ interface TableCellProps {
 
 const TableCell = ({ item, column }: TableCellProps) => {
   const value = get(item, column.field);
+  const renderCellValue = column.render ? column.render(column, item) : value;
 
-  return <Td borderBottom="none">{value}</Td>;
+  return (
+    <Td borderBottom="none" fontSize="12px">
+      {renderCellValue}
+    </Td>
+  );
 };
 
 export default memo(TableCell, isEqual);

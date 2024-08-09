@@ -14,7 +14,7 @@ type TCustomFlex = 'xs' | 'sm' | 'md' | 'lg';
 interface ProfileProps {
   title: string;
   variant: TCustomFlex;
-  src: string;
+  src?: string;
   id?: string;
   subTitle?: string;
 }
@@ -31,6 +31,7 @@ const CustomFlex = ({ variant, ...props }: CustomFlexProps) => {
 
 const Profile = ({ id, title, src, subTitle, variant }: ProfileProps) => {
   const variantText = `profile_${variant}`;
+  const ml = variant === 'xs' ? '8px' : '';
 
   const renderAvatar = id ? (
     <Flex
@@ -52,7 +53,9 @@ const Profile = ({ id, title, src, subTitle, variant }: ProfileProps) => {
       <Text variant="subTitle">{subTitle}</Text>
     </Flex>
   ) : (
-    <Text variant={variantText}>{title}</Text>
+    <Text variant={variantText} ml={ml}>
+      {title}
+    </Text>
   );
 
   return (
