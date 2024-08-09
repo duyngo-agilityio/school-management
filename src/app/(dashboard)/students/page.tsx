@@ -1,5 +1,3 @@
-import React from 'react';
-
 // Components
 import { SearchStudents, TableStudent } from '@/components';
 

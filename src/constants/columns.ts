@@ -44,7 +44,6 @@ export const COLUMNS_TEACHER = [
   {
     field: COLUMNS.FIELDS.NAME,
     headerName: COLUMNS.HEADER_NAME.NAME,
-    render: () => {},
   },
   {
     field: COLUMNS.FIELDS.SUBJECT,
