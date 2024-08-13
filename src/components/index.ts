@@ -6,3 +6,4 @@ export { default as SearchTeachers } from './SearchTeachers';
 export { default as FeatureContent } from './FeatureContent';
 export { default as TableStudent } from './TableStudent';
 export { default as TableTeacher } from './TableTeacher';
+export { default as Dropdown } from './Dropdown';
