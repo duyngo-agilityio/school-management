@@ -4,12 +4,14 @@
 import { Controller, useForm } from 'react-hook-form';
 
 // Types
-import { ITeacher } from '@/types';
+import { IStudent } from '@/types';
 
 // Constants
 import { OPTIONS_GENDER, OPTIONS_SUBJECT, VALIDATE_MESSAGE } from '@/constants';
 
 // Components
+import Modal from '..';
+import { Dropdown, PasswordInput } from '@/components';
 import {
   Box,
   Button,
@@ -19,24 +21,21 @@ import {
   FormLabel,
   Input,
 } from '@chakra-ui/react';
-import { Dropdown, PasswordInput } from '@/components';
-import Modal from '..';
 
-interface TeacherModalProps {
+interface StudentModalProps {
   title: string;
   onClose: () => void;
   isOpen: boolean;
 }
 
-const TeacherModal = ({ isOpen, onClose, title }: TeacherModalProps) => {
-  const { handleSubmit, control } = useForm<ITeacher>({
+const StudentModal = ({ title, onClose, isOpen }: StudentModalProps) => {
+  const { handleSubmit, control } = useForm<IStudent>({
     defaultValues: {
       fullName: '',
       email: '',
       gender: 0,
       password: '',
       phoneNumber: '',
-      subject: '',
     },
     mode: 'onBlur',
   });
@@ -47,25 +46,11 @@ const TeacherModal = ({ isOpen, onClose, title }: TeacherModalProps) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose} title={title} size="4xl">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Controller
-          control={control}
-          name="fullName"
-          rules={{
-            required: VALIDATE_MESSAGE.EMPTY,
-          }}
-          render={({ field: { value, onChange }, fieldState: { error } }) => (
-            <FormControl mt={4}>
-              <FormLabel>Full name</FormLabel>
-              <Input value={value} onChange={onChange} />
-              <FormErrorMessage>{error && error.message}</FormErrorMessage>
-            </FormControl>
-          )}
-        />
         <Flex flexDirection="row" justifyContent="space-between">
           <Box mr="45px" w="full">
             <Controller
               control={control}
-              name="email"
+              name="fullName"
               rules={{
                 required: VALIDATE_MESSAGE.EMPTY,
               }}
@@ -74,7 +59,7 @@ const TeacherModal = ({ isOpen, onClose, title }: TeacherModalProps) => {
                 fieldState: { error },
               }) => (
                 <FormControl mt={4}>
-                  <FormLabel>Email address</FormLabel>
+                  <FormLabel>Full name</FormLabel>
                   <Input value={value} onChange={onChange} />
                   <FormErrorMessage>{error && error.message}</FormErrorMessage>
                 </FormControl>
@@ -84,7 +69,7 @@ const TeacherModal = ({ isOpen, onClose, title }: TeacherModalProps) => {
           <Flex>
             <Controller
               control={control}
-              name="subject"
+              name="gender"
               rules={{
                 required: VALIDATE_MESSAGE.EMPTY,
               }}
@@ -123,14 +108,17 @@ const TeacherModal = ({ isOpen, onClose, title }: TeacherModalProps) => {
           <Box mr="45px" w="full">
             <Controller
               control={control}
-              name="password"
+              name="email"
               rules={{
                 required: VALIDATE_MESSAGE.EMPTY,
               }}
-              render={({ fieldState: { error } }) => (
+              render={({
+                field: { value, onChange },
+                fieldState: { error },
+              }) => (
                 <FormControl mt={4}>
-                  <FormLabel>Password</FormLabel>
-                  <PasswordInput />
+                  <FormLabel>Email address</FormLabel>
+                  <Input value={value} onChange={onChange} />
                   <FormErrorMessage>{error && error.message}</FormErrorMessage>
                 </FormControl>
               )}
@@ -150,19 +138,16 @@ const TeacherModal = ({ isOpen, onClose, title }: TeacherModalProps) => {
         </Flex>
         <Controller
           control={control}
-          name="subject"
+          name="password"
           rules={{
             required: VALIDATE_MESSAGE.EMPTY,
           }}
-          render={({ field: { onChange }, fieldState: { error } }) => (
-            <Box mt={7}>
-              <Dropdown
-                onChangeValue={onChange}
-                options={OPTIONS_SUBJECT}
-                placeholder="Subject"
-              />
+          render={({ fieldState: { error } }) => (
+            <FormControl mt={4}>
+              <FormLabel>Password</FormLabel>
+              <PasswordInput />
               <FormErrorMessage>{error && error.message}</FormErrorMessage>
-            </Box>
+            </FormControl>
           )}
         />
         <Flex mt={5} justifyContent="flex-end">
@@ -170,7 +155,7 @@ const TeacherModal = ({ isOpen, onClose, title }: TeacherModalProps) => {
             Cancel
           </Button>
           <Button type="submit" colorScheme="blue">
-            Add Teacher
+            Add Student
           </Button>
         </Flex>
       </form>
@@ -178,4 +163,4 @@ const TeacherModal = ({ isOpen, onClose, title }: TeacherModalProps) => {
   );
 };
 
-export default TeacherModal;
+export default StudentModal;
