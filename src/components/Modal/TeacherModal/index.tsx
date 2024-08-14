@@ -7,7 +7,13 @@ import { Controller, useForm } from 'react-hook-form';
 import { ITeacher } from '@/types';
 
 // Constants
-import { OPTIONS_GENDER, OPTIONS_SUBJECT, VALIDATE_MESSAGE } from '@/constants';
+import {
+  OPTIONS_GENDER,
+  OPTIONS_SUBJECT,
+  REGEX_EMAIL,
+  REGEX_PASSWORD,
+  VALIDATE_MESSAGE,
+} from '@/constants';
 
 // Components
 import {
@@ -15,7 +21,7 @@ import {
   Button,
   Flex,
   FormControl,
-  FormErrorMessage,
+  FormHelperText,
   FormLabel,
   Input,
 } from '@chakra-ui/react';
@@ -53,11 +59,13 @@ const TeacherModal = ({ isOpen, onClose, title }: TeacherModalProps) => {
           rules={{
             required: VALIDATE_MESSAGE.EMPTY,
           }}
-          render={({ field: { value, onChange }, fieldState: { error } }) => (
+          render={({ field, fieldState: { error } }) => (
             <FormControl mt={4}>
               <FormLabel>Full name</FormLabel>
-              <Input value={value} onChange={onChange} />
-              <FormErrorMessage>{error && error.message}</FormErrorMessage>
+              <Input {...field} />
+              {error?.message && (
+                <FormHelperText color="red.400">{error.message}</FormHelperText>
+              )}
             </FormControl>
           )}
         />
@@ -68,15 +76,20 @@ const TeacherModal = ({ isOpen, onClose, title }: TeacherModalProps) => {
               name="email"
               rules={{
                 required: VALIDATE_MESSAGE.EMPTY,
+                pattern: {
+                  value: REGEX_EMAIL,
+                  message: VALIDATE_MESSAGE.EMAIL,
+                },
               }}
-              render={({
-                field: { value, onChange },
-                fieldState: { error },
-              }) => (
+              render={({ field, fieldState: { error } }) => (
                 <FormControl mt={4}>
                   <FormLabel>Email address</FormLabel>
-                  <Input value={value} onChange={onChange} />
-                  <FormErrorMessage>{error && error.message}</FormErrorMessage>
+                  <Input {...field} />
+                  {error?.message && (
+                    <FormHelperText color="red.400">
+                      {error.message}
+                    </FormHelperText>
+                  )}
                 </FormControl>
               )}
             />
@@ -88,15 +101,24 @@ const TeacherModal = ({ isOpen, onClose, title }: TeacherModalProps) => {
               rules={{
                 required: VALIDATE_MESSAGE.EMPTY,
               }}
-              render={({ field: { onChange }, fieldState: { error } }) => (
-                <Box mt={12} mr="45px">
+              render={({
+                field: { value, onChange },
+                fieldState: { error },
+              }) => (
+                <FormControl mt={12} mr="45px">
                   <Dropdown
                     width="179px"
                     onChangeValue={onChange}
+                    value={value}
                     options={OPTIONS_SUBJECT}
+                    placeholder="Class"
                   />
-                  <FormErrorMessage>{error && error.message}</FormErrorMessage>
-                </Box>
+                  {error?.message && (
+                    <FormHelperText color="red.400">
+                      {error.message}
+                    </FormHelperText>
+                  )}
+                </FormControl>
               )}
             />
             <Controller
@@ -105,16 +127,24 @@ const TeacherModal = ({ isOpen, onClose, title }: TeacherModalProps) => {
               rules={{
                 required: VALIDATE_MESSAGE.EMPTY,
               }}
-              render={({ field: { onChange }, fieldState: { error } }) => (
-                <Box mt={12}>
+              render={({
+                field: { value, onChange },
+                fieldState: { error },
+              }) => (
+                <FormControl mt={12}>
                   <Dropdown
                     width="179px"
                     onChangeValue={onChange}
+                    value={value}
                     placeholder="Gender"
                     options={OPTIONS_GENDER}
                   />
-                  <FormErrorMessage>{error && error.message}</FormErrorMessage>
-                </Box>
+                  {error?.message && (
+                    <FormHelperText color="red.400">
+                      {error.message}
+                    </FormHelperText>
+                  )}
+                </FormControl>
               )}
             />
           </Flex>
@@ -126,12 +156,20 @@ const TeacherModal = ({ isOpen, onClose, title }: TeacherModalProps) => {
               name="password"
               rules={{
                 required: VALIDATE_MESSAGE.EMPTY,
+                pattern: {
+                  value: REGEX_PASSWORD,
+                  message: VALIDATE_MESSAGE.PASSWORD,
+                },
               }}
-              render={({ fieldState: { error } }) => (
+              render={({ field, fieldState: { error } }) => (
                 <FormControl mt={4}>
                   <FormLabel>Password</FormLabel>
-                  <PasswordInput />
-                  <FormErrorMessage>{error && error.message}</FormErrorMessage>
+                  <PasswordInput {...field} />
+                  {error?.message && (
+                    <FormHelperText color="red.400">
+                      {error.message}
+                    </FormHelperText>
+                  )}
                 </FormControl>
               )}
             />
@@ -139,11 +177,10 @@ const TeacherModal = ({ isOpen, onClose, title }: TeacherModalProps) => {
           <Controller
             control={control}
             name="phoneNumber"
-            render={({ field: { value, onChange }, fieldState: { error } }) => (
+            render={({ field }) => (
               <FormControl mt={4}>
                 <FormLabel>Phone number</FormLabel>
-                <Input value={value} onChange={onChange} />
-                <FormErrorMessage>{error && error.message}</FormErrorMessage>
+                <Input {...field} />
               </FormControl>
             )}
           />
@@ -156,12 +193,18 @@ const TeacherModal = ({ isOpen, onClose, title }: TeacherModalProps) => {
           }}
           render={({ field: { onChange }, fieldState: { error } }) => (
             <Box mt={7}>
-              <Dropdown
-                onChangeValue={onChange}
-                options={OPTIONS_SUBJECT}
-                placeholder="Subject"
-              />
-              <FormErrorMessage>{error && error.message}</FormErrorMessage>
+              <FormControl mt={4}>
+                <Dropdown
+                  onChangeValue={onChange}
+                  options={OPTIONS_SUBJECT}
+                  placeholder="Subject"
+                />
+                {error?.message && (
+                  <FormHelperText color="red.400">
+                    {error.message}
+                  </FormHelperText>
+                )}
+              </FormControl>
             </Box>
           )}
         />

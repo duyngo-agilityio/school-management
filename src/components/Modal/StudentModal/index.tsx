@@ -7,7 +7,12 @@ import { Controller, useForm } from 'react-hook-form';
 import { IStudent } from '@/types';
 
 // Constants
-import { OPTIONS_GENDER, OPTIONS_SUBJECT, VALIDATE_MESSAGE } from '@/constants';
+import {
+  OPTIONS_GENDER,
+  OPTIONS_SUBJECT,
+  REGEX_PASSWORD,
+  VALIDATE_MESSAGE,
+} from '@/constants';
 
 // Components
 import Modal from '..';
@@ -18,6 +23,7 @@ import {
   Flex,
   FormControl,
   FormErrorMessage,
+  FormHelperText,
   FormLabel,
   Input,
 } from '@chakra-ui/react';
@@ -61,7 +67,11 @@ const StudentModal = ({ title, onClose, isOpen }: StudentModalProps) => {
                 <FormControl mt={4}>
                   <FormLabel>Full name</FormLabel>
                   <Input value={value} onChange={onChange} />
-                  <FormErrorMessage>{error && error.message}</FormErrorMessage>
+                  {error?.message && (
+                    <FormHelperText color="red.400">
+                      {error.message}
+                    </FormHelperText>
+                  )}
                 </FormControl>
               )}
             />
@@ -73,14 +83,22 @@ const StudentModal = ({ title, onClose, isOpen }: StudentModalProps) => {
               rules={{
                 required: VALIDATE_MESSAGE.EMPTY,
               }}
-              render={({ field: { onChange }, fieldState: { error } }) => (
+              render={({
+                field: { value, onChange },
+                fieldState: { error },
+              }) => (
                 <Box mt={12} mr="45px">
                   <Dropdown
                     width="179px"
                     onChangeValue={onChange}
+                    value={value}
                     options={OPTIONS_SUBJECT}
                   />
-                  <FormErrorMessage>{error && error.message}</FormErrorMessage>
+                  {error?.message && (
+                    <FormHelperText color="red.400">
+                      {error.message}
+                    </FormHelperText>
+                  )}
                 </Box>
               )}
             />
@@ -90,15 +108,23 @@ const StudentModal = ({ title, onClose, isOpen }: StudentModalProps) => {
               rules={{
                 required: VALIDATE_MESSAGE.EMPTY,
               }}
-              render={({ field: { onChange }, fieldState: { error } }) => (
+              render={({
+                field: { value, onChange },
+                fieldState: { error },
+              }) => (
                 <Box mt={12}>
                   <Dropdown
                     width="179px"
                     onChangeValue={onChange}
+                    value={value}
                     placeholder="Gender"
                     options={OPTIONS_GENDER}
                   />
-                  <FormErrorMessage>{error && error.message}</FormErrorMessage>
+                  {error?.message && (
+                    <FormHelperText color="red.400">
+                      {error.message}
+                    </FormHelperText>
+                  )}
                 </Box>
               )}
             />
@@ -112,13 +138,10 @@ const StudentModal = ({ title, onClose, isOpen }: StudentModalProps) => {
               rules={{
                 required: VALIDATE_MESSAGE.EMPTY,
               }}
-              render={({
-                field: { value, onChange },
-                fieldState: { error },
-              }) => (
+              render={({ field, fieldState: { error } }) => (
                 <FormControl mt={4}>
                   <FormLabel>Email address</FormLabel>
-                  <Input value={value} onChange={onChange} />
+                  <Input {...field} />
                   <FormErrorMessage>{error && error.message}</FormErrorMessage>
                 </FormControl>
               )}
@@ -127,10 +150,10 @@ const StudentModal = ({ title, onClose, isOpen }: StudentModalProps) => {
           <Controller
             control={control}
             name="phoneNumber"
-            render={({ field: { value, onChange }, fieldState: { error } }) => (
+            render={({ field, fieldState: { error } }) => (
               <FormControl mt={4}>
                 <FormLabel>Phone number</FormLabel>
-                <Input value={value} onChange={onChange} />
+                <Input {...field} />
                 <FormErrorMessage>{error && error.message}</FormErrorMessage>
               </FormControl>
             )}
@@ -141,11 +164,15 @@ const StudentModal = ({ title, onClose, isOpen }: StudentModalProps) => {
           name="password"
           rules={{
             required: VALIDATE_MESSAGE.EMPTY,
+            pattern: {
+              value: REGEX_PASSWORD,
+              message: VALIDATE_MESSAGE.PASSWORD,
+            },
           }}
-          render={({ fieldState: { error } }) => (
+          render={({ field, fieldState: { error } }) => (
             <FormControl mt={4}>
               <FormLabel>Password</FormLabel>
-              <PasswordInput />
+              <PasswordInput {...field} />
               <FormErrorMessage>{error && error.message}</FormErrorMessage>
             </FormControl>
           )}
