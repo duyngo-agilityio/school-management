@@ -4,14 +4,14 @@ import { ChangeEvent, memo } from 'react';
 import isEqual from 'react-fast-compare';
 
 // Components
-import { Select } from '@chakra-ui/react';
+import { Select, SelectProps } from '@chakra-ui/react';
 
 export interface Option {
   value: string;
   label: string;
 }
 
-interface DropdownProps {
+interface DropdownProps extends SelectProps {
   options: Option[];
   placeholder?: string;
   width?: string;
@@ -23,13 +23,21 @@ const Dropdown = ({
   placeholder = '',
   width,
   onChangeValue,
+  value,
+  ...rest
 }: DropdownProps) => {
   const handleSelect = (e: ChangeEvent<HTMLSelectElement>) => {
     onChangeValue(e.target.value);
   };
 
   return (
-    <Select w={width} placeholder={placeholder} onChange={handleSelect}>
+    <Select
+      w={width}
+      placeholder={placeholder}
+      onChange={handleSelect}
+      value={value}
+      {...rest}
+    >
       {options.map(({ value = '', label = '' }) => (
         <option key={value} value={value}>
           {label}
