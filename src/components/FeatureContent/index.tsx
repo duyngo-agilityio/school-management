@@ -20,7 +20,7 @@ const FeatureContent = () =>
         </Flex>
       </Box>
       <Flex flexDirection="column">
-        <Text variant="primary" size="lg" pb="16px">
+        <Text variant="primary" fontWeight="medium" size="lg" pb="16px">
           {title}
         </Text>
         <Text variant="primary" size="sm">
