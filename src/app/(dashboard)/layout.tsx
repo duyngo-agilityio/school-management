@@ -8,7 +8,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
     <Flex direction="row">
       <SideBar />
-      <Box h="100vh" w="full" ml="241px" p="20px">
+      <Box h="100vh" w="full" ml="241px">
         {children}
       </Box>
     </Flex>

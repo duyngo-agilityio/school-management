@@ -1,21 +1,48 @@
 import React from 'react';
 
 // Components
-import { FeatureContent, NotFound } from '@/components';
-
-// Constants
-import { NOTFOUND } from '@/constants';
+import { FeatureContent, HeaderBar } from '@/components';
+import { Flex, Text } from '@chakra-ui/react';
 
 const Dashboard = () => {
   return (
-    <>
-      <NotFound
-        src="/no_notification.png"
-        title={NOTFOUND.STUDENT.TITLE}
-        description={NOTFOUND.STUDENT.DESCRIPTION}
-      />
-      <FeatureContent />;
-    </>
+    <Flex flexDirection="column">
+      <HeaderBar />
+      <Flex alignItems="center" justifyContent="center" w="full">
+        <Flex
+          flexDirection="column"
+          alignContent="center"
+          justifyContent="center"
+          w="753px"
+          mt="53px"
+        >
+          <Text variant="primary" fontWeight="semibold" size="3xl">
+            Welcome to your dashboard, Udemy school
+          </Text>
+        </Flex>
+      </Flex>
+
+      {/* width 570px */}
+      <Flex alignItems="center" justifyContent="center" w="full" mt="23px">
+        <Flex
+          flexDirection="column"
+          alignContent="center"
+          justifyContent="center"
+          width="570px"
+        >
+          <Text
+            variant="primary"
+            fontWeight="semibold"
+            size="lg"
+            mt="23px"
+            mb="74px"
+          >
+            Uyo/school/@teachable.com
+          </Text>
+          <FeatureContent />;
+        </Flex>
+      </Flex>
+    </Flex>
   );
 };
 
