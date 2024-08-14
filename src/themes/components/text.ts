@@ -7,11 +7,11 @@ export const Text = defineStyleConfig({
   variants: {
     primary: {
       color: 'textPrimary',
-      fontWeight: 'semiBold',
+      fontWeight: 'regular',
     },
     secondary: {
       color: 'textSecondary',
-      fontWeight: 'semiBold',
+      fontWeight: 'semibold',
     },
     tertiary: {
       color: 'textTertiary',
