@@ -1,12 +1,19 @@
 // Components
-import { SearchStudents, TableStudent } from '@/components';
-import { Box } from '@chakra-ui/react';
+import { HeaderBar, SearchStudents, TableStudent } from '@/components';
+import { Box, Button } from '@chakra-ui/react';
 
 const Students = () => {
   return (
     <Box p="40px">
-      <SearchStudents />
-      <TableStudent />
+      <HeaderBar width="full">
+        <Button variant="primary">Add Student</Button>
+      </HeaderBar>
+      <Box mt="42px">
+        <SearchStudents />
+      </Box>
+      <Box mt="11px">
+        <TableStudent />
+      </Box>
     </Box>
   );
 };
