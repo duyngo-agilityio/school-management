@@ -10,3 +10,4 @@ export { default as Dropdown } from './Dropdown';
 export { default as PasswordInput } from './PasswordInput';
 export { default as NotFound } from './NotFound';
 export { default as HeaderBar } from './HeaderBar';
+export { default as Icon } from './Icon';

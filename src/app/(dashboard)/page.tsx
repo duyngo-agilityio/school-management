@@ -57,7 +57,7 @@ const Dashboard = () => {
           >
             Uyo/school/@teachable.com
           </Text>
-          <FeatureContent />;
+          <FeatureContent />
         </Flex>
       </Flex>
     </Flex>
