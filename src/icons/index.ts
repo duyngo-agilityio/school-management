@@ -5,3 +5,5 @@ export { default as TeacherIcon } from './TeacherIcon';
 export { default as EyeHidden } from './EyeHidden';
 export { default as EyeShow } from './EyeShow';
 export { default as BellNotification } from './BellNotification';
+export { default as SmsIcon } from './SmsIcon';
+export { default as CallIcon } from './CallIcon';

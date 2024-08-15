@@ -14,13 +14,15 @@ import { IFiledNameColumns, TDataType } from '@/types';
 interface TableProps {
   columns: IFiledNameColumns[];
   data: TDataType[];
+  onClickRow: (id: string) => void;
 }
 
-const Table = ({ columns, data }: TableProps) => {
+const Table = ({ columns, data, onClickRow }: TableProps) => {
   const [selectedId, setSelectedId] = useState<string>('');
 
   const handleClickRow = (id: string) => () => {
     setSelectedId(id);
+    onClickRow(id);
   };
 
   return (

@@ -26,6 +26,8 @@ export const Text = defineStyleConfig({
     },
     subTitle: {
       color: 'textSubTitle',
+      fontSize: 'sm',
+      fontWeight: 'medium',
     },
     // Custom for Profile
     profile_xs: {
@@ -41,6 +43,8 @@ export const Text = defineStyleConfig({
     },
     profile_lg: {
       color: 'textTitle',
+      fontSize: 'md',
+      fontWeight: 'bold',
     },
   },
   sizes: {
