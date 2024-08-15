@@ -1,8 +1,8 @@
 import React from 'react';
 
 interface TeacherIconProps {
-  width?: string;
-  height?: string;
+  width?: string | number;
+  height?: string | number;
   stroke?: string;
 }
 

@@ -1,5 +1,3 @@
-import React from 'react';
-
 // Components
 import { FeatureContent, HeaderBar } from '@/components';
 import { Flex, Text } from '@chakra-ui/react';
@@ -39,8 +37,6 @@ const Dashboard = () => {
           </Text>
         </Flex>
       </Flex>
-
-      {/* width 570px */}
       <Flex alignItems="center" justifyContent="center" w="full" mt="23px">
         <Flex
           flexDirection="column"

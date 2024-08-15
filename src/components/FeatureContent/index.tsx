@@ -8,7 +8,13 @@ import { CONTENT_DASHBOARD } from '@/mocks';
 const FeatureContent = () =>
   CONTENT_DASHBOARD.map(({ id, icon, title, description }) => (
     <Flex key={id} mb="50px">
-      <Box w="36px" mr="20px">
+      <Box
+        w="36px"
+        h="36px"
+        mr="20px"
+        bg="backgroundLinkWater"
+        borderRadius="lg"
+      >
         <Icon icon={icon} />
       </Box>
       <Flex flexDirection="column">

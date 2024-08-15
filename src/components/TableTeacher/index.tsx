@@ -1,5 +1,8 @@
 'use client';
 
+// Libs
+import { useRouter } from 'next/navigation';
+
 // Components
 import Table from '../Table';
 import Profile from '../Profile';
@@ -10,13 +13,14 @@ import TeacherModal from '../Modal/TeacherModal';
 import { MOCK_TEACHERS } from '@/mocks';
 
 // Constants
-import { COLUMNS } from '@/constants';
+import { COLUMNS, ROUTES } from '@/constants';
 
 // Types
 import { IStudent } from '@/types';
 
 export const TableTeacher = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { push } = useRouter();
 
   const COLUMNS_TEACHER = [
     {
@@ -56,12 +60,20 @@ export const TableTeacher = () => {
     },
   ];
 
+  const handleClickRow = (id: string) => {
+    push(`${ROUTES.TEACHER}/${id}`);
+  };
+
   return (
     <>
       {isOpen && (
         <TeacherModal isOpen={isOpen} onClose={onClose} title="Add Teacher" />
       )}
-      <Table columns={COLUMNS_TEACHER} data={MOCK_TEACHERS} />
+      <Table
+        columns={COLUMNS_TEACHER}
+        data={MOCK_TEACHERS}
+        onClickRow={handleClickRow}
+      />
     </>
   );
 };

@@ -6,3 +6,4 @@ export * from './messages';
 export * from './options';
 export * from './regex';
 export * from './contents';
+export * from './routes';

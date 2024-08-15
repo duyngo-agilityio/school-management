@@ -11,7 +11,6 @@ const Icon = ({
   icon,
   width = '36px',
   height = '36px',
-  bg = 'backgroundLinkWater',
   ...rest
 }: IconProps) => (
   <Flex
@@ -19,8 +18,6 @@ const Icon = ({
     justifyContent="center"
     w={width}
     h={height}
-    bg={bg}
-    borderRadius="lg"
     {...rest}
   >
     {icon}
