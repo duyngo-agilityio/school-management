@@ -12,7 +12,7 @@ const Teachers = async () => {
         <Button variant="primary">Add Teacher</Button>
       </HeaderBar>
       <Box mt="42px">
-        <SearchTeachers />
+        <SearchTeachers fullName=''/>
       </Box>
       <Box mt="11px">
         <TableTeacher data={data} />

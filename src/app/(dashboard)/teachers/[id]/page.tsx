@@ -1,8 +1,8 @@
 // Components
 import { HeaderBar, Icon, Profile, SearchTeachers } from '@/components';
 
-// Mocks
-import { MOCK_TEACHERS } from '@/mocks';
+// Services
+import { getTeacherById } from '@/services';
 
 // Utils
 import { createIcons } from '@/utils';
@@ -10,9 +10,15 @@ import { createIcons } from '@/utils';
 // Components
 import { Box, Button, Flex, Text } from '@chakra-ui/react';
 
-const TeacherDetails = ({ params }: { params: { id: string } }) => {
-  // Data mock
-  const { fullName, avatar, description, age, gender } = MOCK_TEACHERS[0];
+const TeacherDetails = async ({ params }: { params: { id: string } }) => {
+  const data = await getTeacherById(params.id);
+  const {
+    fullName = '',
+    avatar = '',
+    description = '',
+    age = '',
+    gender = 0,
+  } = data;
 
   return (
     <Box p="40px">
@@ -20,7 +26,7 @@ const TeacherDetails = ({ params }: { params: { id: string } }) => {
         <Button variant="primary">Add Teacher</Button>
       </HeaderBar>
       <Box mt="42px">
-        <SearchTeachers />
+        <SearchTeachers fullName={fullName} disableInput />
       </Box>
       <Flex justifyContent="center" w="full" mt="88px">
         <Flex justifyContent="space-between" w="720px">
