@@ -19,6 +19,7 @@ interface SearchInputProps {
   defaultValue: string;
   onSearch: (value: string) => void;
   onClick: (value: string) => void;
+  disableInput?: boolean;
 }
 
 const SearchInput = ({
@@ -26,6 +27,7 @@ const SearchInput = ({
   defaultValue,
   onSearch,
   onClick,
+  disableInput = false,
 }: SearchInputProps) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     onSearch(e.target.value);
@@ -46,6 +48,7 @@ const SearchInput = ({
         placeholder={placeholder}
         defaultValue={defaultValue}
         onChange={handleChange}
+        disabled={disableInput}
       />
       <InputRightElement>
         <TiDeleteOutline style={{ cursor: 'pointer' }} onClick={handleClick} />

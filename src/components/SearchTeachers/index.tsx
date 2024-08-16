@@ -6,7 +6,12 @@ import SearchInput from '../SearchInput';
 // Constants
 import { INPUT_PLACEHOLDER } from '@/constants';
 
-const SearchTeachers = () => {
+interface SearchTeachersProps {
+  fullName: string;
+  disableInput?: boolean;
+}
+
+const SearchTeachers = ({ disableInput, fullName }: SearchTeachersProps) => {
   // TODO: Will be implemented later
   const handleSearchValue = () => {};
 
@@ -15,10 +20,11 @@ const SearchTeachers = () => {
 
   return (
     <SearchInput
-      defaultValue=""
+      defaultValue={fullName}
       placeholder={INPUT_PLACEHOLDER.TEACHER}
       onSearch={handleSearchValue}
       onClick={handleDeleteSearchValue}
+      disableInput={disableInput}
     />
   );
 };
