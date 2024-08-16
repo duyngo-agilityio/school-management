@@ -9,16 +9,17 @@ import Profile from '../Profile';
 import { Button, useDisclosure } from '@chakra-ui/react';
 import TeacherModal from '../Modal/TeacherModal';
 
-// Mocks
-import { MOCK_TEACHERS } from '@/mocks';
-
 // Constants
 import { COLUMNS, ROUTES } from '@/constants';
 
 // Types
-import { IStudent } from '@/types';
+import { IStudent, ITeacher } from '@/types';
 
-export const TableTeacher = () => {
+interface TableTeacherProps {
+  data: ITeacher[];
+}
+
+export const TableTeacher = ({ data }: TableTeacherProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { push } = useRouter();
 
@@ -71,7 +72,7 @@ export const TableTeacher = () => {
       )}
       <Table
         columns={COLUMNS_TEACHER}
-        data={MOCK_TEACHERS}
+        data={data}
         onClickRow={handleClickRow}
       />
     </>
