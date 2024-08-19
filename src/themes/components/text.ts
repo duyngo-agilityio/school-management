@@ -15,6 +15,8 @@ export const Text = defineStyleConfig({
     },
     tertiary: {
       color: 'textTertiary',
+      fontSize: 'md',
+      fontWeight: 'medium'
     },
     quaternary: {
       color: 'textDark',
@@ -40,6 +42,8 @@ export const Text = defineStyleConfig({
     },
     profile_md: {
       color: 'textTitle',
+      fontSize: 'md',
+      fontWeight: 'bold',
     },
     profile_lg: {
       color: 'textTitle',

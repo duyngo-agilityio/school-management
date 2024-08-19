@@ -1,9 +1,11 @@
 'use client';
 
+// Libs
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 
 // Components
-import { Button, useDisclosure } from '@chakra-ui/react';
+import { Box, Button, useDisclosure } from '@chakra-ui/react';
 import Table from '../Table';
 import Profile from '../Profile';
 import StudentModal from '../Modal/StudentModal';
@@ -14,12 +16,17 @@ import { COLUMNS, ROUTES } from '@/constants';
 // Types
 import { IStudent } from '@/types';
 
+// Icons
+import PenIcon from '@/icons/PenIcon';
+import TrashIcon from '@/icons/TrashIcon';
+
 interface TableStudentProps {
   data: IStudent[];
 }
 
 const TableStudent = ({ data }: TableStudentProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const param = useParams<{ id: string }>();
 
   const COLUMNS_STUDENT = [
     {
@@ -48,18 +55,29 @@ const TableStudent = ({ data }: TableStudentProps) => {
     {
       field: COLUMNS.FIELDS.GENDER,
       headerName: COLUMNS.HEADER_NAME.GENDER,
+      render: ({ gender }: IStudent) => {
+        const renderGender = gender === 1 ? 'Male' : 'Female';
+
+        return <Box>{renderGender}</Box>;
+      },
     },
     {
       field: COLUMNS.FIELDS.ACTION,
       headerName: COLUMNS.HEADER_NAME.ACTION,
-      render: () => (
-        <>
-          <Button variant="warning" mr="10px" onClick={onOpen}>
-            EDIT
-          </Button>
-          <Button variant="danger">DELETE</Button>
-        </>
-      ),
+      render: ({ id }: IStudent) => {
+        const active = param.id === id;
+
+        return (
+          <>
+            <Button variant="none" mr="10px" onClick={onOpen}>
+              <PenIcon stroke={active ? 'white' : '#4F4F4F'} />
+            </Button>
+            <Button variant="none">
+              <TrashIcon stroke={active ? 'white' : '#4F4F4F'} />
+            </Button>
+          </>
+        );
+      },
     },
   ];
 

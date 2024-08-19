@@ -2,18 +2,21 @@
 
 // Libs
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 
 // Components
 import Table from '../Table';
 import Profile from '../Profile';
 import { Box, Button, useDisclosure } from '@chakra-ui/react';
-import TeacherModal from '../Modal/TeacherModal';
 
 // Constants
 import { COLUMNS, ROUTES } from '@/constants';
 
 // Types
 import { IFiledNameColumns, ITeacher } from '@/types';
+import TeacherModal from '../Modal/TeacherModal';
+import PenIcon from '@/icons/PenIcon';
+import TrashIcon from '@/icons/TrashIcon';
 
 interface TableTeacherProps {
   data: ITeacher[];
@@ -21,6 +24,7 @@ interface TableTeacherProps {
 
 export const TableTeacher = ({ data }: TableTeacherProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const param = useParams<{ id: string }>();
 
   const COLUMNS_TEACHER: IFiledNameColumns[] = [
     {
@@ -58,14 +62,20 @@ export const TableTeacher = ({ data }: TableTeacherProps) => {
     {
       field: COLUMNS.FIELDS.ACTION,
       headerName: COLUMNS.HEADER_NAME.ACTION,
-      render: () => (
-        <>
-          <Button variant="warning" mr="10px" onClick={onOpen}>
-            EDIT
-          </Button>
-          <Button variant="danger">DELETE</Button>
-        </>
-      ),
+      render: ({ id }: ITeacher) => {
+        const active = param.id === id;
+
+        return (
+          <>
+            <Button variant="none" mr="10px" onClick={onOpen}>
+              <PenIcon stroke={active ? 'white' : '#4F4F4F'} />
+            </Button>
+            <Button variant="none">
+              <TrashIcon stroke={active ? 'white' : '#4F4F4F'} />
+            </Button>
+          </>
+        );
+      },
     },
   ];
 
