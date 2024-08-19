@@ -1,6 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { memo } from 'react';
+import isEqual from 'react-fast-compare';
+import { useParams } from 'next/navigation';
 
 // Components
 import { TableContainer, Tbody, Table as ChakraTable } from '@chakra-ui/react';
@@ -14,16 +16,10 @@ import { IFiledNameColumns, TDataType } from '@/types';
 interface TableProps {
   columns: IFiledNameColumns[];
   data: TDataType[];
-  onClickRow: (id: string) => void;
 }
 
-const Table = ({ columns, data, onClickRow }: TableProps) => {
-  const [selectedId, setSelectedId] = useState<string>('');
-
-  const handleClickRow = (id: string) => () => {
-    setSelectedId(id);
-    onClickRow(id);
-  };
+const Table = ({ columns, data }: TableProps) => {
+  const param = useParams<{ id: string }>();
 
   return (
     <TableContainer>
@@ -31,7 +27,7 @@ const Table = ({ columns, data, onClickRow }: TableProps) => {
         <TableHeader columns={columns} />
         <Tbody>
           {data.map((item, index) => {
-            const activeRow = selectedId === item.id;
+            const activeRow = param.id === item.id;
             const bgColor = activeRow
               ? 'backgroundBlueHaveLock'
               : index % 2 === 0
@@ -43,10 +39,8 @@ const Table = ({ columns, data, onClickRow }: TableProps) => {
             return (
               <TableRow
                 key={item.id}
-                onClickRow={handleClickRow(item.id)}
                 bg={bgColor}
                 color={textColor}
-                cursor="pointer"
                 borderBottom="none"
               >
                 {columns.map((column) => (
@@ -61,4 +55,4 @@ const Table = ({ columns, data, onClickRow }: TableProps) => {
   );
 };
 
-export default Table;
+export default memo(Table, isEqual);

@@ -1,19 +1,18 @@
 'use client';
 
-import { memo, MouseEvent, ReactNode } from 'react';
+import { memo, ReactNode } from 'react';
+import isEqual from 'react-fast-compare';
 
 // Components
 import { Tr, TableRowProps as ChakraTableRowProps } from '@chakra-ui/react';
-import isEqual from 'react-fast-compare';
 
 interface TableRowProps extends ChakraTableRowProps {
   children: ReactNode;
-  onClickRow?: (event: MouseEvent<HTMLTableRowElement>) => void;
 }
 
-const TableRow = ({ children, onClickRow, ...rest }: TableRowProps) => {
+const TableRow = ({ children, ...rest }: TableRowProps) => {
   return (
-    <Tr onClick={onClickRow} {...rest}>
+    <Tr {...rest}>
       {children}
     </Tr>
   );

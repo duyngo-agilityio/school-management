@@ -1,7 +1,7 @@
 'use client';
 
 // Libs
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 // Components
 import Table from '../Table';
@@ -21,14 +21,17 @@ interface TableTeacherProps {
 
 export const TableTeacher = ({ data }: TableTeacherProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { push } = useRouter();
 
   const COLUMNS_TEACHER = [
     {
       field: COLUMNS.FIELDS.NAME,
       headerName: COLUMNS.HEADER_NAME.NAME,
-      render: (_: unknown, { fullName, avatar }: IStudent) => {
-        return <Profile src={avatar} title={fullName} variant="xs" />;
+      render: (_: unknown, { fullName, avatar, id }: IStudent) => {
+        return (
+          <Link href={`${ROUTES.TEACHER}/${id}`}>
+            <Profile src={avatar} title={fullName} variant="xs" />
+          </Link>
+        );
       },
     },
     {
@@ -61,20 +64,12 @@ export const TableTeacher = ({ data }: TableTeacherProps) => {
     },
   ];
 
-  const handleClickRow = (id: string) => {
-    push(`${ROUTES.TEACHER}/${id}`);
-  };
-
   return (
     <>
       {isOpen && (
         <TeacherModal isOpen={isOpen} onClose={onClose} title="Add Teacher" />
       )}
-      <Table
-        columns={COLUMNS_TEACHER}
-        data={data}
-        onClickRow={handleClickRow}
-      />
+      <Table columns={COLUMNS_TEACHER} data={data} />
     </>
   );
 };

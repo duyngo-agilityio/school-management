@@ -1,29 +1,36 @@
 'use client';
 
+import Link from 'next/link';
+
 // Components
 import { Button, useDisclosure } from '@chakra-ui/react';
 import Table from '../Table';
 import Profile from '../Profile';
 import StudentModal from '../Modal/StudentModal';
 
-// Mocks
-import { MOCK_STUDENTS } from '@/mocks';
-
 // Constants
-import { COLUMNS } from '@/constants';
+import { COLUMNS, ROUTES } from '@/constants';
 
 // Types
 import { IStudent } from '@/types';
 
-const TableStudent = () => {
+interface TableStudentProps {
+  data: IStudent[];
+}
+
+const TableStudent = ({ data }: TableStudentProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const COLUMNS_STUDENT = [
     {
       field: COLUMNS.FIELDS.NAME,
       headerName: COLUMNS.HEADER_NAME.NAME,
-      render: (_: unknown, { fullName, avatar }: IStudent) => {
-        return <Profile src={avatar} title={fullName} variant="xs" />;
+      render: (_: unknown, { fullName, avatar, id }: IStudent) => {
+        return (
+          <Link href={`${ROUTES.STUDENT}/${id}`} prefetch>
+            <Profile src={avatar} title={fullName} variant="xs" />
+          </Link>
+        );
       },
     },
     {
@@ -61,7 +68,7 @@ const TableStudent = () => {
       {isOpen && (
         <StudentModal isOpen={isOpen} onClose={onClose} title="Add Student" />
       )}
-      <Table columns={COLUMNS_STUDENT} data={MOCK_STUDENTS} />
+      <Table columns={COLUMNS_STUDENT} data={data} />
     </>
   );
 };
