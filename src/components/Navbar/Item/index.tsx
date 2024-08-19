@@ -3,14 +3,13 @@ import { ReactNode } from 'react';
 import Link from 'next/link';
 
 // Components
-import { Box, Flex, Icon } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 
 // Icons
-import { IconType } from 'react-icons';
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
 
 interface NavItemProps {
-  icon: IconType;
+  icon: JSX.Element;
   href: string;
   isActive: boolean;
   children: ReactNode;
@@ -40,19 +39,20 @@ const NavItem = ({ icon, children, href, isActive, ...rest }: NavItemProps) => (
       })}
       {...rest}
     >
-      <Box>
+      <Flex alignItems="center">
         {icon && (
-          <Icon
+          <Box
             mr="4"
             fontSize="16"
             _groupHover={{
               color: 'white',
             }}
-            as={icon}
-          />
+          >
+            {icon}
+          </Box>
         )}
         {children}
-      </Box>
+      </Flex>
       {isActive && <MdOutlineKeyboardArrowRight />}
     </Flex>
   </Link>
