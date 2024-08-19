@@ -14,7 +14,7 @@ export const LINK_ITEMS = [
   { name: 'Dashboard', icon: <HomeIcon />, href: PATH.DASHBOARD },
   { name: 'Teachers', icon: <HomeIcon />, href: PATH.TEACHERS },
   {
-    name: 'Students/ class',
+    name: 'Students/ classes',
     icon: <TeacherIcon width="16" height="16" stroke="white" />,
     href: PATH.STUDENTS,
   },

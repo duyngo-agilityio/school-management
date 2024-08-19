@@ -1,16 +1,16 @@
 import React from 'react';
 
-interface BellNotificationProps {
+interface BellNotificationIconProps {
   width?: string;
   height?: string;
   stroke?: string;
 }
 
-const BellNotification = ({
+const BellNotificationIcon = ({
   width = '28',
   height = '28',
   stroke = '#282828',
-}: BellNotificationProps) => {
+}: BellNotificationIconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -38,4 +38,4 @@ const BellNotification = ({
   );
 };
 
-export default BellNotification;
+export default BellNotificationIcon;
