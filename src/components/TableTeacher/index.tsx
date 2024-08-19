@@ -6,14 +6,14 @@ import Link from 'next/link';
 // Components
 import Table from '../Table';
 import Profile from '../Profile';
-import { Button, useDisclosure } from '@chakra-ui/react';
+import { Box, Button, useDisclosure } from '@chakra-ui/react';
 import TeacherModal from '../Modal/TeacherModal';
 
 // Constants
 import { COLUMNS, ROUTES } from '@/constants';
 
 // Types
-import { IStudent, ITeacher } from '@/types';
+import { IFiledNameColumns, ITeacher } from '@/types';
 
 interface TableTeacherProps {
   data: ITeacher[];
@@ -22,11 +22,11 @@ interface TableTeacherProps {
 export const TableTeacher = ({ data }: TableTeacherProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const COLUMNS_TEACHER = [
+  const COLUMNS_TEACHER: IFiledNameColumns[] = [
     {
       field: COLUMNS.FIELDS.NAME,
       headerName: COLUMNS.HEADER_NAME.NAME,
-      render: (_: unknown, { fullName, avatar, id }: IStudent) => {
+      render: ({ fullName, avatar, id }: ITeacher) => {
         return (
           <Link href={`${ROUTES.TEACHER}/${id}`}>
             <Profile src={avatar} title={fullName} variant="xs" />
@@ -49,6 +49,11 @@ export const TableTeacher = ({ data }: TableTeacherProps) => {
     {
       field: COLUMNS.FIELDS.GENDER,
       headerName: COLUMNS.HEADER_NAME.GENDER,
+      render: ({ gender }: ITeacher) => {
+        const renderGender = gender === 1 ? 'Male' : 'Female';
+
+        return <Box>{renderGender}</Box>;
+      },
     },
     {
       field: COLUMNS.FIELDS.ACTION,

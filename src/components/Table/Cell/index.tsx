@@ -18,7 +18,7 @@ interface TableCellProps {
 
 const TableCell = ({ item, column }: TableCellProps) => {
   const value = get(item, column.field);
-  const renderCellValue = column.render ? column.render(column, item) : value;
+  const renderCellValue = column.render ? column.render(item) : value;
 
   return (
     <Td borderBottom="none" fontSize="12px">

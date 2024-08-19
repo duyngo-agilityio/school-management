@@ -3,7 +3,7 @@ export const COLUMNS = {
     NAME: 'fullName',
     ID: 'id',
     EMAIL: 'email',
-    CLASS: 'class',
+    CLASS: 'className',
     GENDER: 'gender',
     SUBJECT: 'subject',
     ACTION: 'action',
