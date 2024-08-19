@@ -25,7 +25,7 @@ const TableStudent = ({ data }: TableStudentProps) => {
     {
       field: COLUMNS.FIELDS.NAME,
       headerName: COLUMNS.HEADER_NAME.NAME,
-      render: (_: unknown, { fullName, avatar, id }: IStudent) => {
+      render: ({ fullName, avatar, id }: IStudent) => {
         return (
           <Link href={`${ROUTES.STUDENT}/${id}`} prefetch>
             <Profile src={avatar} title={fullName} variant="xs" />

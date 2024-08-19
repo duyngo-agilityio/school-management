@@ -3,6 +3,7 @@ export interface IStudent {
   fullName: string;
   gender: number;
   age: number;
+  className: string;
   password?: string;
   email?: string;
   description?: string;
@@ -15,7 +16,8 @@ export interface ITeacher {
   fullName: string;
   gender: number;
   age: number;
-  subject: string;
+  className: string;
+  subject?: string;
   password?: string;
   email?: string;
   description?: string;

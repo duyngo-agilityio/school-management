@@ -4,3 +4,11 @@ export const VALIDATE_MESSAGE = {
   PASSWORD:
     'Password must be at least 8 characters, include an uppercase letter, a lowercase letter, a number, and a special character.',
 };
+
+export const SUCCESS_MESSAGES = {
+  ADD_TEACHER: 'Add Teacher success!',
+};
+
+export const ERROR_MESSAGES = {
+  ADD_TEACHER: 'Add Teacher failed!',
+};
