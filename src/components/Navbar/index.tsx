@@ -5,7 +5,20 @@ import { usePathname } from 'next/navigation';
 import NavItem from './Item';
 
 // Constants
-import { LINK_ITEMS } from '@/constants';
+import { PATH } from '@/constants';
+
+// Icons
+import { HomeIcon, TeacherIcon } from '@/icons';
+
+export const LINK_ITEMS = [
+  { name: 'Dashboard', icon: <HomeIcon />, href: PATH.DASHBOARD },
+  { name: 'Teachers', icon: <HomeIcon />, href: PATH.TEACHERS },
+  {
+    name: 'Students/ class',
+    icon: <TeacherIcon width="16" height="16" stroke="white" />,
+    href: PATH.STUDENTS,
+  },
+];
 
 const Navbar = () => {
   const pathname = usePathname();
