@@ -7,7 +7,7 @@ import { ChangeEvent, useState } from 'react';
 import { Button, Input, InputGroup, InputRightElement } from '@chakra-ui/react';
 
 // Icons
-import { EyeHidden, EyeShow } from '@/icons';
+import { EyeHiddenIcon, EyeShow } from '@/icons';
 
 interface PasswordInputProps {
   value?: string;
@@ -21,6 +21,7 @@ const PasswordInput = ({ value, onChange }: PasswordInputProps) => {
   return (
     <InputGroup size="md">
       <Input
+        data-testid="password-input"
         pr="4.5rem"
         type={show ? 'text' : 'password'}
         value={value}
@@ -28,7 +29,7 @@ const PasswordInput = ({ value, onChange }: PasswordInputProps) => {
       />
       <InputRightElement width="4.5rem">
         <Button variant="icon" onClick={handleClick}>
-          {show ? <EyeHidden /> : <EyeShow />}
+          {show ? <EyeHiddenIcon /> : <EyeShow />}
         </Button>
       </InputRightElement>
     </InputGroup>

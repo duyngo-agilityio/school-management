@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 // Icons
-import { BellNotification } from '@/icons';
+import { BellNotificationIcon } from '@/icons';
 
 // Components
 import { Flex } from '@chakra-ui/react';
@@ -15,7 +15,7 @@ const HeaderBar = ({ children, width }: HeaderBarProps) => {
   return (
     <Flex justifyContent="space-between" w={width}>
       {children}
-      <BellNotification />
+      <BellNotificationIcon />
     </Flex>
   );
 };
