@@ -9,7 +9,7 @@ import {
   useStyleConfig,
 } from '@chakra-ui/react';
 
-type TCustomFlex = 'xs' | 'sm' | 'md' | 'lg';
+export type TCustomFlex = 'xs' | 'sm' | 'md' | 'lg';
 
 interface ProfileProps {
   title: string;
