@@ -3,28 +3,77 @@
 // Libs
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
+import { useState } from 'react';
 
 // Components
 import Table from '../Table';
 import Profile from '../Profile';
-import { Box, Button, useDisclosure } from '@chakra-ui/react';
+import { Box, Button, useDisclosure, useToast } from '@chakra-ui/react';
+import TeacherModal from '../Modal/TeacherModal';
+import ConfirmModal from '../Modal/ConfirmModal';
 
 // Constants
-import { COLUMNS, ROUTES } from '@/constants';
+import {
+  COLUMNS,
+  customColors,
+  ERROR_MESSAGES,
+  ROUTES,
+  SUCCESS_MESSAGES,
+  TEACHER_URL,
+} from '@/constants';
 
 // Types
 import { IFiledNameColumns, ITeacher } from '@/types';
-import TeacherModal from '../Modal/TeacherModal';
-import PenIcon from '@/icons/PenIcon';
-import TrashIcon from '@/icons/TrashIcon';
+
+// Icons
+import { PenIcon, TrashIcon } from '@/icons';
+
+// Services
+import { deleteTeacher } from '@/actions';
 
 interface TableTeacherProps {
   data: ITeacher[];
 }
 
 export const TableTeacher = ({ data }: TableTeacherProps) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    isOpen: isOpenTeacherModal,
+    onOpen: onOpenTeacherModal,
+    onClose: onCloseTeacherModal,
+  } = useDisclosure();
+  const {
+    isOpen: isOpenConfirmModal,
+    onOpen: onOpenConfirmModal,
+    onClose: onCloseConfirmModal,
+  } = useDisclosure();
+
+  const toast = useToast();
   const param = useParams<{ id: string }>();
+
+  const [idItem, setIdItem] = useState<string>('');
+
+  const handleShowConfirmModal = (id: string) => () => {
+    setIdItem(id);
+    onOpenConfirmModal();
+  };
+
+  const handleSubmitDelete = async () => {
+    const data = await deleteTeacher(`${TEACHER_URL}`, idItem);
+
+    if (data) {
+      onCloseConfirmModal();
+
+      toast({
+        title: SUCCESS_MESSAGES.DELETE_TEACHER,
+        status: 'success',
+      });
+    } else {
+      toast({
+        title: ERROR_MESSAGES.DELETE_TEACHER,
+        status: 'error',
+      });
+    }
+  };
 
   const COLUMNS_TEACHER: IFiledNameColumns[] = [
     {
@@ -67,11 +116,15 @@ export const TableTeacher = ({ data }: TableTeacherProps) => {
 
         return (
           <>
-            <Button variant="none" mr="10px" onClick={onOpen}>
-              <PenIcon stroke={active ? 'white' : '#4F4F4F'} />
+            <Button variant="none" mr="10px" onClick={onOpenTeacherModal}>
+              <PenIcon
+                stroke={active ? customColors.pure : customColors.emperor}
+              />
             </Button>
-            <Button variant="none">
-              <TrashIcon stroke={active ? 'white' : '#4F4F4F'} />
+            <Button variant="none" onClick={handleShowConfirmModal(id)}>
+              <TrashIcon
+                stroke={active ? customColors.pure : customColors.emperor}
+              />
             </Button>
           </>
         );
@@ -81,8 +134,21 @@ export const TableTeacher = ({ data }: TableTeacherProps) => {
 
   return (
     <>
-      {isOpen && (
-        <TeacherModal isOpen={isOpen} onClose={onClose} title="Add Teacher" />
+      {isOpenTeacherModal && (
+        <TeacherModal
+          isOpen={isOpenTeacherModal}
+          onClose={onCloseTeacherModal}
+          title="Add Teacher"
+        />
+      )}
+      {isOpenConfirmModal && (
+        <ConfirmModal
+          isOpen={isOpenConfirmModal}
+          onClose={onCloseConfirmModal}
+          title="Delete Teacher"
+          subTitle="Are you sure you want to delete this Teacher?"
+          onSubmit={handleSubmitDelete}
+        />
       )}
       <Table columns={COLUMNS_TEACHER} data={data} />
     </>
