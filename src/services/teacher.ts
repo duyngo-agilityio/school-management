@@ -1,7 +1,3 @@
-'use server';
-
-import { revalidateTag } from 'next/cache';
-
 // Constants
 import { TAGS, TEACHER_URL } from '@/constants';
 
@@ -22,27 +18,4 @@ export const getTeacherById = async (id: string): Promise<ITeacher> => {
   });
 
   return response.json();
-};
-
-export const addTeacher = async (
-  url: string,
-  dataField: ITeacher,
-): Promise<ITeacher | null> => {
-  try {
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(dataField),
-    });
-
-    if (!response.ok) {
-      return null;
-    }
-
-    revalidateTag(TAGS.TEACHERS);
-
-    return response.json();
-  } catch (error) {
-    return null;
-  }
 };

@@ -40,7 +40,7 @@ import { Dropdown, PasswordInput } from '@/components';
 import Modal from '..';
 
 // Services
-import { addTeacher } from '@/services';
+import { addTeacher } from '@/actions';
 
 interface TeacherModalProps {
   title: string;

@@ -8,3 +8,5 @@ export { default as BellNotificationIcon } from './BellNotificationIcon';
 export { default as SmsIcon } from './SmsIcon';
 export { default as CallIcon } from './CallIcon';
 export { default as HomeIcon } from './HomeIcon';
+export { default as PenIcon } from './PenIcon';
+export { default as TrashIcon } from './TrashIcon';
