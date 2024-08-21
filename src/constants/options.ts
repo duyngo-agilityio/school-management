@@ -1,29 +1,29 @@
 export const OPTIONS_CLASS = [
   {
-    value: 'ss 3',
+    value: 'SS 3',
     label: 'SS 3',
   },
   {
-    value: 'jss 1',
+    value: 'JSS 1',
     label: 'JSS 1',
   },
   {
-    value: 'jss 5',
+    value: 'JSS 5',
     label: 'JSS 5',
   },
 ];
 
 export const OPTIONS_SUBJECT = [
   {
-    value: 'math',
+    value: 'Math',
     label: 'Math',
   },
   {
-    value: 'physical',
+    value: 'Physical',
     label: 'Physical',
   },
   {
-    value: 'biology',
+    value: 'Biology',
     label: 'Biology',
   },
 ];
@@ -31,10 +31,10 @@ export const OPTIONS_SUBJECT = [
 export const OPTIONS_GENDER = [
   {
     value: '0',
-    label: 'Male',
+    label: 'Female',
   },
   {
     value: '1',
-    label: 'Female',
+    label: 'Male',
   },
 ];

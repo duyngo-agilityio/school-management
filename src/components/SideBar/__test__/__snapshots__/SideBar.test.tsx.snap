@@ -1,0 +1,172 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SideBar Component should match snapshot for SideBar 1`] = `
+<div>
+  <div
+    class="css-6ozlle"
+  >
+    <div
+      class="css-1xlms3t"
+    >
+      <div
+        class="css-0"
+      >
+        <span
+          class="chakra-avatar css-1ruhx4w"
+        >
+          <svg
+            aria-label=" avatar"
+            class="chakra-avatar__svg css-16ite8i"
+            role="img"
+            viewBox="0 0 128 128"
+          >
+            <path
+              d="M103,102.1388 C93.094,111.92 79.3504,118 64.1638,118 C48.8056,118 34.9294,111.768 25,101.7892 L25,95.2 C25,86.8096 31.981,80 40.6,80 L87.4,80 C96.019,80 103,86.8096 103,95.2 L103,102.1388 Z"
+              fill="currentColor"
+            />
+            <path
+              d="M63.9961647,24 C51.2938136,24 41,34.2938136 41,46.9961647 C41,59.7061864 51.2938136,70 63.9961647,70 C76.6985159,70 87,59.7061864 87,46.9961647 C87,34.2938136 76.6985159,24 63.9961647,24"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+        <p
+          class="chakra-text css-10onoed"
+        >
+          Udemy Inter. school
+        </p>
+      </div>
+    </div>
+    <a
+      href="/"
+      style="text-decoration: none;"
+    >
+      <div
+        class="css-up6y35"
+        role="group"
+      >
+        <div
+          class="css-70qvj9"
+        >
+          <div
+            class="css-iikgio"
+          >
+            <svg
+              fill="none"
+              height="16"
+              viewBox="0 0 16 17"
+              width="16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M14.6666 7.49978C14.6666 6.69312 14.1266 5.65978 13.4666 5.19978L9.34659 2.31312C8.41325 1.65978 6.91325 1.69312 6.01325 2.39312L2.41992 5.19312C1.81992 5.65978 1.33325 6.65312 1.33325 7.40645V12.3464C1.33325 13.8931 2.59325 15.1598 4.13992 15.1598H11.8599C13.4066 15.1598 14.6666 13.8931 14.6666 12.3531V10.2864"
+                stroke="white"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+              />
+              <path
+                d="M8 12.4932V10.4932"
+                stroke="white"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+              />
+            </svg>
+          </div>
+          Dashboard
+        </div>
+      </div>
+    </a>
+    <a
+      href="/teachers"
+      style="text-decoration: none;"
+    >
+      <div
+        class="css-up6y35"
+        role="group"
+      >
+        <div
+          class="css-70qvj9"
+        >
+          <div
+            class="css-iikgio"
+          >
+            <svg
+              fill="none"
+              height="16"
+              viewBox="0 0 16 17"
+              width="16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M14.6666 7.49978C14.6666 6.69312 14.1266 5.65978 13.4666 5.19978L9.34659 2.31312C8.41325 1.65978 6.91325 1.69312 6.01325 2.39312L2.41992 5.19312C1.81992 5.65978 1.33325 6.65312 1.33325 7.40645V12.3464C1.33325 13.8931 2.59325 15.1598 4.13992 15.1598H11.8599C13.4066 15.1598 14.6666 13.8931 14.6666 12.3531V10.2864"
+                stroke="white"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+              />
+              <path
+                d="M8 12.4932V10.4932"
+                stroke="white"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+              />
+            </svg>
+          </div>
+          Teachers
+        </div>
+      </div>
+    </a>
+    <a
+      href="/students"
+      style="text-decoration: none;"
+    >
+      <div
+        class="css-up6y35"
+        role="group"
+      >
+        <div
+          class="css-70qvj9"
+        >
+          <div
+            class="css-iikgio"
+          >
+            <svg
+              fill="none"
+              height="16"
+              viewBox="0 0 24 24"
+              width="16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.05 2.52997L4.03002 6.45997C2.10002 7.71997 2.10002 10.54 4.03002 11.8L10.05 15.73C11.13 16.44 12.91 16.44 13.99 15.73L19.98 11.8C21.9 10.54 21.9 7.72997 19.98 6.46997L13.99 2.53997C12.91 1.81997 11.13 1.81997 10.05 2.52997Z"
+                stroke="white"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+              />
+              <path
+                d="M5.63012 13.08L5.62012 17.77C5.62012 19.04 6.60012 20.4 7.80012 20.8L10.9901 21.86C11.5401 22.04 12.4501 22.04 13.0101 21.86L16.2001 20.8C17.4001 20.4 18.3801 19.04 18.3801 17.77V13.13"
+                stroke="white"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+              />
+              <path
+                d="M21.3999 15V9"
+                stroke="white"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+              />
+            </svg>
+          </div>
+          Students/ classes
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+`;

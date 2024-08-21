@@ -8,7 +8,7 @@ import { useParams } from 'next/navigation';
 import { Box, Button, useDisclosure } from '@chakra-ui/react';
 import Table from '../Table';
 import Profile from '../Profile';
-import StudentModal from '../Modal/StudentModal';
+import StudentModal from '../Modal/Student/Modal';
 
 // Constants
 import { COLUMNS, ROUTES } from '@/constants';

@@ -3,13 +3,12 @@
 // Libs
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 
 // Components
 import Table from '../Table';
 import Profile from '../Profile';
 import { Box, Button, useDisclosure, useToast } from '@chakra-ui/react';
-import TeacherModal from '../Modal/TeacherModal';
 import ConfirmModal from '../Modal/ConfirmModal';
 
 // Constants
@@ -30,6 +29,7 @@ import { PenIcon, TrashIcon } from '@/icons';
 
 // Services
 import { deleteTeacher } from '@/actions';
+import { TeacherModalWrapper } from '../Modal/Teacher/Wrapper';
 
 interface TableTeacherProps {
   data: ITeacher[];
@@ -57,10 +57,15 @@ export const TableTeacher = ({ data }: TableTeacherProps) => {
     onOpenConfirmModal();
   };
 
-  const handleSubmitDelete = async () => {
-    const data = await deleteTeacher(`${TEACHER_URL}`, idItem);
+  const handleShowEditModal = (id: string) => () => {
+    setIdItem(id);
+    onOpenTeacherModal();
+  };
 
-    if (data) {
+  const handleSubmitDelete = async () => {
+    const isSuccess = await deleteTeacher(`${TEACHER_URL}`, idItem);
+
+    if (isSuccess) {
       onCloseConfirmModal();
 
       toast({
@@ -103,7 +108,7 @@ export const TableTeacher = ({ data }: TableTeacherProps) => {
       field: COLUMNS.FIELDS.GENDER,
       headerName: COLUMNS.HEADER_NAME.GENDER,
       render: ({ gender }: ITeacher) => {
-        const renderGender = gender === 1 ? 'Male' : 'Female';
+        const renderGender = Number(gender) === 1 ? 'Male' : 'Female';
 
         return <Box>{renderGender}</Box>;
       },
@@ -116,7 +121,7 @@ export const TableTeacher = ({ data }: TableTeacherProps) => {
 
         return (
           <>
-            <Button variant="none" mr="10px" onClick={onOpenTeacherModal}>
+            <Button variant="none" mr="10px" onClick={handleShowEditModal(id)}>
               <PenIcon
                 stroke={active ? customColors.pure : customColors.emperor}
               />
@@ -135,11 +140,9 @@ export const TableTeacher = ({ data }: TableTeacherProps) => {
   return (
     <>
       {isOpenTeacherModal && (
-        <TeacherModal
-          isOpen={isOpenTeacherModal}
-          onClose={onCloseTeacherModal}
-          title="Add Teacher"
-        />
+        <Suspense>
+          <TeacherModalWrapper id={idItem} onClose={onCloseTeacherModal} />
+        </Suspense>
       )}
       {isOpenConfirmModal && (
         <ConfirmModal

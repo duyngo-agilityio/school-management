@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotFound Component should match snapshot for NotFound 1`] = `
+<div>
+  <div
+    class="css-wkpw2c"
+  >
+    <img
+      alt=""
+      data-nimg="1"
+      decoding="async"
+      height="225"
+      src=""
+      style="color: transparent;"
+      width="340"
+    />
+    <p
+      class="chakra-text css-1uy2b59"
+    >
+      Page Not Found
+    </p>
+    <p
+      class="chakra-text css-1fhgjcy"
+    >
+      Back home page
+    </p>
+  </div>
+</div>
+`;

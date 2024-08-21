@@ -2,6 +2,8 @@
 
 // Libs
 import { Controller, useForm } from 'react-hook-form';
+import isEqual from 'react-fast-compare';
+import { memo } from 'react';
 
 // Types
 import { ITeacher } from '@/types';
@@ -37,34 +39,35 @@ import {
   useToast,
 } from '@chakra-ui/react';
 import { Dropdown, PasswordInput } from '@/components';
-import Modal from '..';
+import Modal from '../..';
 
 // Services
-import { addTeacher } from '@/actions';
+import { addTeacher, editTeacher } from '@/actions';
 
 interface TeacherModalProps {
-  title: string;
   onClose: () => void;
   isOpen: boolean;
+  defaultValues?: ITeacher;
 }
 
-const TeacherModal = ({ isOpen, onClose, title }: TeacherModalProps) => {
+const TeacherModal = ({
+  isOpen,
+  onClose,
+  defaultValues,
+}: TeacherModalProps) => {
   const toast = useToast();
-  const { handleSubmit, control } = useForm<ITeacher>({
-    defaultValues: {
-      fullName: '',
-      email: '',
-      gender: 0,
-      className: '',
-      password: '',
-      phoneNumber: '',
-      subject: '',
-    },
+  const {
+    handleSubmit,
+    control,
+    formState: { isDirty, isValid, isSubmitting },
+  } = useForm<ITeacher>({
+    defaultValues,
     mode: 'onBlur',
   });
 
   const onSubmit = async (data: ITeacher) => {
     const {
+      id,
       email,
       fullName,
       age,
@@ -73,6 +76,7 @@ const TeacherModal = ({ isOpen, onClose, title }: TeacherModalProps) => {
       className,
       avatar,
       description,
+      password,
       phoneNumber,
     } = data;
 
@@ -86,28 +90,35 @@ const TeacherModal = ({ isOpen, onClose, title }: TeacherModalProps) => {
       className,
       avatar,
       description,
+      password,
       phoneNumber,
     };
 
-    const response = await addTeacher(`${TEACHER_URL}`, payload);
+    const { isSuccess } = defaultValues
+      ? await editTeacher(`${TEACHER_URL}`, id, payload)
+      : await addTeacher(`${TEACHER_URL}`, payload);
 
-    if (response) {
-      onClose();
+    onClose();
 
-      toast({
-        title: SUCCESS_MESSAGES.ADD_TEACHER,
-        status: 'success',
-      });
-    } else {
-      toast({
-        title: ERROR_MESSAGES.ADD_TEACHER,
-        status: 'error',
-      });
-    }
+    toast({
+      title: isSuccess
+        ? defaultValues
+          ? SUCCESS_MESSAGES.EDIT_TEACHER
+          : SUCCESS_MESSAGES.ADD_TEACHER
+        : defaultValues
+          ? ERROR_MESSAGES.EDIT_TEACHER
+          : ERROR_MESSAGES.ADD_TEACHER,
+      status: isSuccess ? 'success' : 'error',
+    });
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title={title} size="4xl">
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      title={defaultValues ? 'Edit Teacher' : 'Add Teacher'}
+      size="4xl"
+    >
       <form onSubmit={handleSubmit(onSubmit)}>
         <Controller
           control={control}
@@ -246,14 +257,14 @@ const TeacherModal = ({ isOpen, onClose, title }: TeacherModalProps) => {
             <Controller
               control={control}
               name="age"
-              rules={{
-                required: VALIDATE_MESSAGE.EMPTY,
-              }}
-              render={({ field, fieldState: { error } }) => (
+              render={({
+                field: { ref, ...restField },
+                fieldState: { error },
+              }) => (
                 <FormControl mt={4}>
                   <FormLabel>Age</FormLabel>
-                  <NumberInput defaultValue={22} min={22}>
-                    <NumberInputField {...field} />
+                  <NumberInput {...restField} defaultValue={22} min={22}>
+                    <NumberInputField ref={ref} name={restField.name} />
                     <NumberInputStepper>
                       <NumberIncrementStepper />
                       <NumberDecrementStepper />
@@ -275,10 +286,14 @@ const TeacherModal = ({ isOpen, onClose, title }: TeacherModalProps) => {
               rules={{
                 required: VALIDATE_MESSAGE.EMPTY,
               }}
-              render={({ field: { onChange }, fieldState: { error } }) => (
+              render={({
+                field: { value, onChange },
+                fieldState: { error },
+              }) => (
                 <FormControl mt={12}>
                   <Dropdown
                     onChangeValue={onChange}
+                    value={value}
                     options={OPTIONS_SUBJECT}
                     placeholder="Subject"
                   />
@@ -308,8 +323,13 @@ const TeacherModal = ({ isOpen, onClose, title }: TeacherModalProps) => {
           <Button onClick={onClose} mr={3}>
             Cancel
           </Button>
-          <Button type="submit" colorScheme="blue">
-            Add Teacher
+          <Button
+            isLoading={isSubmitting}
+            type="submit"
+            colorScheme="blue"
+            isDisabled={!isDirty || !isValid}
+          >
+            {defaultValues ? 'Edit Teacher' : 'Add Teacher'}
           </Button>
         </Flex>
       </form>
@@ -317,4 +337,4 @@ const TeacherModal = ({ isOpen, onClose, title }: TeacherModalProps) => {
   );
 };
 
-export default TeacherModal;
+export default memo(TeacherModal, isEqual);

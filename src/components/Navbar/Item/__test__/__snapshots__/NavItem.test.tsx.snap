@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavItem Component should match snapshot for NavItem 1`] = `
+<div>
+  <a
+    href=""
+    style="text-decoration: none;"
+  >
+    <div
+      class="css-up6y35"
+      role="group"
+    >
+      <div
+        class="css-70qvj9"
+      >
+        <div
+          class="css-iikgio"
+        >
+          <svg
+            fill="none"
+            height="16"
+            viewBox="0 0 16 17"
+            width="16"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M14.6666 7.49978C14.6666 6.69312 14.1266 5.65978 13.4666 5.19978L9.34659 2.31312C8.41325 1.65978 6.91325 1.69312 6.01325 2.39312L2.41992 5.19312C1.81992 5.65978 1.33325 6.65312 1.33325 7.40645V12.3464C1.33325 13.8931 2.59325 15.1598 4.13992 15.1598H11.8599C13.4066 15.1598 14.6666 13.8931 14.6666 12.3531V10.2864"
+              stroke="white"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+            />
+            <path
+              d="M8 12.4932V10.4932"
+              stroke="white"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+            />
+          </svg>
+        </div>
+        Dashboard
+      </div>
+    </div>
+  </a>
+</div>
+`;
+
+exports[`NavItem Component should render with isActive prop as true 1`] = `
+<div>
+  <a
+    href=""
+    style="text-decoration: none;"
+  >
+    <div
+      class="css-1h5qz1l"
+      role="group"
+    >
+      <div
+        class="css-70qvj9"
+      >
+        <div
+          class="css-iikgio"
+        >
+          <svg
+            fill="none"
+            height="16"
+            viewBox="0 0 16 17"
+            width="16"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M14.6666 7.49978C14.6666 6.69312 14.1266 5.65978 13.4666 5.19978L9.34659 2.31312C8.41325 1.65978 6.91325 1.69312 6.01325 2.39312L2.41992 5.19312C1.81992 5.65978 1.33325 6.65312 1.33325 7.40645V12.3464C1.33325 13.8931 2.59325 15.1598 4.13992 15.1598H11.8599C13.4066 15.1598 14.6666 13.8931 14.6666 12.3531V10.2864"
+              stroke="white"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+            />
+            <path
+              d="M8 12.4932V10.4932"
+              stroke="white"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+            />
+          </svg>
+        </div>
+        Dashboard
+      </div>
+      <svg
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0V0z"
+          fill="none"
+        />
+        <path
+          d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"
+        />
+      </svg>
+    </div>
+  </a>
+</div>
+`;
