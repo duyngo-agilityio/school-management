@@ -18,6 +18,7 @@ const TeacherDetails = async ({ params }: { params: { id: string } }) => {
     description = '',
     age = '',
     gender = 0,
+    subject = '',
   } = data;
 
   return (
@@ -35,7 +36,7 @@ const TeacherDetails = async ({ params }: { params: { id: string } }) => {
               title={fullName}
               variant="lg"
               src={avatar}
-              subTitle="Math Teacher"
+              subTitle={`${subject} teacher`}
             />
             <Flex flexDirection="row" mt="37px">
               {createIcons('30', '30').map(({ id, icon }) => (

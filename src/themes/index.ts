@@ -5,7 +5,7 @@ import { Avatar, Button, CustomFlex, Input, Text } from './components';
 import { fonts, fontSizes, radius } from './typographies';
 import { colors } from './colors';
 
-const theme = extendTheme({
+const configThemes = extendTheme({
   colors,
   fonts,
   fontSizes,
@@ -19,4 +19,4 @@ const theme = extendTheme({
   },
 });
 
-export default theme;
+export default configThemes;

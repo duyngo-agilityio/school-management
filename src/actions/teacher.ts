@@ -8,10 +8,15 @@ import { TAGS } from '@/constants';
 // Types
 import { ITeacher } from '@/types';
 
+type APIResponse<T> = {
+  isSuccess: boolean;
+  data: T | null;
+};
+
 export const addTeacher = async (
   url: string,
   dataField: ITeacher,
-): Promise<ITeacher | null> => {
+): Promise<APIResponse<ITeacher>> => {
   try {
     const response = await fetch(url, {
       method: 'POST',
@@ -20,21 +25,23 @@ export const addTeacher = async (
     });
 
     if (!response.ok) {
-      return null;
+      return { isSuccess: false, data: null };
     }
+
+    const data: ITeacher = await response.json();
 
     revalidateTag(TAGS.TEACHERS);
 
-    return response.json();
+    return { isSuccess: true, data };
   } catch (error) {
-    return null;
+    return { isSuccess: false, data: null };
   }
 };
 
 export const deleteTeacher = async (
   url: string,
   id: string,
-): Promise<ITeacher | null> => {
+): Promise<boolean> => {
   try {
     const response = await fetch(`${url}/${id}`, {
       method: 'DELETE',
@@ -43,14 +50,34 @@ export const deleteTeacher = async (
       },
     });
 
-    if (!response.ok) {
-      return null;
-    }
+    revalidateTag(TAGS.TEACHERS);
+
+    return response.ok;
+  } catch (error) {
+    return false;
+  }
+};
+
+export const editTeacher = async (
+  url: string,
+  id: string,
+  newData: ITeacher,
+): Promise<APIResponse<ITeacher>> => {
+  try {
+    const response = await fetch(`${url}/${id}`, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json;charset=UTF-8',
+      },
+      body: JSON.stringify(newData),
+    });
+
+    const data: ITeacher = await response.json();
 
     revalidateTag(TAGS.TEACHERS);
 
-    return response.json();
+    return { isSuccess: true, data };
   } catch (error) {
-    return null;
+    return { isSuccess: false, data: null };
   }
 };

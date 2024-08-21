@@ -15,7 +15,7 @@ import {
 } from '@/constants';
 
 // Components
-import Modal from '..';
+import Modal from '../..';
 import { Dropdown, PasswordInput } from '@/components';
 import {
   Box,
