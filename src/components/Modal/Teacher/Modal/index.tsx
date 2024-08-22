@@ -2,8 +2,6 @@
 
 // Libs
 import { Controller, useForm } from 'react-hook-form';
-import isEqual from 'react-fast-compare';
-import { memo } from 'react';
 
 // Types
 import { ITeacher } from '@/types';
@@ -17,7 +15,6 @@ import {
   REGEX_EMAIL,
   REGEX_PASSWORD,
   SUCCESS_MESSAGES,
-  TEACHER_URL,
   VALIDATE_MESSAGE,
 } from '@/constants';
 
@@ -46,15 +43,10 @@ import { addTeacher, editTeacher } from '@/actions';
 
 interface TeacherModalProps {
   onClose: () => void;
-  isOpen: boolean;
   defaultValues?: ITeacher;
 }
 
-const TeacherModal = ({
-  isOpen,
-  onClose,
-  defaultValues,
-}: TeacherModalProps) => {
+const TeacherModal = ({ onClose, defaultValues }: TeacherModalProps) => {
   const toast = useToast();
   const {
     handleSubmit,
@@ -94,27 +86,26 @@ const TeacherModal = ({
       phoneNumber,
     };
 
-    const { isSuccess } = defaultValues
-      ? await editTeacher(`${TEACHER_URL}`, id, payload)
-      : await addTeacher(`${TEACHER_URL}`, payload);
+    const dataResponse = defaultValues
+      ? await editTeacher(payload, id)
+      : await addTeacher(payload);
 
     onClose();
 
     toast({
-      title: isSuccess
+      title: dataResponse
         ? defaultValues
           ? SUCCESS_MESSAGES.EDIT_TEACHER
           : SUCCESS_MESSAGES.ADD_TEACHER
         : defaultValues
           ? ERROR_MESSAGES.EDIT_TEACHER
           : ERROR_MESSAGES.ADD_TEACHER,
-      status: isSuccess ? 'success' : 'error',
+      status: dataResponse ? 'success' : 'error',
     });
   };
 
   return (
     <Modal
-      isOpen={isOpen}
       onClose={onClose}
       title={defaultValues ? 'Edit Teacher' : 'Add Teacher'}
       size="4xl"
@@ -337,4 +328,4 @@ const TeacherModal = ({
   );
 };
 
-export default memo(TeacherModal, isEqual);
+export default TeacherModal;

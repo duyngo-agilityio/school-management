@@ -3,15 +3,23 @@
 // Libs
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
+import { useState } from 'react';
 
 // Components
-import { Box, Button, useDisclosure } from '@chakra-ui/react';
+import { Box, Button, useDisclosure, useToast } from '@chakra-ui/react';
 import Table from '../Table';
 import Profile from '../Profile';
 import StudentModal from '../Modal/Student/Modal';
+import ConfirmModal from '../Modal/ConfirmModal';
 
 // Constants
-import { COLUMNS, ROUTES } from '@/constants';
+import {
+  COLUMNS,
+  customColors,
+  ERROR_MESSAGES,
+  ROUTES,
+  SUCCESS_MESSAGES,
+} from '@/constants';
 
 // Types
 import { IStudent } from '@/types';
@@ -20,13 +28,52 @@ import { IStudent } from '@/types';
 import PenIcon from '@/icons/PenIcon';
 import TrashIcon from '@/icons/TrashIcon';
 
+// Services
+import { deleteStudent } from '@/actions';
+
 interface TableStudentProps {
   data: IStudent[];
 }
 
 const TableStudent = ({ data }: TableStudentProps) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    isOpen: isOpenStudentModal,
+    onOpen: onOpenStudentModal,
+    onClose: onCloseStudentModal,
+  } = useDisclosure();
+  const {
+    isOpen: isOpenConfirmModal,
+    onOpen: onOpenConfirmModal,
+    onClose: onCloseConfirmModal,
+  } = useDisclosure();
+  const toast = useToast();
+
   const param = useParams<{ id: string }>();
+
+  const [idItem, setIdItem] = useState<string>('');
+
+  const handleShowConfirmModal = (id: string) => () => {
+    setIdItem(id);
+    onOpenConfirmModal();
+  };
+
+  const handleSubmitDelete = async () => {
+    const isSuccess = await deleteStudent(idItem);
+
+    if (isSuccess) {
+      onCloseConfirmModal();
+
+      toast({
+        title: SUCCESS_MESSAGES.DELETE_TEACHER,
+        status: 'success',
+      });
+    } else {
+      toast({
+        title: ERROR_MESSAGES.DELETE_TEACHER,
+        status: 'error',
+      });
+    }
+  };
 
   const COLUMNS_STUDENT = [
     {
@@ -69,11 +116,15 @@ const TableStudent = ({ data }: TableStudentProps) => {
 
         return (
           <>
-            <Button variant="none" mr="10px" onClick={onOpen}>
-              <PenIcon stroke={active ? 'white' : '#4F4F4F'} />
+            <Button variant="none" mr="10px" onClick={onOpenStudentModal}>
+              <PenIcon
+                stroke={active ? customColors.pure : customColors.emperor}
+              />
             </Button>
-            <Button variant="none">
-              <TrashIcon stroke={active ? 'white' : '#4F4F4F'} />
+            <Button variant="none" onClick={handleShowConfirmModal(id)}>
+              <TrashIcon
+                stroke={active ? customColors.pure : customColors.emperor}
+              />
             </Button>
           </>
         );
@@ -83,8 +134,15 @@ const TableStudent = ({ data }: TableStudentProps) => {
 
   return (
     <>
-      {isOpen && (
-        <StudentModal isOpen={isOpen} onClose={onClose} title="Add Student" />
+      {isOpenStudentModal && <StudentModal onClose={onCloseStudentModal} />}
+      {isOpenConfirmModal && (
+        <ConfirmModal
+          isOpen={isOpenConfirmModal}
+          onClose={onCloseConfirmModal}
+          onSubmit={handleSubmitDelete}
+          title="Delete Student"
+          subTitle="Are you sure you want to delete this Student?"
+        />
       )}
       <Table columns={COLUMNS_STUDENT} data={data} />
     </>

@@ -6,20 +6,20 @@ import { revalidateTag } from 'next/cache';
 import { BASE_URL, ROUTES, TAGS } from '@/constants';
 
 // Types
-import { ITeacher } from '@/types';
+import { IStudent } from '@/types';
 
 // Services
 import { apiRequest } from '@/services';
 
-export const addTeacher = async (data: Omit<ITeacher, 'id'>) => {
+export const addStudent = async (data: Omit<IStudent, 'id'>) => {
   try {
-    const response = await apiRequest<Omit<ITeacher, 'id'>>({
-      endpoint: `${BASE_URL}${ROUTES.TEACHER}`,
+    const response = await apiRequest<Omit<IStudent, 'id'>>({
+      endpoint: `${BASE_URL}${ROUTES.STUDENT}`,
       method: 'POST',
       payload: data,
     });
 
-    revalidateTag(TAGS.TEACHERS);
+    revalidateTag(TAGS.STUDENTS);
 
     return response;
   } catch (error) {
@@ -27,15 +27,15 @@ export const addTeacher = async (data: Omit<ITeacher, 'id'>) => {
   }
 };
 
-export const editTeacher = async (data: ITeacher, id: string) => {
+export const editStudent = async (data: IStudent, id: string) => {
   try {
-    const response = await apiRequest<ITeacher>({
-      endpoint: `${BASE_URL}${ROUTES.TEACHER}/${id}`,
+    const response = await apiRequest<IStudent>({
+      endpoint: `${BASE_URL}${ROUTES.STUDENT}/${id}`,
       method: 'PUT',
       payload: data,
     });
 
-    revalidateTag(TAGS.TEACHERS);
+    revalidateTag(TAGS.STUDENTS);
 
     return response;
   } catch (error) {
@@ -43,14 +43,14 @@ export const editTeacher = async (data: ITeacher, id: string) => {
   }
 };
 
-export const deleteTeacher = async (id: string) => {
+export const deleteStudent = async (id: string) => {
   try {
-    const response = await apiRequest<ITeacher>({
-      endpoint: `${BASE_URL}${ROUTES.TEACHER}/${id}`,
+    const response = await apiRequest<IStudent>({
+      endpoint: `${BASE_URL}${ROUTES.STUDENT}/${id}`,
       method: 'DELETE',
     });
 
-    revalidateTag(TAGS.TEACHERS);
+    revalidateTag(TAGS.STUDENTS);
 
     return response;
   } catch (error) {
