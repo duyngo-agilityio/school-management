@@ -2,6 +2,7 @@
 
 // Libs
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { useParams } from 'next/navigation';
 import { useState } from 'react';
 
@@ -9,8 +10,6 @@ import { useState } from 'react';
 import { Box, Button, useDisclosure, useToast } from '@chakra-ui/react';
 import Table from '../Table';
 import Profile from '../Profile';
-import StudentModal from '../Modal/Student/Modal';
-import ConfirmModal from '../Modal/ConfirmModal';
 
 // Constants
 import {
@@ -30,6 +29,9 @@ import TrashIcon from '@/icons/TrashIcon';
 
 // Services
 import { deleteStudent } from '@/actions';
+
+const StudentModal = dynamic(() => import('../Modal/Student/Modal'));
+const ConfirmModal = dynamic(() => import('../Modal/ConfirmModal'));
 
 interface TableStudentProps {
   data: IStudent[];
@@ -137,7 +139,6 @@ const TableStudent = ({ data }: TableStudentProps) => {
       {isOpenStudentModal && <StudentModal onClose={onCloseStudentModal} />}
       {isOpenConfirmModal && (
         <ConfirmModal
-          isOpen={isOpenConfirmModal}
           onClose={onCloseConfirmModal}
           onSubmit={handleSubmitDelete}
           title="Delete Student"

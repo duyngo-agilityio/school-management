@@ -1,6 +1,10 @@
+// Libs
+import dynamic from 'next/dynamic';
+
 // Components
 import { getTeacherById } from '@/services';
-import TeacherModal from '../Modal';
+
+const TeacherModal = dynamic(() => import('../Modal'));
 
 interface TeacherModalWrapperProps {
   id: string;
@@ -13,5 +17,5 @@ export const TeacherModalWrapper = async ({
 }: TeacherModalWrapperProps) => {
   const data = await getTeacherById(id);
 
-  return <TeacherModal defaultValues={data} isOpen onClose={onClose} />;
+  return <TeacherModal defaultValues={data} onClose={onClose} />;
 };

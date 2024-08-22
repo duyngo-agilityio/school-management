@@ -1,16 +1,20 @@
 'use client';
 
+// Libs
+import dynamic from 'next/dynamic';
+
 // Components
-import StudentModal from '@/components/Modal/Student/Modal';
 import { Button, useDisclosure } from '@chakra-ui/react';
 import HeaderBar from '..';
+
+const StudentModal = dynamic(() => import('@/components/Modal/Student/Modal'));
 
 const HeaderBarStudent = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
-      {isOpen && <StudentModal isOpen={isOpen} onClose={onClose} />}
+      {isOpen && <StudentModal onClose={onClose} />}
       <HeaderBar width="full">
         <Button variant="primary" onClick={onOpen}>
           Add Student

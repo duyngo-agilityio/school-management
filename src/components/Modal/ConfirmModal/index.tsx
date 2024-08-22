@@ -5,7 +5,6 @@ import Modal from '..';
 interface ConfirmModalProps {
   title: string;
   subTitle?: string;
-  isOpen: boolean;
   onClose: () => void;
   onSubmit: () => void;
 }
@@ -13,12 +12,11 @@ interface ConfirmModalProps {
 const ConfirmModal = ({
   title,
   subTitle,
-  isOpen,
   onClose,
   onSubmit,
 }: ConfirmModalProps) => {
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title={title} size="xs">
+    <Modal onClose={onClose} title={title} size="xs">
       <Text variant="primary" size="md">
         {subTitle}
       </Text>
