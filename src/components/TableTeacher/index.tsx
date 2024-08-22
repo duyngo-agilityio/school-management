@@ -1,6 +1,9 @@
 'use client';
 
 // Libs
+import dynamic from 'next/dynamic';
+
+// Libs
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { Suspense, useState } from 'react';
@@ -9,7 +12,6 @@ import { Suspense, useState } from 'react';
 import Table from '../Table';
 import Profile from '../Profile';
 import { Box, Button, useDisclosure, useToast } from '@chakra-ui/react';
-import ConfirmModal from '../Modal/ConfirmModal';
 import { TeacherModalWrapper } from '../Modal/Teacher/Wrapper';
 
 // Constants
@@ -29,6 +31,8 @@ import { PenIcon, TrashIcon } from '@/icons';
 
 // Services
 import { deleteTeacher } from '@/actions';
+
+const ConfirmModal = dynamic(() => import('../Modal/ConfirmModal'));
 
 interface TableTeacherProps {
   data: ITeacher[];
@@ -145,7 +149,6 @@ export const TableTeacher = ({ data }: TableTeacherProps) => {
       )}
       {isOpenConfirmModal && (
         <ConfirmModal
-          isOpen={isOpenConfirmModal}
           onClose={onCloseConfirmModal}
           title="Delete Teacher"
           subTitle="Are you sure you want to delete this Teacher?"
