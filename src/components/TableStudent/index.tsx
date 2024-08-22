@@ -4,7 +4,7 @@
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { useParams } from 'next/navigation';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 
 // Components
 import { Box, Button, useDisclosure, useToast } from '@chakra-ui/react';
@@ -29,8 +29,8 @@ import TrashIcon from '@/icons/TrashIcon';
 
 // Services
 import { deleteStudent } from '@/actions';
+import StudentModalWrapper from '../Modal/Student/Wrapper';
 
-const StudentModal = dynamic(() => import('../Modal/Student/Modal'));
 const ConfirmModal = dynamic(() => import('../Modal/ConfirmModal'));
 
 interface TableStudentProps {
@@ -57,6 +57,11 @@ const TableStudent = ({ data }: TableStudentProps) => {
   const handleShowConfirmModal = (id: string) => () => {
     setIdItem(id);
     onOpenConfirmModal();
+  };
+
+  const handleShowEditModal = (id: string) => () => {
+    setIdItem(id);
+    onOpenStudentModal();
   };
 
   const handleSubmitDelete = async () => {
@@ -118,7 +123,7 @@ const TableStudent = ({ data }: TableStudentProps) => {
 
         return (
           <>
-            <Button variant="none" mr="10px" onClick={onOpenStudentModal}>
+            <Button variant="none" mr="10px" onClick={handleShowEditModal(id)}>
               <PenIcon
                 stroke={active ? customColors.pure : customColors.emperor}
               />
@@ -136,7 +141,11 @@ const TableStudent = ({ data }: TableStudentProps) => {
 
   return (
     <>
-      {isOpenStudentModal && <StudentModal onClose={onCloseStudentModal} />}
+      {isOpenStudentModal && (
+        <Suspense>
+          <StudentModalWrapper id={idItem} onClose={onCloseStudentModal} />
+        </Suspense>
+      )}
       {isOpenConfirmModal && (
         <ConfirmModal
           onClose={onCloseConfirmModal}

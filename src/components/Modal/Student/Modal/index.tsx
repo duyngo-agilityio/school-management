@@ -39,32 +39,27 @@ import {
 } from '@chakra-ui/react';
 
 // Services
-import { addStudent } from '@/actions';
+import { addStudent, editStudent } from '@/actions';
 
 interface StudentModalProps {
   onClose: () => void;
+  defaultValues?: IStudent;
 }
 
-const StudentModal = ({ onClose }: StudentModalProps) => {
+const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
   const toast = useToast();
   const {
     handleSubmit,
     control,
     formState: { isSubmitting, isValid, isDirty },
   } = useForm<IStudent>({
-    defaultValues: {
-      fullName: '',
-      className: '',
-      email: '',
-      phoneNumber: '',
-      password: '',
-      description: '',
-    },
+    defaultValues,
     mode: 'onBlur',
   });
 
   const onSubmit = async (data: IStudent) => {
     const {
+      id,
       fullName,
       className,
       gender,
@@ -87,20 +82,30 @@ const StudentModal = ({ onClose }: StudentModalProps) => {
       description,
     };
 
-    const dataResponse = await addStudent(payload);
+    const dataResponse = defaultValues
+      ? await editStudent(payload, id)
+      : await addStudent(payload);
 
     onClose();
 
     toast({
       title: dataResponse
-        ? SUCCESS_MESSAGES.ADD_STUDENT
-        : ERROR_MESSAGES.ADD_STUDENT,
+        ? defaultValues
+          ? SUCCESS_MESSAGES.EDIT_TEACHER
+          : SUCCESS_MESSAGES.ADD_STUDENT
+        : defaultValues
+          ? ERROR_MESSAGES.EDIT_TEACHER
+          : ERROR_MESSAGES.ADD_STUDENT,
       status: dataResponse ? 'success' : 'error',
     });
   };
 
   return (
-    <Modal onClose={onClose} title="Add Student" size="4xl">
+    <Modal
+      onClose={onClose}
+      title={defaultValues ? 'Edit Student' : 'Add Student'}
+      size="4xl"
+    >
       <form onSubmit={handleSubmit(onSubmit)}>
         <Flex flexDirection="row" justifyContent="space-between">
           <Box mr="45px" w="full">
@@ -285,7 +290,7 @@ const StudentModal = ({ onClose }: StudentModalProps) => {
             colorScheme="blue"
             isDisabled={!isDirty || !isValid}
           >
-            Add Student
+            {defaultValues ? 'Edit Student' : 'Add Student'}
           </Button>
         </Flex>
       </form>
