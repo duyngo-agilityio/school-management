@@ -11,7 +11,7 @@ import { Suspense, useState } from 'react';
 // Components
 import Table from '../Table';
 import Profile from '../Profile';
-import { Box, Button, useDisclosure, useToast } from '@chakra-ui/react';
+import { Box, Button, useDisclosure } from '@chakra-ui/react';
 import { TeacherModalWrapper } from '../Modal/Teacher/Wrapper';
 
 // Constants
@@ -32,6 +32,9 @@ import { PenIcon, TrashIcon } from '@/icons';
 // Services
 import { deleteTeacher } from '@/actions';
 
+// Hooks
+import { useDelete } from '@/hooks';
+
 const ConfirmModal = dynamic(() => import('../Modal/ConfirmModal'));
 
 interface TableTeacherProps {
@@ -50,7 +53,6 @@ export const TableTeacher = ({ data }: TableTeacherProps) => {
     onClose: onCloseConfirmModal,
   } = useDisclosure();
 
-  const toast = useToast();
   const param = useParams<{ id: string }>();
 
   const [idItem, setIdItem] = useState<string>('');
@@ -65,22 +67,14 @@ export const TableTeacher = ({ data }: TableTeacherProps) => {
     onOpenTeacherModal();
   };
 
-  const handleSubmitDelete = async () => {
-    const data = await deleteTeacher(idItem);
+  const { handleSubmitDelete } = useDelete(deleteTeacher, {
+    successMessage: SUCCESS_MESSAGES.DELETE_TEACHER,
+    errorMessage: ERROR_MESSAGES.DELETE_TEACHER,
+    onCloseConfirmModal,
+  });
 
-    if (data) {
-      onCloseConfirmModal();
-
-      toast({
-        title: SUCCESS_MESSAGES.DELETE_TEACHER,
-        status: 'success',
-      });
-    } else {
-      toast({
-        title: ERROR_MESSAGES.DELETE_TEACHER,
-        status: 'error',
-      });
-    }
+  const handleDelete = () => {
+    handleSubmitDelete(idItem);
   };
 
   const COLUMNS_TEACHER: IFiledNameColumns[] = [
@@ -152,7 +146,7 @@ export const TableTeacher = ({ data }: TableTeacherProps) => {
           onClose={onCloseConfirmModal}
           title="Delete Teacher"
           subTitle="Are you sure you want to delete this Teacher?"
-          onSubmit={handleSubmitDelete}
+          onSubmit={handleDelete}
         />
       )}
       <Table columns={COLUMNS_TEACHER} data={data} />

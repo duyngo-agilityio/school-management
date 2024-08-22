@@ -7,9 +7,10 @@ import { useParams } from 'next/navigation';
 import { Suspense, useState } from 'react';
 
 // Components
-import { Box, Button, useDisclosure, useToast } from '@chakra-ui/react';
+import { Box, Button, useDisclosure } from '@chakra-ui/react';
 import Table from '../Table';
 import Profile from '../Profile';
+import StudentModalWrapper from '../Modal/Student/Wrapper';
 
 // Constants
 import {
@@ -29,7 +30,9 @@ import TrashIcon from '@/icons/TrashIcon';
 
 // Services
 import { deleteStudent } from '@/actions';
-import StudentModalWrapper from '../Modal/Student/Wrapper';
+
+// Hooks
+import { useDelete } from '@/hooks';
 
 const ConfirmModal = dynamic(() => import('../Modal/ConfirmModal'));
 
@@ -48,7 +51,6 @@ const TableStudent = ({ data }: TableStudentProps) => {
     onOpen: onOpenConfirmModal,
     onClose: onCloseConfirmModal,
   } = useDisclosure();
-  const toast = useToast();
 
   const param = useParams<{ id: string }>();
 
@@ -64,22 +66,14 @@ const TableStudent = ({ data }: TableStudentProps) => {
     onOpenStudentModal();
   };
 
-  const handleSubmitDelete = async () => {
-    const isSuccess = await deleteStudent(idItem);
+  const { handleSubmitDelete } = useDelete(deleteStudent, {
+    successMessage: SUCCESS_MESSAGES.DELETE_STUDENT,
+    errorMessage: ERROR_MESSAGES.DELETE_STUDENT,
+    onCloseConfirmModal,
+  });
 
-    if (isSuccess) {
-      onCloseConfirmModal();
-
-      toast({
-        title: SUCCESS_MESSAGES.DELETE_TEACHER,
-        status: 'success',
-      });
-    } else {
-      toast({
-        title: ERROR_MESSAGES.DELETE_TEACHER,
-        status: 'error',
-      });
-    }
+  const handleDelete = () => {
+    handleSubmitDelete(idItem);
   };
 
   const COLUMNS_STUDENT = [
@@ -149,7 +143,7 @@ const TableStudent = ({ data }: TableStudentProps) => {
       {isOpenConfirmModal && (
         <ConfirmModal
           onClose={onCloseConfirmModal}
-          onSubmit={handleSubmitDelete}
+          onSubmit={handleDelete}
           title="Delete Student"
           subTitle="Are you sure you want to delete this Student?"
         />

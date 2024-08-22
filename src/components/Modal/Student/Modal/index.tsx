@@ -91,10 +91,10 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
     toast({
       title: dataResponse
         ? defaultValues
-          ? SUCCESS_MESSAGES.EDIT_TEACHER
+          ? SUCCESS_MESSAGES.EDIT_STUDENT
           : SUCCESS_MESSAGES.ADD_STUDENT
         : defaultValues
-          ? ERROR_MESSAGES.EDIT_TEACHER
+          ? ERROR_MESSAGES.EDIT_STUDENT
           : ERROR_MESSAGES.ADD_STUDENT,
       status: dataResponse ? 'success' : 'error',
     });
