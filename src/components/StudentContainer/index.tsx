@@ -1,10 +1,10 @@
 import { ReactNode } from 'react';
 
 // Components
-import { Box, Button, Flex } from '@chakra-ui/react';
-import HeaderBar from '../HeaderBar';
+import { Box, Flex } from '@chakra-ui/react';
 import SearchStudents from '../SearchStudents';
 import TableStudent from '../TableStudent';
+import HeaderBarStudent from '../HeaderBar/Student';
 
 // Services
 import { getStudentList } from '@/services';
@@ -18,9 +18,7 @@ const StudentContainer = async ({ children }: StudentContainerProps) => {
 
   return (
     <Box p="40px">
-      <HeaderBar width="full">
-        <Button variant="primary">Add Student</Button>
-      </HeaderBar>
+      <HeaderBarStudent />
       <Flex>
         <Flex flexDirection="column" flex={1}>
           <Box mt="42px">

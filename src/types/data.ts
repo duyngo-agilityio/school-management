@@ -26,3 +26,8 @@ export interface ITeacher {
 }
 
 export type TDataType = IStudent | ITeacher;
+
+export type APIResponse<T> = {
+  isSuccess: boolean;
+  data: T | null;
+};

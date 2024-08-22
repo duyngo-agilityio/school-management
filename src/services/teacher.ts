@@ -1,21 +1,32 @@
 // Constants
-import { TAGS, TEACHER_URL } from '@/constants';
+import { BASE_URL, ROUTES, TAGS } from '@/constants';
 
 // Types
 import { ITeacher } from '@/types';
 
+// Services
+import { apiRequest } from './api';
+
 export const getTeacherList = async (): Promise<ITeacher[]> => {
-  const response = await fetch(`${TEACHER_URL}`, {
-    next: { tags: [TAGS.TEACHERS] },
+  const response = await apiRequest<ITeacher>({
+    endpoint: `${BASE_URL}${ROUTES.TEACHER}`,
+    method: 'GET',
+    configOptions: {
+      next: { tags: [TAGS.TEACHERS] },
+    },
   });
 
-  return response.json();
+  return response;
 };
 
 export const getTeacherById = async (id: string): Promise<ITeacher> => {
-  const response = await fetch(`${TEACHER_URL}/${id}`, {
-    next: { tags: [TAGS.TEACHER] },
+  const response = await apiRequest<ITeacher>({
+    endpoint: `${BASE_URL}${ROUTES.TEACHER}/${id}`,
+    method: 'GET',
+    configOptions: {
+      next: { tags: [TAGS.TEACHER] },
+    },
   });
 
-  return response.json();
+  return response;
 };

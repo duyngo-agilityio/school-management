@@ -12,9 +12,10 @@ import { EyeHiddenIcon, EyeShowIcon } from '@/icons';
 interface PasswordInputProps {
   value?: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: () => void;
 }
 
-const PasswordInput = ({ value, onChange }: PasswordInputProps) => {
+const PasswordInput = ({ value, onChange, onBlur }: PasswordInputProps) => {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
 
@@ -26,6 +27,7 @@ const PasswordInput = ({ value, onChange }: PasswordInputProps) => {
         type={show ? 'text' : 'password'}
         value={value}
         onChange={onChange}
+        onBlur={onBlur}
       />
       <InputRightElement width="4.5rem">
         <Button variant="icon" onClick={handleClick}>

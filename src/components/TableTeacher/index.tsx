@@ -10,6 +10,7 @@ import Table from '../Table';
 import Profile from '../Profile';
 import { Box, Button, useDisclosure, useToast } from '@chakra-ui/react';
 import ConfirmModal from '../Modal/ConfirmModal';
+import { TeacherModalWrapper } from '../Modal/Teacher/Wrapper';
 
 // Constants
 import {
@@ -18,7 +19,6 @@ import {
   ERROR_MESSAGES,
   ROUTES,
   SUCCESS_MESSAGES,
-  TEACHER_URL,
 } from '@/constants';
 
 // Types
@@ -29,7 +29,6 @@ import { PenIcon, TrashIcon } from '@/icons';
 
 // Services
 import { deleteTeacher } from '@/actions';
-import { TeacherModalWrapper } from '../Modal/Teacher/Wrapper';
 
 interface TableTeacherProps {
   data: ITeacher[];
@@ -63,9 +62,9 @@ export const TableTeacher = ({ data }: TableTeacherProps) => {
   };
 
   const handleSubmitDelete = async () => {
-    const isSuccess = await deleteTeacher(`${TEACHER_URL}`, idItem);
+    const data = await deleteTeacher(idItem);
 
-    if (isSuccess) {
+    if (data) {
       onCloseConfirmModal();
 
       toast({

@@ -8,9 +8,12 @@ import { IStudent } from '@/types';
 
 // Constants
 import {
+  ERROR_MESSAGES,
+  OPTIONS_CLASS,
   OPTIONS_GENDER,
-  OPTIONS_SUBJECT,
+  REGEX_EMAIL,
   REGEX_PASSWORD,
+  SUCCESS_MESSAGES,
   VALIDATE_MESSAGE,
 } from '@/constants';
 
@@ -26,31 +29,78 @@ import {
   FormHelperText,
   FormLabel,
   Input,
+  NumberDecrementStepper,
+  NumberIncrementStepper,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  Textarea,
+  useToast,
 } from '@chakra-ui/react';
 
+// Services
+import { addStudent } from '@/actions';
+
 interface StudentModalProps {
-  title: string;
   onClose: () => void;
-  isOpen: boolean;
 }
 
-const StudentModal = ({ title, onClose, isOpen }: StudentModalProps) => {
-  const { handleSubmit, control } = useForm<IStudent>({
+const StudentModal = ({ onClose }: StudentModalProps) => {
+  const toast = useToast();
+  const {
+    handleSubmit,
+    control,
+    formState: { isSubmitting, isValid, isDirty },
+  } = useForm<IStudent>({
     defaultValues: {
       fullName: '',
+      className: '',
       email: '',
-      gender: 0,
-      password: '',
       phoneNumber: '',
+      password: '',
+      description: '',
     },
     mode: 'onBlur',
   });
 
-  // TODO: Implement later
-  const onSubmit = () => {};
+  const onSubmit = async (data: IStudent) => {
+    const {
+      fullName,
+      className,
+      gender,
+      age,
+      email,
+      phoneNumber,
+      password,
+      description,
+    } = data;
+
+    const payload = {
+      ...data,
+      fullName,
+      className,
+      gender: Number(gender),
+      age: Number(age),
+      email,
+      phoneNumber,
+      password,
+      description,
+    };
+
+    const dataResponse = await addStudent(payload);
+
+    onClose();
+
+    toast({
+      title: dataResponse
+        ? SUCCESS_MESSAGES.ADD_STUDENT
+        : ERROR_MESSAGES.ADD_STUDENT,
+      status: dataResponse ? 'success' : 'error',
+    });
+  };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title={title} size="4xl">
+    <Modal onClose={onClose} title="Add Student" size="4xl">
       <form onSubmit={handleSubmit(onSubmit)}>
         <Flex flexDirection="row" justifyContent="space-between">
           <Box mr="45px" w="full">
@@ -60,13 +110,10 @@ const StudentModal = ({ title, onClose, isOpen }: StudentModalProps) => {
               rules={{
                 required: VALIDATE_MESSAGE.EMPTY,
               }}
-              render={({
-                field: { value, onChange },
-                fieldState: { error },
-              }) => (
+              render={({ field, fieldState: { error } }) => (
                 <FormControl mt={4}>
                   <FormLabel>Full name</FormLabel>
-                  <Input value={value} onChange={onChange} />
+                  <Input {...field} />
                   {error?.message && (
                     <FormHelperText color="red.400">
                       {error.message}
@@ -79,7 +126,7 @@ const StudentModal = ({ title, onClose, isOpen }: StudentModalProps) => {
           <Flex>
             <Controller
               control={control}
-              name="gender"
+              name="className"
               rules={{
                 required: VALIDATE_MESSAGE.EMPTY,
               }}
@@ -87,19 +134,20 @@ const StudentModal = ({ title, onClose, isOpen }: StudentModalProps) => {
                 field: { value, onChange },
                 fieldState: { error },
               }) => (
-                <Box mt={12} mr="45px">
+                <FormControl mt={12} mr="45px">
                   <Dropdown
                     width="179px"
                     onChangeValue={onChange}
                     value={value}
-                    options={OPTIONS_SUBJECT}
+                    options={OPTIONS_CLASS}
+                    placeholder="Class"
                   />
                   {error?.message && (
                     <FormHelperText color="red.400">
                       {error.message}
                     </FormHelperText>
                   )}
-                </Box>
+                </FormControl>
               )}
             />
             <Controller
@@ -112,7 +160,7 @@ const StudentModal = ({ title, onClose, isOpen }: StudentModalProps) => {
                 field: { value, onChange },
                 fieldState: { error },
               }) => (
-                <Box mt={12}>
+                <FormControl mt={12}>
                   <Dropdown
                     width="179px"
                     onChangeValue={onChange}
@@ -125,7 +173,7 @@ const StudentModal = ({ title, onClose, isOpen }: StudentModalProps) => {
                       {error.message}
                     </FormHelperText>
                   )}
-                </Box>
+                </FormControl>
               )}
             />
           </Flex>
@@ -137,12 +185,20 @@ const StudentModal = ({ title, onClose, isOpen }: StudentModalProps) => {
               name="email"
               rules={{
                 required: VALIDATE_MESSAGE.EMPTY,
+                pattern: {
+                  value: REGEX_EMAIL,
+                  message: VALIDATE_MESSAGE.EMAIL,
+                },
               }}
               render={({ field, fieldState: { error } }) => (
                 <FormControl mt={4}>
                   <FormLabel>Email address</FormLabel>
                   <Input {...field} />
-                  <FormErrorMessage>{error && error.message}</FormErrorMessage>
+                  {error?.message && (
+                    <FormHelperText color="red.400">
+                      {error.message}
+                    </FormHelperText>
+                  )}
                 </FormControl>
               )}
             />
@@ -159,21 +215,63 @@ const StudentModal = ({ title, onClose, isOpen }: StudentModalProps) => {
             )}
           />
         </Flex>
+        <Flex flexDirection="row">
+          <Box mr="45px" w="full">
+            <Controller
+              control={control}
+              name="password"
+              rules={{
+                required: VALIDATE_MESSAGE.EMPTY,
+                pattern: {
+                  value: REGEX_PASSWORD,
+                  message: VALIDATE_MESSAGE.PASSWORD,
+                },
+              }}
+              render={({ field, fieldState: { error } }) => (
+                <FormControl mt={4}>
+                  <FormLabel>Password</FormLabel>
+                  <PasswordInput {...field} />
+                  {error?.message && (
+                    <FormHelperText color="red.400" width="inherit">
+                      {error.message}
+                    </FormHelperText>
+                  )}
+                </FormControl>
+              )}
+            />
+          </Box>
+          <Controller
+            control={control}
+            name="age"
+            render={({
+              field: { ref, ...restField },
+              fieldState: { error },
+            }) => (
+              <FormControl mt={4}>
+                <FormLabel>Age</FormLabel>
+                <NumberInput {...restField} defaultValue={16}>
+                  <NumberInputField ref={ref} name={restField.name} />
+                  <NumberInputStepper>
+                    <NumberIncrementStepper />
+                    <NumberDecrementStepper />
+                  </NumberInputStepper>
+                </NumberInput>
+                {error?.message && (
+                  <FormHelperText color="red.400">
+                    {error.message}
+                  </FormHelperText>
+                )}
+              </FormControl>
+            )}
+          />
+        </Flex>
         <Controller
           control={control}
-          name="password"
-          rules={{
-            required: VALIDATE_MESSAGE.EMPTY,
-            pattern: {
-              value: REGEX_PASSWORD,
-              message: VALIDATE_MESSAGE.PASSWORD,
-            },
-          }}
-          render={({ field, fieldState: { error } }) => (
+          name="description"
+          render={({ field }) => (
             <FormControl mt={4}>
-              <FormLabel>Password</FormLabel>
-              <PasswordInput {...field} />
-              <FormErrorMessage>{error && error.message}</FormErrorMessage>
+              <FormLabel>About</FormLabel>
+              <Textarea {...field} size="sm" />
             </FormControl>
           )}
         />
@@ -181,7 +279,12 @@ const StudentModal = ({ title, onClose, isOpen }: StudentModalProps) => {
           <Button onClick={onClose} mr={3}>
             Cancel
           </Button>
-          <Button type="submit" colorScheme="blue">
+          <Button
+            isLoading={isSubmitting}
+            type="submit"
+            colorScheme="blue"
+            isDisabled={!isDirty || !isValid}
+          >
             Add Student
           </Button>
         </Flex>
