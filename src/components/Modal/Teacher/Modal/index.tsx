@@ -35,7 +35,7 @@ import {
   Textarea,
   useToast,
 } from '@chakra-ui/react';
-import { Dropdown, PasswordInput } from '@/components';
+import { Dropdown, PasswordInput, UploadImage } from '@/components';
 import Modal from '../..';
 
 // Services
@@ -245,71 +245,102 @@ const TeacherModal = ({ onClose, defaultValues }: TeacherModalProps) => {
         </Flex>
         <Flex flexDirection="row">
           <Box mr="45px" w="full">
-            <Controller
-              control={control}
-              name="age"
-              render={({
-                field: { ref, ...restField },
-                fieldState: { error },
-              }) => (
-                <FormControl mt={4}>
-                  <FormLabel>Age</FormLabel>
-                  <NumberInput {...restField} defaultValue={22} min={22}>
-                    <NumberInputField ref={ref} name={restField.name} />
-                    <NumberInputStepper>
-                      <NumberIncrementStepper />
-                      <NumberDecrementStepper />
-                    </NumberInputStepper>
-                  </NumberInput>
-                  {error?.message && (
-                    <FormHelperText color="red.400">
-                      {error.message}
-                    </FormHelperText>
-                  )}
-                </FormControl>
-              )}
-            />
+            <Box w="full">
+              <Controller
+                control={control}
+                name="age"
+                render={({
+                  field: { ref, ...restField },
+                  fieldState: { error },
+                }) => (
+                  <FormControl mt={4}>
+                    <FormLabel>Age</FormLabel>
+                    <NumberInput {...restField} defaultValue={22} min={22}>
+                      <NumberInputField ref={ref} name={restField.name} />
+                      <NumberInputStepper>
+                        <NumberIncrementStepper />
+                        <NumberDecrementStepper />
+                      </NumberInputStepper>
+                    </NumberInput>
+                    {error?.message && (
+                      <FormHelperText color="red.400">
+                        {error.message}
+                      </FormHelperText>
+                    )}
+                  </FormControl>
+                )}
+              />
+            </Box>
+            <Box w="full">
+              <Controller
+                control={control}
+                name="subject"
+                rules={{
+                  required: VALIDATE_MESSAGE.EMPTY,
+                }}
+                render={({
+                  field: { value, onChange },
+                  fieldState: { error },
+                }) => (
+                  <FormControl mt={12}>
+                    <Dropdown
+                      onChangeValue={onChange}
+                      value={value}
+                      options={OPTIONS_SUBJECT}
+                      placeholder="Subject"
+                    />
+                    {error?.message && (
+                      <FormHelperText color="red.400">
+                        {error.message}
+                      </FormHelperText>
+                    )}
+                  </FormControl>
+                )}
+              />
+            </Box>
+            <Box w="full">
+              <Controller
+                control={control}
+                name="description"
+                render={({ field }) => (
+                  <Box mt={7}>
+                    <FormControl mt={4}>
+                      <FormLabel>About</FormLabel>
+                      <Textarea {...field} size="sm" />
+                    </FormControl>
+                  </Box>
+                )}
+              />
+            </Box>
           </Box>
           <Box w="full">
             <Controller
               control={control}
-              name="subject"
-              rules={{
-                required: VALIDATE_MESSAGE.EMPTY,
+              name="avatar"
+              render={({ field: { name, value } }) => {
+                const handleChangeImage = () => {};
+                const handleRemoveImage = () => {};
+
+                return (
+                  <FormControl mt={4}>
+                    <FormLabel>Upload Image</FormLabel>
+                    <UploadImage
+                      name={name}
+                      title="Upload Image"
+                      width="full"
+                      height="268px"
+                      boxHeightImage="268px"
+                      src={value}
+                      alt="Avatar Image"
+                      onChange={handleChangeImage}
+                      onRemove={handleRemoveImage}
+                    />
+                  </FormControl>
+                );
               }}
-              render={({
-                field: { value, onChange },
-                fieldState: { error },
-              }) => (
-                <FormControl mt={12}>
-                  <Dropdown
-                    onChangeValue={onChange}
-                    value={value}
-                    options={OPTIONS_SUBJECT}
-                    placeholder="Subject"
-                  />
-                  {error?.message && (
-                    <FormHelperText color="red.400">
-                      {error.message}
-                    </FormHelperText>
-                  )}
-                </FormControl>
-              )}
             />
           </Box>
         </Flex>
-        <Controller
-          control={control}
-          name="description"
-          render={({ field }) => (
-            <Box mt={7}>
-              <FormControl mt={4}>
-                <FormLabel>About</FormLabel>
-                <Textarea {...field} size="sm" />
-              </FormControl>
-            </Box>
-          )}
-        />
         <Flex mt={5} justifyContent="flex-end">
           <Button onClick={onClose} mr={3}>
             Cancel

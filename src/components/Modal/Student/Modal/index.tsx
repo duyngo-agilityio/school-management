@@ -19,7 +19,7 @@ import {
 
 // Components
 import Modal from '../..';
-import { Dropdown, PasswordInput } from '@/components';
+import { Dropdown, PasswordInput, UploadImage } from '@/components';
 import {
   Box,
   Button,
@@ -221,65 +221,95 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
           />
         </Flex>
         <Flex flexDirection="row">
-          <Box mr="45px" w="full">
+          <Box  mr="45px" w="full">
+            <Box mr="45px" w="full">
+              <Controller
+                control={control}
+                name="password"
+                rules={{
+                  required: VALIDATE_MESSAGE.EMPTY,
+                  pattern: {
+                    value: REGEX_PASSWORD,
+                    message: VALIDATE_MESSAGE.PASSWORD,
+                  },
+                }}
+                render={({ field, fieldState: { error } }) => (
+                  <FormControl mt={4}>
+                    <FormLabel>Password</FormLabel>
+                    <PasswordInput {...field} />
+                    {error?.message && (
+                      <FormHelperText color="red.400" width="inherit">
+                        {error.message}
+                      </FormHelperText>
+                    )}
+                  </FormControl>
+                )}
+              />
+            </Box>
             <Controller
               control={control}
-              name="password"
-              rules={{
-                required: VALIDATE_MESSAGE.EMPTY,
-                pattern: {
-                  value: REGEX_PASSWORD,
-                  message: VALIDATE_MESSAGE.PASSWORD,
-                },
-              }}
-              render={({ field, fieldState: { error } }) => (
+              name="age"
+              render={({
+                field: { ref, ...restField },
+                fieldState: { error },
+              }) => (
                 <FormControl mt={4}>
-                  <FormLabel>Password</FormLabel>
-                  <PasswordInput {...field} />
+                  <FormLabel>Age</FormLabel>
+                  <NumberInput {...restField} defaultValue={16}>
+                    <NumberInputField ref={ref} name={restField.name} />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
                   {error?.message && (
-                    <FormHelperText color="red.400" width="inherit">
+                    <FormHelperText color="red.400">
                       {error.message}
                     </FormHelperText>
                   )}
                 </FormControl>
               )}
             />
+            <Controller
+              control={control}
+              name="description"
+              render={({ field }) => (
+                <FormControl mt={4}>
+                  <FormLabel>About</FormLabel>
+                  <Textarea {...field} size="sm" />
+                </FormControl>
+              )}
+            />
           </Box>
-          <Controller
-            control={control}
-            name="age"
-            render={({
-              field: { ref, ...restField },
-              fieldState: { error },
-            }) => (
-              <FormControl mt={4}>
-                <FormLabel>Age</FormLabel>
-                <NumberInput {...restField} defaultValue={16}>
-                  <NumberInputField ref={ref} name={restField.name} />
-                  <NumberInputStepper>
-                    <NumberIncrementStepper />
-                    <NumberDecrementStepper />
-                  </NumberInputStepper>
-                </NumberInput>
-                {error?.message && (
-                  <FormHelperText color="red.400">
-                    {error.message}
-                  </FormHelperText>
-                )}
-              </FormControl>
-            )}
-          />
+          <Box w="full">
+            <Controller
+              control={control}
+              name="avatar"
+              render={({ field: { name, value } }) => {
+                const handleChangeImage = () => {};
+                const handleRemoveImage = () => {};
+
+                return (
+                  <FormControl mt={4}>
+                    <FormLabel>Upload Image</FormLabel>
+                    <UploadImage
+                      name={name}
+                      src={value}
+                      title="Upload Image"
+                      width="full"
+                      height="255px"
+                      boxHeightImage="255px"
+                      alt="Avatar Image"
+                      onChange={handleChangeImage}
+                      onRemove={handleRemoveImage}
+                    />
+                  </FormControl>
+                );
+              }}
+            />
+          </Box>
         </Flex>
-        <Controller
-          control={control}
-          name="description"
-          render={({ field }) => (
-            <FormControl mt={4}>
-              <FormLabel>About</FormLabel>
-              <Textarea {...field} size="sm" />
-            </FormControl>
-          )}
-        />
+
         <Flex mt={5} justifyContent="flex-end">
           <Button onClick={onClose} mr={3}>
             Cancel

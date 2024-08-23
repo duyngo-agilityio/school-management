@@ -24,4 +24,5 @@ export const colors = {
   // Border
   borderPrimary: customColors.slate,
   borderSecondary: customColors.aluminum,
+  borderCatSkill: customColors.catSkill,
 };

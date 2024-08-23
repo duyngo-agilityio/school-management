@@ -10,3 +10,4 @@ export { default as CallIcon } from './CallIcon';
 export { default as HomeIcon } from './HomeIcon';
 export { default as PenIcon } from './PenIcon';
 export { default as TrashIcon } from './TrashIcon';
+export { default as UploadIcon } from './UploadIcon';
