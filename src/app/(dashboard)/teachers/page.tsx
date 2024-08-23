@@ -6,8 +6,13 @@ import { Box } from '@chakra-ui/react';
 // Services
 import { getTeacherList } from '@/services';
 
-const Teachers = async () => {
-  const data = await getTeacherList();
+// Types
+import { TSearchParams } from '@/types';
+
+const Teachers = async ({ searchParams }: { searchParams?: TSearchParams }) => {
+  const { q = '' } = searchParams as TSearchParams;
+
+  const data = await getTeacherList({ q });
 
   return (
     <Box p="40px">

@@ -7,9 +7,17 @@ import { IStudent } from '@/types';
 // Services
 import { apiRequest } from './api';
 
-export const getStudentList = async (): Promise<IStudent[]> => {
+export const getStudentList = async ({
+  q,
+}: {
+  q: string;
+}): Promise<IStudent[]> => {
+  const params = new URLSearchParams();
+  params.set('q', `${q}&attr=fullName,email`);
+  const query = decodeURIComponent(params.toString());
+
   const response = await apiRequest<IStudent>({
-    endpoint: `${BASE_URL}${ROUTES.STUDENT}`,
+    endpoint: `${BASE_URL}${ROUTES.STUDENT}?${query}`,
     method: 'GET',
     configOptions: {
       next: { tags: [TAGS.STUDENTS] },
