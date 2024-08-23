@@ -1,6 +1,6 @@
 'use client';
 
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 // Icons
 import { SearchIcon } from '@/icons';
@@ -18,7 +18,6 @@ interface SearchInputProps {
   placeholder: string;
   defaultValue: string;
   onSearch: (value: string) => void;
-  onClick: (value: string) => void;
   disableInput?: boolean;
 }
 
@@ -26,15 +25,20 @@ const SearchInput = ({
   placeholder,
   defaultValue,
   onSearch,
-  onClick,
   disableInput = false,
 }: SearchInputProps) => {
+  const [value, setValue] = useState(defaultValue);
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    onSearch(e.target.value);
+    const { value } = e.target;
+
+    onSearch(value);
+    setValue(value);
   };
 
-  const handleClick = () => {
-    onClick('');
+  const handleClearInput = () => {
+    setValue('');
+    onSearch('');
   };
 
   return (
@@ -46,12 +50,15 @@ const SearchInput = ({
         bgColor="backgroundWhiteHint"
         pl={10}
         placeholder={placeholder}
-        defaultValue={defaultValue}
+        value={value}
         onChange={handleChange}
         disabled={disableInput}
       />
       <InputRightElement>
-        <TiDeleteOutline style={{ cursor: 'pointer' }} onClick={handleClick} />
+        <TiDeleteOutline
+          style={{ cursor: 'pointer' }}
+          onClick={handleClearInput}
+        />
       </InputRightElement>
     </InputGroup>
   );

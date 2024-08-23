@@ -1,5 +1,10 @@
 'use client';
 
+// Libs
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useCallback, useMemo } from 'react';
+import { useDebouncedCallback } from 'use-debounce';
+
 // Components
 import SearchInput from '../SearchInput';
 
@@ -11,19 +16,36 @@ interface SearchTeachersProps {
   disableInput?: boolean;
 }
 
-const SearchTeachers = ({ disableInput, fullName }: SearchTeachersProps) => {
-  // TODO: Will be implemented later
-  const handleSearchValue = () => {};
+const SearchTeachers = ({ disableInput }: SearchTeachersProps) => {
+  const searchParams = useSearchParams();
+  const { replace } = useRouter();
+  const pathname = usePathname();
 
-  // TODO: Will be implemented later
-  const handleDeleteSearchValue = () => {};
+  const searchValue = useMemo(
+    () => searchParams.get('q') || '',
+    [searchParams],
+  );
+
+  const handleSearchValue = useCallback(
+    useDebouncedCallback((value: string) => {
+      const params = new URLSearchParams(searchParams);
+
+      if (value) {
+        params.set('q', value);
+      } else {
+        params.delete('q');
+      }
+
+      replace(`${pathname}?${params.toString()}`);
+    }, 500),
+    [pathname, replace, searchParams],
+  );
 
   return (
     <SearchInput
-      defaultValue={fullName}
+      defaultValue={searchValue}
       placeholder={INPUT_PLACEHOLDER.TEACHER}
       onSearch={handleSearchValue}
-      onClick={handleDeleteSearchValue}
       disableInput={disableInput}
     />
   );

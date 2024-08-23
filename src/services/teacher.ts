@@ -7,9 +7,17 @@ import { ITeacher } from '@/types';
 // Services
 import { apiRequest } from './api';
 
-export const getTeacherList = async (): Promise<ITeacher[]> => {
+export const getTeacherList = async ({
+  q,
+}: {
+  q: string;
+}): Promise<ITeacher[]> => {
+  const params = new URLSearchParams();
+  params.set('q', `${q}&attr=fullName,email`);
+  const query = decodeURIComponent(params.toString());
+
   const response = await apiRequest<ITeacher>({
-    endpoint: `${BASE_URL}${ROUTES.TEACHER}`,
+    endpoint: `${BASE_URL}${ROUTES.TEACHER}?${query}`,
     method: 'GET',
     configOptions: {
       next: { tags: [TAGS.TEACHERS] },

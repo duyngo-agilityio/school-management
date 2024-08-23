@@ -31,3 +31,7 @@ export type APIResponse<T> = {
   isSuccess: boolean;
   data: T | null;
 };
+
+export type TSearchParams = {
+  q: string;
+};
