@@ -54,12 +54,14 @@ const SearchInput = ({
         onChange={handleChange}
         disabled={disableInput}
       />
-      <InputRightElement>
-        <TiDeleteOutline
-          style={{ cursor: 'pointer' }}
-          onClick={handleClearInput}
-        />
-      </InputRightElement>
+      {value && (
+        <InputRightElement>
+          <TiDeleteOutline
+            style={{ cursor: 'pointer' }}
+            onClick={handleClearInput}
+          />
+        </InputRightElement>
+      )}
     </InputGroup>
   );
 };
