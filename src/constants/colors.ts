@@ -3,6 +3,7 @@ const bluePallet = {
   koamaru: '#13296A',
   havelock: '#509CDB',
   solitude: '#EBF6FF',
+  catSkill: '#E2E8F0',
   linkWater: '#EFF3FA',
 };
 
