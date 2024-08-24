@@ -1,5 +1,6 @@
 // Components
-import { HeaderBar, Icon, Profile, SearchTeachers } from '@/components';
+import { HeaderBar, Icon, Profile } from '@/components';
+import SearchInputWrapper from '@/components/SearchInput/Wrapper';
 
 // Services
 import { getTeacherById } from '@/services';
@@ -27,7 +28,7 @@ const TeacherDetails = async ({ params }: { params: { id: string } }) => {
         <Button variant="primary">Add Teacher</Button>
       </HeaderBar>
       <Box mt="42px">
-        <SearchTeachers fullName={fullName} disableInput />
+        <SearchInputWrapper placeholder={fullName} disableInput />
       </Box>
       <Flex justifyContent="center" w="full" mt="88px">
         <Flex justifyContent="space-between" w="720px">

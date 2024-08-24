@@ -6,17 +6,17 @@ import { useCallback, useMemo } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
 
 // Components
-import SearchInput from '../SearchInput';
+import SearchInput from '..';
 
-// Constants
-import { INPUT_PLACEHOLDER } from '@/constants';
-
-interface SearchTeachersProps {
-  fullName: string;
+interface SearchInputWrapperProps {
+  placeholder: string;
   disableInput?: boolean;
 }
 
-const SearchTeachers = ({ disableInput }: SearchTeachersProps) => {
+const SearchInputWrapper = ({
+  placeholder,
+  disableInput,
+}: SearchInputWrapperProps) => {
   const searchParams = useSearchParams();
   const { replace } = useRouter();
   const pathname = usePathname();
@@ -44,11 +44,11 @@ const SearchTeachers = ({ disableInput }: SearchTeachersProps) => {
   return (
     <SearchInput
       defaultValue={searchValue}
-      placeholder={INPUT_PLACEHOLDER.TEACHER}
+      placeholder={placeholder}
       onSearch={handleSearchValue}
       disableInput={disableInput}
     />
   );
 };
 
-export default SearchTeachers;
+export default SearchInputWrapper;
