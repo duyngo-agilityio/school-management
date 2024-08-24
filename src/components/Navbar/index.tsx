@@ -5,18 +5,18 @@ import { usePathname } from 'next/navigation';
 import NavItem from './Item';
 
 // Constants
-import { PATH } from '@/constants';
+import { ROUTES } from '@/constants';
 
 // Icons
 import { HomeIcon, TeacherIcon } from '@/icons';
 
 export const LINK_ITEMS = [
-  { name: 'Dashboard', icon: <HomeIcon />, href: PATH.DASHBOARD },
-  { name: 'Teachers', icon: <HomeIcon />, href: PATH.TEACHERS },
+  { name: 'Dashboard', icon: <HomeIcon />, href: ROUTES.DASHBOARD },
+  { name: 'Teachers', icon: <HomeIcon />, href: ROUTES.TEACHER },
   {
     name: 'Students/ classes',
     icon: <TeacherIcon width="16" height="16" stroke="white" />,
-    href: PATH.STUDENTS,
+    href: ROUTES.STUDENT,
   },
 ];
 
