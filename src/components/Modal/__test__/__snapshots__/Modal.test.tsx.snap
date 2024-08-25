@@ -1,3 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Modal Component should match snapshot for Modal 1`] = `<div />`;
+exports[`Modal Component should match snapshot for Modal 1`] = `
+<div
+  aria-hidden="true"
+  data-aria-hidden="true"
+/>
+`;

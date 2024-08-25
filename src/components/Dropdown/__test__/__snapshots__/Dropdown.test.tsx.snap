@@ -14,17 +14,17 @@ exports[`Dropdown components should match snapshot for Dropdown 1`] = `
         Search for a teacher by name or email
       </option>
       <option
-        value="math"
+        value="Math"
       >
         Math
       </option>
       <option
-        value="physical"
+        value="Physical"
       >
         Physical
       </option>
       <option
-        value="biology"
+        value="Biology"
       >
         Biology
       </option>

@@ -24,7 +24,7 @@ describe('Modal Component', () => {
 
   it('should render the modal when isOpen is true', () => {
     render(
-      <Modal isOpen={true} title="Test Title" onClose={() => {}}>
+      <Modal title="Test Title" onClose={() => {}}>
         <div>Test Content</div>
       </Modal>,
     );
@@ -35,7 +35,7 @@ describe('Modal Component', () => {
 
   it('should not render the modal when isOpen is false', () => {
     render(
-      <Modal isOpen={false} title="Test Title" onClose={() => {}}>
+      <Modal title="Test Title" onClose={() => {}}>
         <div>Test Content</div>
       </Modal>,
     );
@@ -48,7 +48,7 @@ describe('Modal Component', () => {
     const handleClose = jest.fn();
 
     render(
-      <Modal isOpen={true} title="Test Title" onClose={handleClose}>
+      <Modal title="Test Title" onClose={handleClose}>
         <div>Test Content</div>
       </Modal>,
     );
