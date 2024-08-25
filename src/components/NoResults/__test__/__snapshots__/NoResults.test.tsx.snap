@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NotFound Component should match snapshot for NotFound 1`] = `
+exports[`NoResults Component should match snapshot for NoResults 1`] = `
 <div>
   <div
     class="css-wkpw2c"
@@ -10,7 +10,9 @@ exports[`NotFound Component should match snapshot for NotFound 1`] = `
       data-nimg="1"
       decoding="async"
       height="225"
-      src=""
+      loading="lazy"
+      src="/_next/image?url=%2Fno-notification.png&w=750&q=75"
+      srcset="/_next/image?url=%2Fno-notification.png&w=384&q=75 1x, /_next/image?url=%2Fno-notification.png&w=750&q=75 2x"
       style="color: transparent;"
       width="340"
     />
