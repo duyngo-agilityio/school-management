@@ -1,34 +1,31 @@
-import Image from 'next/image';
+import Link from 'next/link';
+import { Button, Center, Heading } from '@chakra-ui/react';
 
-// Components
-import { Flex, Text } from '@chakra-ui/react';
+// constants
+import { ERROR_MESSAGES, ROUTES } from '@/constants';
 
-interface NotFoundProps {
-  title: string;
-  src?: string;
-  description?: string;
-  width?: number;
-  height?: number;
+interface INotFound {
+  error?: string;
 }
 
-const NotFound = ({
-  src = '',
-  title,
-  description,
-  width = 340,
-  height = 225,
-}: NotFoundProps) => {
-  return (
-    <Flex flexDirection="column" justifyContent="center" alignItems="center">
-      <Image src={src} alt="" width={width} height={height} />
-      <Text variant="primary" fontWeight="semibold" size="xl" mt="31px">
-        {title}
-      </Text>
-      <Text variant="primary" size="sm" mt="4px">
-        {description}
-      </Text>
-    </Flex>
-  );
-};
+const NotFound = ({ error }: INotFound) => (
+  <Center flexDirection="column" gap={10} py={5} px={{ base: 10, md: 20 }}>
+    <Center flexDirection="column" gap={0.5}>
+      <Heading size={{ base: 'md', md: 'lg', lg: 'xl' }} variant="extra">
+        404
+      </Heading>
+      <Heading
+        size={{ base: 'xs', md: 'md' }}
+        variant="extra"
+        textTransform="capitalize"
+      >
+        {error ?? ERROR_MESSAGES.PAGE_NOT_FOUND}
+      </Heading>
+    </Center>
+    <Link href={ROUTES.DASHBOARD}>
+      <Button size={{ base: 'md', md: 'lg', lg: 'xl' }}>Back home</Button>
+    </Link>
+  </Center>
+);
 
 export default NotFound;
