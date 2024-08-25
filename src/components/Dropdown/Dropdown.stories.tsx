@@ -11,7 +11,7 @@ import Dropdown from '@/components/Dropdown';
 import { fn } from '@storybook/test';
 
 const meta: Meta<typeof Dropdown> = {
-  title: 'Components/Common/Dropdown',
+  title: 'components/Dropdown',
   component: Dropdown,
   tags: ['autodocs'],
   argTypes: {

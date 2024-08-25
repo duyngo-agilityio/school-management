@@ -1,9 +1,9 @@
 import React from 'react';
 import type { Preview } from '@storybook/react';
-import { ChakraProvider } from '@chakra-ui/react';
 
 // Themes
 import configThemes from '../src/themes';
+import { ChakraProvider } from '../src/provider/ChakraProvider';
 
 const preview: Preview = {
   parameters: {
