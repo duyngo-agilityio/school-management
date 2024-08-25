@@ -5,21 +5,28 @@ import { Box, Flex } from '@chakra-ui/react';
 import TableStudent from '../TableStudent';
 import HeaderBarStudent from '../HeaderBar/Student';
 import SearchInputWrapper from '../SearchInput/Wrapper';
-import NotFound from '../NotFound';
-
-// Types
-import { IStudent } from '@/types';
+import NoResults from '../NoResults';
 
 // Constants
 import { INPUT_PLACEHOLDER, NOTFOUND } from '@/constants';
 
+// Types
+import { TSearchParams } from '@/types';
+import { getStudentList } from '@/services';
+
 interface StudentContainerProps {
   children?: ReactNode;
-  data: IStudent[];
+  searchParams: TSearchParams;
 }
 
-const StudentContainer = async ({ children, data }: StudentContainerProps) => {
+const StudentContainer = async ({
+  children,
+  searchParams,
+}: StudentContainerProps) => {
   const { TITLE, DESCRIPTION } = NOTFOUND.STUDENT;
+  const { q = '' } = searchParams as TSearchParams;
+
+  const data = await getStudentList({ q });
 
   return (
     <Box p="40px">
@@ -33,7 +40,7 @@ const StudentContainer = async ({ children, data }: StudentContainerProps) => {
             {data?.length ? (
               <TableStudent data={data} />
             ) : (
-              <NotFound
+              <NoResults
                 title={TITLE}
                 description={DESCRIPTION}
                 src="/no_notification.png"

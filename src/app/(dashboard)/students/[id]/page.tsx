@@ -8,12 +8,21 @@ import { getStudentById } from '@/services';
 // Utils
 import { createIcons } from '@/utils';
 
-const StudentDetails = async ({ params }: { params: { id: string } }) => {
+// Types
+import { TSearchParams } from '@/types';
+
+const StudentDetails = async ({
+  params,
+  searchParams,
+}: {
+  params: { id: string };
+  searchParams: TSearchParams;
+}) => {
   const { age, fullName, gender, id, avatar, description } =
     await getStudentById(params.id);
 
   return (
-    <StudentContainer>
+    <StudentContainer searchParams={searchParams}>
       <Flex
         flexDirection="column"
         w="313px"
