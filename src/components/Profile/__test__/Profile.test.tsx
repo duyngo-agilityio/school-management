@@ -26,4 +26,16 @@ describe('Profile Component', () => {
 
     expect(container).toMatchSnapshot();
   });
+
+  it('renders match without props id', () => {
+    const { container } = ProfileComponent({ id: '' });
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('renders match without props subtile', () => {
+    const { container } = ProfileComponent({ subTitle: '' });
+
+    expect(container).toMatchSnapshot();
+  });
 });
