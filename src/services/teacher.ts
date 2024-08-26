@@ -21,7 +21,6 @@ export const getTeacherList = async ({
     method: 'GET',
     configOptions: {
       next: { tags: [TAGS.TEACHERS] },
-      cache: 'no-store',
     },
   });
 

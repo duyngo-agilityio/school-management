@@ -21,7 +21,6 @@ export const getStudentList = async ({
     method: 'GET',
     configOptions: {
       next: { tags: [TAGS.STUDENTS] },
-      cache: 'no-store',
     },
   });
 
