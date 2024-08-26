@@ -1,6 +1,5 @@
 // Components
 import { NotFound, TableTeacher } from '@/components';
-import HeaderBarTeacher from '@/components/HeaderBar/Teacher';
 import { Box } from '@chakra-ui/react';
 import SearchInputWrapper from '@/components/SearchInput/Wrapper';
 
@@ -20,8 +19,7 @@ const Teachers = async ({ searchParams }: { searchParams?: TSearchParams }) => {
   const data = await getTeacherList({ q });
 
   return (
-    <Box p="40px">
-      <HeaderBarTeacher />
+    <>
       <Box mt="42px">
         <SearchInputWrapper placeholder={INPUT_PLACEHOLDER.TEACHER} />
       </Box>
@@ -36,7 +34,7 @@ const Teachers = async ({ searchParams }: { searchParams?: TSearchParams }) => {
           />
         )}
       </Box>
-    </Box>
+    </>
   );
 };
 

@@ -1,5 +1,5 @@
 // Components
-import { HeaderBar, Icon, Profile } from '@/components';
+import { Icon, Profile } from '@/components';
 import SearchInputWrapper from '@/components/SearchInput/Wrapper';
 
 // Services
@@ -9,7 +9,7 @@ import { getTeacherById } from '@/services';
 import { createIcons } from '@/utils';
 
 // Components
-import { Box, Button, Flex, Text } from '@chakra-ui/react';
+import { Box, Flex, Text } from '@chakra-ui/react';
 
 const TeacherDetails = async ({ params }: { params: { id: string } }) => {
   const data = await getTeacherById(params.id);
@@ -23,10 +23,7 @@ const TeacherDetails = async ({ params }: { params: { id: string } }) => {
   } = data;
 
   return (
-    <Box p="40px">
-      <HeaderBar width="full">
-        <Button variant="primary">Add Teacher</Button>
-      </HeaderBar>
+    <>
       <Box mt="42px">
         <SearchInputWrapper placeholder={fullName} disableInput />
       </Box>
@@ -61,7 +58,12 @@ const TeacherDetails = async ({ params }: { params: { id: string } }) => {
               <Text variant="title" fontWeight="semibold" size="md">
                 About
               </Text>
-              <Text variant="subTitle" fontSize="md" mt="16px">
+              <Text
+                variant="subTitle"
+                fontSize="md"
+                textAlign="justify"
+                mt="16px"
+              >
                 {description}
               </Text>
             </Box>
@@ -86,7 +88,7 @@ const TeacherDetails = async ({ params }: { params: { id: string } }) => {
           </Flex>
         </Flex>
       </Flex>
-    </Box>
+    </>
   );
 };
 

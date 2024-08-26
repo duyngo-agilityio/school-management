@@ -12,3 +12,5 @@ export { default as Icon } from './Icon';
 export { default as StudentContainer } from './StudentContainer';
 export { default as UploadImage } from './UploadImage';
 export { default as LoadingIndicator } from './LoadingIndicator';
+export { default as InfoStudent } from './InfoStudent';
+export { default as TableStudentWrapper } from './TableStudentWrapper';

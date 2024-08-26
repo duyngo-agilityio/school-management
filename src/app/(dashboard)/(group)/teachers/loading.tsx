@@ -1,8 +1,8 @@
 // Components
 import { LoadingIndicator } from '@/components';
 
-const HomeLoading = () => {
+const TeacherLoading = () => {
   return <LoadingIndicator />;
 };
 
-export default HomeLoading;
+export default TeacherLoading;

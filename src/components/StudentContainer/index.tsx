@@ -3,7 +3,6 @@ import { ReactNode } from 'react';
 // Components
 import { Box, Flex } from '@chakra-ui/react';
 import TableStudent from '../TableStudent';
-import HeaderBarStudent from '../HeaderBar/Student';
 import SearchInputWrapper from '../SearchInput/Wrapper';
 import NoResults from '../NoResults';
 
@@ -27,30 +26,27 @@ const StudentContainer = async ({
   const { q = '' } = searchParams as TSearchParams;
 
   const data = await getStudentList({ q });
-
+  
   return (
-    <Box p="40px">
-      <HeaderBarStudent />
-      <Flex>
-        <Flex flexDirection="column" flex={1}>
-          <Box mt="42px">
-            <SearchInputWrapper placeholder={INPUT_PLACEHOLDER.TEACHER} />
-          </Box>
-          <Box mt="11px">
-            {data?.length ? (
-              <TableStudent data={data} />
-            ) : (
-              <NoResults
-                title={TITLE}
-                description={DESCRIPTION}
-                src="/no_notification.png"
-              />
-            )}
-          </Box>
-        </Flex>
-        {children}
+    <Flex>
+      <Flex flexDirection="column" flex={1}>
+        <Box mt="42px">
+          <SearchInputWrapper placeholder={INPUT_PLACEHOLDER.STUDENT} />
+        </Box>
+        <Box mt="11px">
+          {data?.length ? (
+            <TableStudent data={data} />
+          ) : (
+            <NoResults
+              title={TITLE}
+              description={DESCRIPTION}
+              src="/no_notification.png"
+            />
+          )}
+        </Box>
       </Flex>
-    </Box>
+      {children}
+    </Flex>
   );
 };
 
