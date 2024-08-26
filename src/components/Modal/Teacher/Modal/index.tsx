@@ -51,11 +51,15 @@ const TeacherModal = ({ onClose, defaultValues }: TeacherModalProps) => {
   const {
     handleSubmit,
     control,
+    setValue,
+    watch,
     formState: { isDirty, isValid, isSubmitting },
   } = useForm<ITeacher>({
     defaultValues,
     mode: 'onBlur',
   });
+
+  const watchAvatar = watch('avatar');
 
   const onSubmit = async (data: ITeacher) => {
     const {
@@ -235,10 +239,22 @@ const TeacherModal = ({ onClose, defaultValues }: TeacherModalProps) => {
           <Controller
             control={control}
             name="phoneNumber"
-            render={({ field }) => (
+            rules={{
+              required: VALIDATE_MESSAGE.EMPTY,
+              pattern: {
+                value: /^[0-9]{10}$/,
+                message: VALIDATE_MESSAGE.PHONE_NUMBER,
+              },
+            }}
+            render={({ field, fieldState: { error } }) => (
               <FormControl mt={4}>
                 <FormLabel>Phone number</FormLabel>
                 <Input {...field} />
+                {error?.message && (
+                    <FormHelperText color="red.400">
+                      {error.message}
+                    </FormHelperText>
+                  )}
               </FormControl>
             )}
           />
@@ -317,15 +333,19 @@ const TeacherModal = ({ onClose, defaultValues }: TeacherModalProps) => {
             <Controller
               control={control}
               name="avatar"
-              render={({ field: { name, value } }) => {
-                const handleChangeImage = () => {};
-                const handleRemoveImage = () => {};
+              render={({ field: { value } }) => {
+                const handleChangeImage = (url: string) => {
+                  setValue('avatar', url);
+                };
+
+                const handleRemoveImage = () => {
+                  setValue('avatar', '');
+                };
 
                 return (
                   <FormControl mt={4}>
                     <FormLabel>Upload Image</FormLabel>
                     <UploadImage
-                      name={name}
                       title="Upload Image"
                       width="full"
                       height="268px"
@@ -349,7 +369,7 @@ const TeacherModal = ({ onClose, defaultValues }: TeacherModalProps) => {
             isLoading={isSubmitting}
             type="submit"
             colorScheme="blue"
-            isDisabled={!isDirty || !isValid}
+            isDisabled={!isDirty || !isValid || !watchAvatar}
           >
             {defaultValues ? 'Edit Teacher' : 'Add Teacher'}
           </Button>

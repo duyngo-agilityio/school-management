@@ -5,8 +5,8 @@ interface UploadIconProps {
 }
 
 const UploadIcon = ({
-  width = '36px',
-  height = '36px',
+  width = '24px',
+  height = '24px',
   stroke = '#141B34',
 }: UploadIconProps) => {
   return (

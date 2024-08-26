@@ -25,7 +25,6 @@ import {
   Button,
   Flex,
   FormControl,
-  FormErrorMessage,
   FormHelperText,
   FormLabel,
   Input,
@@ -51,11 +50,15 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
   const {
     handleSubmit,
     control,
+    setValue,
+    watch,
     formState: { isSubmitting, isValid, isDirty },
   } = useForm<IStudent>({
     defaultValues,
     mode: 'onBlur',
   });
+
+  const watchAvatar = watch('avatar');
 
   const onSubmit = async (data: IStudent) => {
     const {
@@ -211,17 +214,28 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
           <Controller
             control={control}
             name="phoneNumber"
+            rules={{
+              required: VALIDATE_MESSAGE.EMPTY,
+              pattern: {
+                value: /^[0-9]{10}$/,
+                message: VALIDATE_MESSAGE.PHONE_NUMBER,
+              },
+            }}
             render={({ field, fieldState: { error } }) => (
               <FormControl mt={4}>
                 <FormLabel>Phone number</FormLabel>
                 <Input {...field} />
-                <FormErrorMessage>{error && error.message}</FormErrorMessage>
+                {error?.message && (
+                    <FormHelperText color="red.400">
+                      {error.message}
+                    </FormHelperText>
+                  )}
               </FormControl>
             )}
           />
         </Flex>
         <Flex flexDirection="row">
-          <Box  mr="45px" w="full">
+          <Box mr="45px" w="full">
             <Box mr="45px" w="full">
               <Controller
                 control={control}
@@ -285,15 +299,19 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
             <Controller
               control={control}
               name="avatar"
-              render={({ field: { name, value } }) => {
-                const handleChangeImage = () => {};
-                const handleRemoveImage = () => {};
+              render={({ field: { value } }) => {
+                const handleChangeImage = (url: string) => {
+                  setValue('avatar', url);
+                };
+
+                const handleRemoveImage = () => {
+                  setValue('avatar', '');
+                };
 
                 return (
                   <FormControl mt={4}>
                     <FormLabel>Upload Image</FormLabel>
                     <UploadImage
-                      name={name}
                       src={value}
                       title="Upload Image"
                       width="full"
@@ -318,7 +336,7 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
             isLoading={isSubmitting}
             type="submit"
             colorScheme="blue"
-            isDisabled={!isDirty || !isValid}
+            isDisabled={!isDirty || !isValid || !watchAvatar}
           >
             {defaultValues ? 'Edit Student' : 'Add Student'}
           </Button>
