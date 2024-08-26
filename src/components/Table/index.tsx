@@ -27,7 +27,7 @@ const Table = ({ columns, data }: TableProps) => {
         <TableHeader columns={columns} />
         <Tbody>
           {data.map((item, index) => {
-            const activeRow = param.id === item.id;
+            const activeRow = param?.id === item?.id;
             const bgColor = activeRow
               ? 'backgroundBlueHaveLock'
               : index % 2 === 0
