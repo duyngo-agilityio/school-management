@@ -43,6 +43,74 @@ exports[`Profile Component renders match with props variant is md 1`] = `
 </div>
 `;
 
+exports[`Profile Component renders match without props id 1`] = `
+<div>
+  <div
+    class="css-0"
+  >
+    <span
+      class="chakra-avatar css-1ruhx4w"
+    >
+      <div
+        aria-label="John"
+        class="chakra-avatar__initials css-0"
+        role="img"
+      >
+        J
+      </div>
+    </span>
+    <div
+      class="css-izuqqr"
+    >
+      <p
+        class="chakra-text css-0"
+      >
+        John
+      </p>
+      <p
+        class="chakra-text css-0"
+      >
+        Math Teacher
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Profile Component renders match without props subtile 1`] = `
+<div>
+  <div
+    class="css-0"
+  >
+    <div
+      class="css-s1wtk5"
+    >
+      <p
+        class="chakra-text css-0"
+      >
+        123
+      </p>
+      <span
+        class="chakra-avatar css-1ruhx4w"
+      >
+        <div
+          aria-label="John"
+          class="chakra-avatar__initials css-0"
+          role="img"
+        >
+          J
+        </div>
+      </span>
+    </div>
+    <p
+      class="chakra-text css-1isemmb"
+    >
+      John
+    </p>
+  </div>
+</div>
+`;
+
 exports[`Profile Component should match snapshot for Profile 1`] = `
 <div>
   <div
