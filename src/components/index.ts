@@ -11,3 +11,4 @@ export { default as HeaderBar } from './HeaderBar';
 export { default as Icon } from './Icon';
 export { default as StudentContainer } from './StudentContainer';
 export { default as UploadImage } from './UploadImage';
+export { default as LoadingIndicator } from './LoadingIndicator';

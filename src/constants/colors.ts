@@ -1,7 +1,7 @@
 const bluePallet = {
   zodiac: '#152259',
   koamaru: '#13296A',
-  havelock: '#509CDB',
+  havelock: '#1C5A8C',
   solitude: '#EBF6FF',
   catSkill: '#E2E8F0',
   linkWater: '#EFF3FA',
@@ -12,7 +12,7 @@ const grayPallet = {
   tundora: '#424242',
   emperor: '#4F4F4F',
   ash: '#8A8A8A',
-  slate: '#A7A7A7',
+  slate: '#595959',
   aluminum: '#BDBDBD',
 };
 

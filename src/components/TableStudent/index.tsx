@@ -117,12 +117,21 @@ const TableStudent = ({ data }: TableStudentProps) => {
 
         return (
           <>
-            <Button variant="none" mr="10px" onClick={handleShowEditModal(id)}>
+            <Button
+              variant="none"
+              mr="10px"
+              aria-label="Edit Button"
+              onClick={handleShowEditModal(id)}
+            >
               <PenIcon
                 stroke={active ? customColors.pure : customColors.emperor}
               />
             </Button>
-            <Button variant="none" onClick={handleShowConfirmModal(id)}>
+            <Button
+              variant="none"
+              aria-label="Delete Button"
+              onClick={handleShowConfirmModal(id)}
+            >
               <TrashIcon
                 stroke={active ? customColors.pure : customColors.emperor}
               />

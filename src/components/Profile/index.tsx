@@ -41,10 +41,10 @@ const Profile = ({ id, title, src, subTitle, variant }: ProfileProps) => {
       gap="12px"
     >
       <Text variant="tertiary">{id}</Text>
-      <Avatar src={src} size={variant} />
+      <Avatar src={src} size={variant} name={title} />
     </Flex>
   ) : (
-    <Avatar src={src} size={variant} />
+    <Avatar src={src} size={variant} name={title} />
   );
 
   const renderTitle = subTitle ? (

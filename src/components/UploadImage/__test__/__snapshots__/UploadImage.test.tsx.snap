@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UploadImage Component renders match snapshot 1`] = `
+<div>
+  <div
+    class="css-1ya6kzr"
+  >
+    <div
+      class="css-1jij6rs"
+    >
+      <div
+        class="css-0"
+      >
+        <p
+          class="chakra-text css-1yhdc23"
+        >
+          Upload Image
+        </p>
+      </div>
+      <input
+        accept="image/png, image/webp, image/jpeg"
+        class="chakra-input css-0"
+        data-testid="upload"
+        hidden=""
+        name="upload"
+        type="file"
+      />
+    </div>
+  </div>
+</div>
+`;
