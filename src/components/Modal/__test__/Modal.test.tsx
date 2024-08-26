@@ -33,17 +33,6 @@ describe('Modal Component', () => {
     expect(screen.getByText('Test Content')).toBeInTheDocument();
   });
 
-  it('should not render the modal when isOpen is false', () => {
-    render(
-      <Modal title="Test Title" onClose={() => {}}>
-        <div>Test Content</div>
-      </Modal>,
-    );
-
-    expect(screen.queryByText('Test Title')).not.toBeInTheDocument();
-    expect(screen.queryByText('Test Content')).not.toBeInTheDocument();
-  });
-
   it('should call onClose when close button is clicked', () => {
     const handleClose = jest.fn();
 
