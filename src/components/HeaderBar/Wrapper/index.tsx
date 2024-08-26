@@ -1,20 +1,18 @@
-'use client';
-
 // Libs
-import dynamic from 'next/dynamic';
-import { usePathname } from 'next/navigation';
-
-// Components
 import { Button, useDisclosure } from '@chakra-ui/react';
-import HeaderBar from '..';
+import { usePathname } from 'next/navigation';
+import dynamic from 'next/dynamic';
 
 // Constants
 import { ROUTES } from '@/constants';
 
+// Components
+import HeaderBar from '..';
+
 const TeacherModal = dynamic(() => import('@/components/Modal/Teacher/Modal'));
 const StudentModal = dynamic(() => import('@/components/Modal/Student/Modal'));
 
-const HeaderBarTeacher = () => {
+const HeaderBarWrapper = () => {
   const pathname = usePathname();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -39,4 +37,4 @@ const HeaderBarTeacher = () => {
   );
 };
 
-export default HeaderBarTeacher;
+export default HeaderBarWrapper;
