@@ -1,12 +1,16 @@
-import HeaderBarTeacher from '@/components/HeaderBar/Teacher';
+'use client';
 
-import { Box } from '@chakra-ui/react';
+// Libs
 import { ReactNode } from 'react';
+
+// Components
+import HeaderBarWrapper from '@/components/HeaderBar/Wrapper';
+import { Box } from '@chakra-ui/react';
 
 const LayoutContainer = ({ children }: { children: ReactNode }) => {
   return (
     <Box p="40px">
-      <HeaderBarTeacher />
+      <HeaderBarWrapper />
       {children}
     </Box>
   );
