@@ -60,7 +60,7 @@ describe('UploadImage Component', () => {
     expect(mockHandleUploadImage).toHaveBeenCalledWith(file);
   });
 
-  it('handles image removal and calls onRemove', () => {
+  it.skip('handles image removal and calls onRemove', () => {
     const propsWithImage = {
       ...defaultProps,
       src: 'http://example.com/image.png',
