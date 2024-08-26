@@ -3,6 +3,7 @@ export const VALIDATE_MESSAGE = {
   EMAIL: 'Invalid email',
   PASSWORD:
     'Password must be at least 8 characters, include an uppercase letter, a lowercase letter, a number, and a special character.',
+  PHONE_NUMBER: 'Invalid phone number format',
 };
 
 export const SUCCESS_MESSAGES = {
@@ -21,4 +22,10 @@ export const ERROR_MESSAGES = {
   DELETE_STUDENT: 'Delete Student failed!',
   EDIT_TEACHER: 'Edit Teacher failed!',
   EDIT_STUDENT: 'Edit Student failed!',
+  PAGE_NOT_FOUND: 'Page not found!',
+};
+
+export const ERROR_API = {
+  END_POINT: 'Something went wrong!!!',
+  NOT_FOUND: 'Not found',
 };
