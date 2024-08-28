@@ -8,3 +8,4 @@ export * from './contents';
 export * from './routes';
 export * from './env';
 export * from './tags';
+export * from './images';

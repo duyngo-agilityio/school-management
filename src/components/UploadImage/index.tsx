@@ -10,15 +10,18 @@ import {
   Box,
   Flex,
   IconButton,
-  Image,
   Input,
   Spinner,
   Text,
   useToast,
 } from '@chakra-ui/react';
+import CustomImage from '../CustomImage';
 
 // Hooks
 import { useUpload } from '@/hooks';
+
+// Constants
+import { BLUR_DATA_URL } from '@/constants';
 
 export interface IUploadImageProps {
   alt: string;
@@ -139,15 +142,16 @@ const UploadImage = ({
           w={width}
           h={height}
         >
-          <Box h={boxHeightImage} py={1}>
-            <Image
-              w="full"
-              h="full"
-              objectFit="contain"
-              src={previewImage}
+          <Flex alignItems="center" justifyContent="center" h={boxHeightImage}>
+            <CustomImage
               alt={alt}
+              src={previewImage}
+              width="200"
+              height="200"
+              style={{ objectFit: 'contain' }}
+              blurDataURL={BLUR_DATA_URL}
             />
-          </Box>
+          </Flex>
           <Flex pos="absolute" top={1} right={0}>
             <Box onClick={handleButtonClick}>
               <Input
