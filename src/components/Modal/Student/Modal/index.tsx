@@ -95,7 +95,7 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
 
     onClose();
 
-    push(ROUTES.TEACHER);
+    push(ROUTES.STUDENT);
 
     toast({
       title: dataResponse

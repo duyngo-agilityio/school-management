@@ -16,14 +16,14 @@ const HeaderBarWrapper = () => {
   const pathname = usePathname();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const renderButton =
-    pathname === ROUTES.STUDENT ? 'Add Student' : 'Add Teacher';
-  const renderModal =
-    pathname === ROUTES.STUDENT ? (
-      <StudentModal onClose={onClose} />
-    ) : (
-      <TeacherModal onClose={onClose} />
-    );
+  const renderButton = pathname.includes(ROUTES.STUDENT)
+    ? 'Add Student'
+    : 'Add Teacher';
+  const renderModal = pathname.includes(ROUTES.STUDENT) ? (
+    <StudentModal onClose={onClose} />
+  ) : (
+    <TeacherModal onClose={onClose} />
+  );
 
   return (
     <>
