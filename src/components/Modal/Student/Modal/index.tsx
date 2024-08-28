@@ -309,7 +309,7 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
 
                 return (
                   <FormControl mt={4}>
-                    <FormLabel>Upload Image</FormLabel>
+                    <FormLabel htmlFor="avatar">Upload Image</FormLabel>
                     <UploadImage
                       src={value}
                       title="Upload Image"
