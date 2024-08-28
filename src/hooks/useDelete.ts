@@ -14,9 +14,9 @@ export const useDelete = (deleteFunc: DeleteFunc, options: DeleteOptions) => {
   const toast = useToast();
 
   const handleSubmitDelete = async (id: string) => {
-    const isSuccess = await deleteFunc(id);
-
     onCloseConfirmModal();
+
+    const isSuccess = await deleteFunc(id);
 
     toast({
       title: isSuccess ? successMessage : errorMessage,
