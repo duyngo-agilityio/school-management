@@ -347,7 +347,7 @@ const TeacherModal = ({ onClose, defaultValues }: TeacherModalProps) => {
 
                 return (
                   <FormControl mt={4}>
-                    <FormLabel>Upload Image</FormLabel>
+                    <FormLabel htmlFor="avatar">Upload Image</FormLabel>
                     <UploadImage
                       title="Upload Image"
                       width="full"
