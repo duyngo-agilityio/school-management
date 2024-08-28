@@ -14,6 +14,7 @@ import {
   OPTIONS_SUBJECT,
   REGEX_EMAIL,
   REGEX_PASSWORD,
+  REGEX_PHONE_NUMBER,
   SUCCESS_MESSAGES,
   VALIDATE_MESSAGE,
 } from '@/constants';
@@ -212,7 +213,7 @@ const TeacherModal = ({ onClose, defaultValues }: TeacherModalProps) => {
           </Flex>
         </Flex>
         <Flex flexDirection="row">
-          <Box mr="45px" w="full">
+          <Box mr="45px" w="400px">
             <Controller
               control={control}
               name="password"
@@ -236,28 +237,30 @@ const TeacherModal = ({ onClose, defaultValues }: TeacherModalProps) => {
               )}
             />
           </Box>
-          <Controller
-            control={control}
-            name="phoneNumber"
-            rules={{
-              required: VALIDATE_MESSAGE.EMPTY,
-              pattern: {
-                value: /^[0-9]{10}$/,
-                message: VALIDATE_MESSAGE.PHONE_NUMBER,
-              },
-            }}
-            render={({ field, fieldState: { error } }) => (
-              <FormControl mt={4}>
-                <FormLabel>Phone number</FormLabel>
-                <Input {...field} />
-                {error?.message && (
+          <Box w="400px">
+            <Controller
+              control={control}
+              name="phoneNumber"
+              rules={{
+                required: VALIDATE_MESSAGE.EMPTY,
+                pattern: {
+                  value: REGEX_PHONE_NUMBER,
+                  message: VALIDATE_MESSAGE.PHONE_NUMBER,
+                },
+              }}
+              render={({ field, fieldState: { error } }) => (
+                <FormControl mt={4}>
+                  <FormLabel>Phone number</FormLabel>
+                  <Input {...field} />
+                  {error?.message && (
                     <FormHelperText color="red.400">
                       {error.message}
                     </FormHelperText>
                   )}
-              </FormControl>
-            )}
-          />
+                </FormControl>
+              )}
+            />
+          </Box>
         </Flex>
         <Flex flexDirection="row">
           <Box mr="45px" w="full">

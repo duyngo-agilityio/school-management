@@ -13,6 +13,7 @@ import {
   OPTIONS_GENDER,
   REGEX_EMAIL,
   REGEX_PASSWORD,
+  REGEX_PHONE_NUMBER,
   SUCCESS_MESSAGES,
   VALIDATE_MESSAGE,
 } from '@/constants';
@@ -217,7 +218,7 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
             rules={{
               required: VALIDATE_MESSAGE.EMPTY,
               pattern: {
-                value: /^[0-9]{10}$/,
+                value: REGEX_PHONE_NUMBER,
                 message: VALIDATE_MESSAGE.PHONE_NUMBER,
               },
             }}
@@ -226,40 +227,38 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
                 <FormLabel>Phone number</FormLabel>
                 <Input {...field} />
                 {error?.message && (
-                    <FormHelperText color="red.400">
-                      {error.message}
-                    </FormHelperText>
-                  )}
+                  <FormHelperText color="red.400">
+                    {error.message}
+                  </FormHelperText>
+                )}
               </FormControl>
             )}
           />
         </Flex>
         <Flex flexDirection="row">
-          <Box mr="45px" w="full">
-            <Box mr="45px" w="full">
-              <Controller
-                control={control}
-                name="password"
-                rules={{
-                  required: VALIDATE_MESSAGE.EMPTY,
-                  pattern: {
-                    value: REGEX_PASSWORD,
-                    message: VALIDATE_MESSAGE.PASSWORD,
-                  },
-                }}
-                render={({ field, fieldState: { error } }) => (
-                  <FormControl mt={4}>
-                    <FormLabel>Password</FormLabel>
-                    <PasswordInput {...field} />
-                    {error?.message && (
-                      <FormHelperText color="red.400" width="inherit">
-                        {error.message}
-                      </FormHelperText>
-                    )}
-                  </FormControl>
-                )}
-              />
-            </Box>
+          <Box mr="45px" w="400px">
+            <Controller
+              control={control}
+              name="password"
+              rules={{
+                required: VALIDATE_MESSAGE.EMPTY,
+                pattern: {
+                  value: REGEX_PASSWORD,
+                  message: VALIDATE_MESSAGE.PASSWORD,
+                },
+              }}
+              render={({ field, fieldState: { error } }) => (
+                <FormControl mt={4}>
+                  <FormLabel>Password</FormLabel>
+                  <PasswordInput {...field} />
+                  {error?.message && (
+                    <FormHelperText color="red.400" width="inherit">
+                      {error.message}
+                    </FormHelperText>
+                  )}
+                </FormControl>
+              )}
+            />
             <Controller
               control={control}
               name="age"
@@ -295,7 +294,7 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
               )}
             />
           </Box>
-          <Box w="full">
+          <Box w="400px">
             <Controller
               control={control}
               name="avatar"
