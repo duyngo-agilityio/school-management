@@ -2,6 +2,7 @@
 
 // Libs
 import { Controller, useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
 
 // Types
 import { IStudent } from '@/types';
@@ -14,6 +15,7 @@ import {
   REGEX_EMAIL,
   REGEX_PASSWORD,
   REGEX_PHONE_NUMBER,
+  ROUTES,
   SUCCESS_MESSAGES,
   VALIDATE_MESSAGE,
 } from '@/constants';
@@ -47,6 +49,7 @@ interface StudentModalProps {
 }
 
 const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
+  const { push } = useRouter();
   const toast = useToast();
   const {
     handleSubmit,
@@ -91,6 +94,8 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
       : await addStudent(payload);
 
     onClose();
+
+    push(ROUTES.TEACHER);
 
     toast({
       title: dataResponse
