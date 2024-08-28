@@ -143,14 +143,20 @@ const UploadImage = ({
           h={height}
         >
           <Flex alignItems="center" justifyContent="center" h={boxHeightImage}>
-            <CustomImage
-              alt={alt}
-              src={previewImage}
-              width="200"
-              height="200"
-              style={{ objectFit: 'contain' }}
-              blurDataURL={BLUR_DATA_URL}
-            />
+            {isLoading ? (
+              <Flex justifyContent="center" alignItems="center">
+                <Spinner label="Uploading..." />
+              </Flex>
+            ) : (
+              <CustomImage
+                alt={alt}
+                src={previewImage}
+                width="200"
+                height="200"
+                style={{ objectFit: 'contain' }}
+                blurDataURL={BLUR_DATA_URL}
+              />
+            )}
           </Flex>
           <Flex pos="absolute" top={1} right={0}>
             <Box onClick={handleButtonClick}>
