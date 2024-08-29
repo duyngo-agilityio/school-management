@@ -1,5 +1,5 @@
 // Libs
-import { ReactNode } from 'react';
+import { memo, ReactNode } from 'react';
 import Link from 'next/link';
 
 // Components
@@ -58,4 +58,4 @@ const NavItem = ({ icon, children, href, isActive, ...rest }: NavItemProps) => (
   </Link>
 );
 
-export default NavItem;
+export default memo(NavItem);

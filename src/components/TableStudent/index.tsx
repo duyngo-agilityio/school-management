@@ -3,7 +3,8 @@
 // Libs
 import dynamic from 'next/dynamic';
 import { useParams, useRouter } from 'next/navigation';
-import { Suspense, useState } from 'react';
+import { memo, Suspense, useState } from 'react';
+import isEqual from 'react-fast-compare';
 
 // Components
 import { Box, Button, useDisclosure } from '@chakra-ui/react';
@@ -164,4 +165,4 @@ const TableStudent = ({ data }: TableStudentProps) => {
   );
 };
 
-export default TableStudent;
+export default memo(TableStudent, isEqual);

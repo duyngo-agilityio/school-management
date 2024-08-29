@@ -3,6 +3,8 @@
 // Libs
 import { Controller, useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
+import isEqual from 'react-fast-compare';
+import { memo } from 'react';
 
 // Types
 import { IStudent } from '@/types';
@@ -357,4 +359,4 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
   );
 };
 
-export default StudentModal;
+export default memo(StudentModal, isEqual);

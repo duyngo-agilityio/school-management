@@ -1,3 +1,6 @@
+// Libs
+import { memo } from 'react';
+
 // Components
 import { Button, Flex, Text } from '@chakra-ui/react';
 import Modal from '..';
@@ -32,4 +35,4 @@ const ConfirmModal = ({
   );
 };
 
-export default ConfirmModal;
+export default memo(ConfirmModal);

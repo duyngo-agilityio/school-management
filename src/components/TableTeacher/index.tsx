@@ -5,7 +5,8 @@ import dynamic from 'next/dynamic';
 
 // Libs
 import { useParams, useRouter } from 'next/navigation';
-import { Suspense, useState } from 'react';
+import { memo, Suspense, useState } from 'react';
+import isEqual from 'react-fast-compare';
 
 // Components
 import Table from '../Table';
@@ -165,4 +166,4 @@ export const TableTeacher = ({ data }: TableTeacherProps) => {
   );
 };
 
-export default TableTeacher;
+export default memo(TableTeacher, isEqual);
