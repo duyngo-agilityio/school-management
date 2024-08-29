@@ -4,8 +4,7 @@
 import dynamic from 'next/dynamic';
 
 // Libs
-import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { Suspense, useState } from 'react';
 
 // Components
@@ -53,6 +52,8 @@ export const TableTeacher = ({ data }: TableTeacherProps) => {
     onClose: onCloseConfirmModal,
   } = useDisclosure();
 
+  const { push } = useRouter();
+
   const param = useParams<{ id: string }>();
 
   const [idItem, setIdItem] = useState<string>('');
@@ -77,16 +78,16 @@ export const TableTeacher = ({ data }: TableTeacherProps) => {
     handleSubmitDelete(idItem);
   };
 
+  const handleNavigate = (id: string) => {
+    push(`${ROUTES.TEACHER}/${id}`);
+  };
+
   const COLUMNS_TEACHER: IFiledNameColumns[] = [
     {
       field: COLUMNS.FIELDS.NAME,
       headerName: COLUMNS.HEADER_NAME.NAME,
-      render: ({ fullName, avatar, id }: ITeacher) => {
-        return (
-          <Link href={`${ROUTES.TEACHER}/${id}`}>
-            <Profile src={avatar} title={fullName} variant="xs" />
-          </Link>
-        );
+      render: ({ fullName, avatar }: ITeacher) => {
+        return <Profile src={avatar} title={fullName} variant="xs" />;
       },
     },
     {
@@ -113,6 +114,7 @@ export const TableTeacher = ({ data }: TableTeacherProps) => {
     {
       field: COLUMNS.FIELDS.ACTION,
       headerName: COLUMNS.HEADER_NAME.ACTION,
+      type: COLUMNS.TYPE.ACTION,
       render: ({ id }: ITeacher) => {
         const active = param.id === id;
 
@@ -158,7 +160,7 @@ export const TableTeacher = ({ data }: TableTeacherProps) => {
           onSubmit={handleDelete}
         />
       )}
-      <Table columns={COLUMNS_TEACHER} data={data} />
+      <Table columns={COLUMNS_TEACHER} data={data} onClick={handleNavigate} />
     </>
   );
 };

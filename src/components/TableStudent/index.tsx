@@ -1,9 +1,8 @@
 'use client';
 
 // Libs
-import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { Suspense, useState } from 'react';
 
 // Components
@@ -52,6 +51,8 @@ const TableStudent = ({ data }: TableStudentProps) => {
     onClose: onCloseConfirmModal,
   } = useDisclosure();
 
+  const { push } = useRouter();
+
   const param = useParams<{ id: string }>();
 
   const [idItem, setIdItem] = useState<string>('');
@@ -76,16 +77,16 @@ const TableStudent = ({ data }: TableStudentProps) => {
     handleSubmitDelete(idItem);
   };
 
+  const handleNavigate = (id: string) => {
+    push(`${ROUTES.STUDENT}/${id}`);
+  };
+
   const COLUMNS_STUDENT = [
     {
       field: COLUMNS.FIELDS.NAME,
       headerName: COLUMNS.HEADER_NAME.NAME,
-      render: ({ fullName, avatar, id }: IStudent) => {
-        return (
-          <Link href={`${ROUTES.STUDENT}/${id}`} prefetch>
-            <Profile src={avatar} title={fullName} variant="xs" />
-          </Link>
-        );
+      render: ({ fullName, avatar }: IStudent) => {
+        return <Profile src={avatar} title={fullName} variant="xs" />;
       },
     },
     {
@@ -112,6 +113,7 @@ const TableStudent = ({ data }: TableStudentProps) => {
     {
       field: COLUMNS.FIELDS.ACTION,
       headerName: COLUMNS.HEADER_NAME.ACTION,
+      type: COLUMNS.TYPE.ACTION,
       render: ({ id }: IStudent) => {
         const active = param.id === id;
 
@@ -157,7 +159,7 @@ const TableStudent = ({ data }: TableStudentProps) => {
           subTitle="Are you sure you want to delete this Student?"
         />
       )}
-      <Table columns={COLUMNS_STUDENT} data={data} />
+      <Table columns={COLUMNS_STUDENT} data={data} onClick={handleNavigate} />
     </>
   );
 };

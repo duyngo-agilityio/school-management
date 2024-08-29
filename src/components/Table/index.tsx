@@ -16,9 +16,10 @@ import { IFiledNameColumns, TDataType } from '@/types';
 interface TableProps {
   columns: IFiledNameColumns[];
   data: TDataType[];
+  onClick: (id: string) => void;
 }
 
-const Table = ({ columns, data }: TableProps) => {
+const Table = ({ columns, data, onClick }: TableProps) => {
   const param = useParams<{ id: string }>();
 
   return (
@@ -44,7 +45,12 @@ const Table = ({ columns, data }: TableProps) => {
                 borderBottom="none"
               >
                 {columns.map((column) => (
-                  <TableCell key={column.field} column={column} item={item} />
+                  <TableCell
+                    key={column.field}
+                    column={column}
+                    item={item}
+                    onClick={onClick}
+                  />
                 ))}
               </TableRow>
             );
