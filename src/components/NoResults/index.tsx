@@ -1,7 +1,11 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 // Components
 import { Flex, Text } from '@chakra-ui/react';
+
+// Constants
+import { PAGE_NOT_FOUND_IMAGE, ROUTES } from '@/constants';
 
 interface NoResultsProps {
   title: string;
@@ -12,7 +16,7 @@ interface NoResultsProps {
 }
 
 const NoResults = ({
-  src = '',
+  src = PAGE_NOT_FOUND_IMAGE,
   title,
   description,
   width = 340,
@@ -27,6 +31,7 @@ const NoResults = ({
       <Text variant="primary" size="sm" mt="4px">
         {description}
       </Text>
+      <Link href={ROUTES.STUDENT}>Back to Student List</Link>
     </Flex>
   );
 };

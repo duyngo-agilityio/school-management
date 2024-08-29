@@ -12,6 +12,7 @@ import { INPUT_PLACEHOLDER, NOTFOUND } from '@/constants';
 // Types
 import { TSearchParams } from '@/types';
 import { getStudentList } from '@/services';
+import { notFound } from 'next/navigation';
 
 interface StudentContainerProps {
   children?: ReactNode;
@@ -26,7 +27,9 @@ const StudentContainer = async ({
   const { q = '' } = searchParams as TSearchParams;
 
   const data = await getStudentList({ q });
-  
+
+  if (!data) notFound();
+
   return (
     <Flex>
       <Flex flexDirection="column" flex={1}>

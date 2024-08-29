@@ -1,3 +1,6 @@
+// Libs
+import { notFound } from 'next/navigation';
+
 // Constants
 import { INPUT_PLACEHOLDER, NOTFOUND } from '@/constants';
 
@@ -24,6 +27,8 @@ const TableStudentWrapper = async ({
   const { q = '' } = searchParams as TSearchParams;
 
   const data = await getStudentList({ q });
+
+  if (!data) notFound();
 
   return (
     <>

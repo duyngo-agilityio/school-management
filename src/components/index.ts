@@ -14,3 +14,4 @@ export { default as UploadImage } from './UploadImage';
 export { default as LoadingIndicator } from './LoadingIndicator';
 export { default as InfoStudent } from './InfoStudent';
 export { default as TableStudentWrapper } from './TableStudentWrapper';
+export { default as ErrorBoundary } from './ErrorBoundary';

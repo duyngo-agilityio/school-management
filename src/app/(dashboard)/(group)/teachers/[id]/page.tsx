@@ -1,3 +1,6 @@
+// Libs
+import { notFound } from 'next/navigation';
+
 // Components
 import { Icon, Profile } from '@/components';
 import SearchInputWrapper from '@/components/SearchInput/Wrapper';
@@ -21,6 +24,8 @@ const TeacherDetails = async ({ params }: { params: { id: string } }) => {
     gender = 0,
     subject = '',
   } = data;
+
+  if (!data) notFound();
 
   return (
     <>
