@@ -8,6 +8,7 @@ import {
   Text,
   useStyleConfig,
 } from '@chakra-ui/react';
+import { memo } from 'react';
 
 export type TCustomFlex = 'xs' | 'sm' | 'md' | 'lg';
 
@@ -66,4 +67,4 @@ const Profile = ({ id, title, src, subTitle, variant }: ProfileProps) => {
   );
 };
 
-export default Profile;
+export default memo(Profile);

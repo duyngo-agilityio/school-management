@@ -1,6 +1,6 @@
 'use client';
 
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, memo, useState } from 'react';
 
 // Icons
 import { SearchIcon } from '@/icons';
@@ -66,4 +66,4 @@ const SearchInput = ({
   );
 };
 
-export default SearchInput;
+export default memo(SearchInput);
