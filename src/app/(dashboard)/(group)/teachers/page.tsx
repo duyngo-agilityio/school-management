@@ -1,3 +1,6 @@
+// Libs
+import { notFound } from 'next/navigation';
+
 // Components
 import { NotFound, TableTeacher } from '@/components';
 import { Box } from '@chakra-ui/react';
@@ -17,6 +20,8 @@ const Teachers = async ({ searchParams }: { searchParams?: TSearchParams }) => {
   const { TITLE, DESCRIPTION } = NOTFOUND.STUDENT;
 
   const data = await getTeacherList({ q });
+
+  if (!data) notFound();
 
   return (
     <>

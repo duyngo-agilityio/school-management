@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic';
 
 // Services
 import { getStudentById } from '@/services';
+import { notFound } from 'next/navigation';
 
 const StudentModal = dynamic(() => import('../Modal'));
 
@@ -16,6 +17,8 @@ const StudentModalWrapper = async ({
   onClose,
 }: StudentModalWrapperProps) => {
   const data = await getStudentById(id);
+
+  if (!data) notFound();
 
   return <StudentModal defaultValues={data} onClose={onClose} />;
 };

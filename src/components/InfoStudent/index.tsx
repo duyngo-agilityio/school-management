@@ -8,18 +8,16 @@ import Profile from '../Profile';
 
 // Services
 import { getStudentById } from '@/services';
+import { notFound } from 'next/navigation';
 
 const InfoStudent = async ({ params }: { params: { id: string } }) => {
-  const { age, fullName, gender, id, avatar, description } =
-    await getStudentById(params.id);
+  const data = await getStudentById(params.id);
+  const { age, fullName, gender, id, avatar, description } = data;
+
+  if (!data) notFound();
 
   return (
-    <Flex
-      flexDirection="column"
-      alignItems="center"
-      px="39px"
-      mt="45px"
-    >
+    <Flex flexDirection="column" alignItems="center" px="39px" mt="45px">
       <Profile
         id={id}
         title={fullName}
