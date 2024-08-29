@@ -17,4 +17,7 @@ export const COLUMNS = {
     STUDENT_ID: 'Student ID',
     ACTION: 'Action',
   },
+  TYPE: {
+    ACTION: 'action',
+  },
 };
