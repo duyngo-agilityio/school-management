@@ -1,5 +1,6 @@
 // Libs
 import { Suspense } from 'react';
+import { Metadata } from 'next';
 
 // Components
 import {
@@ -11,6 +12,47 @@ import { Box, Flex } from '@chakra-ui/react';
 
 // Types
 import { TSearchParams } from '@/types';
+
+// Services
+import { getStudentById } from '@/services';
+
+interface StudentDetailPageProps {
+  params: {
+    id: string;
+  };
+}
+
+export const generateMetadata = async ({
+  params: { id },
+}: StudentDetailPageProps): Promise<Metadata> => {
+  const data = await getStudentById(id);
+
+  if (!data) {
+    return {};
+  }
+
+  const { fullName, avatar = '', className } = data;
+
+  return {
+    title: fullName,
+    authors: { name: fullName },
+    description: `Get to know ${fullName}, a student in class ${className}. Explore their academic journey, personal background, and unique contributions to the school community.`,
+    keywords: fullName,
+    openGraph: {
+      title: fullName,
+      description: `Get to know ${fullName}, a student in class ${className}. Explore their academic journey, personal background, and unique contributions to the school community.`,
+      url: `https://data-school-management.onrender.com/students/${id}`,
+      images: [
+        {
+          url: avatar,
+          width: 700,
+          height: 300,
+          alt: fullName,
+        },
+      ],
+    },
+  };
+};
 
 const StudentDetails = async ({
   searchParams,

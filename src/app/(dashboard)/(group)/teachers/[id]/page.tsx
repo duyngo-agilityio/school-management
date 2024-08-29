@@ -13,6 +13,45 @@ import { createIcons } from '@/utils';
 
 // Components
 import { Box, Flex, Text } from '@chakra-ui/react';
+import { Metadata } from 'next';
+
+interface TeacherDetailPageProps {
+  params: {
+    id: string;
+  };
+}
+
+export const generateMetadata = async ({
+  params: { id },
+}: TeacherDetailPageProps): Promise<Metadata> => {
+  const data = await getTeacherById(id);
+
+  if (!data) {
+    return {};
+  }
+
+  const { fullName, avatar = '', subject = 'Math' } = data;
+
+  return {
+    title: fullName,
+    authors: { name: fullName },
+    description: `Learn more about ${fullName}, an experienced ${subject} teacher. Discover their educational background, teaching approach, and contributions to student success.`,
+    keywords: fullName,
+    openGraph: {
+      title: fullName,
+      description: `Learn more about ${fullName}, an experienced ${subject} teacher. Discover their educational background, teaching approach, and contributions to student success.`,
+      url: `https://data-school-management.onrender.com/teachers/${id}`,
+      images: [
+        {
+          url: avatar,
+          width: 700,
+          height: 300,
+          alt: fullName,
+        },
+      ],
+    },
+  };
+};
 
 const TeacherDetails = async ({ params }: { params: { id: string } }) => {
   const data = await getTeacherById(params.id);
