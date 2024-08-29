@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import { FieldError } from 'react-hook-form';
 
 // Icons
 import { TrashIcon, UploadIcon } from '@/icons';
@@ -32,6 +33,7 @@ export interface IUploadImageProps {
   src?: string;
   onChange?: (url: string) => void;
   onRemove?: () => void;
+  error?: FieldError;
 }
 
 const UploadImage = ({
@@ -43,6 +45,7 @@ const UploadImage = ({
   src,
   onChange,
   onRemove,
+  error,
 }: IUploadImageProps) => {
   const [previewImage, setPreviewImage] = useState(src);
 
@@ -98,7 +101,7 @@ const UploadImage = ({
           h={height}
           flexDirection="column"
           border="1px solid"
-          borderColor="borderCatSkill"
+          borderColor={error ? 'error.400' : 'borderCatSkill'}
           borderRadius="md"
           alignItems="center"
         >

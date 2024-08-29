@@ -127,7 +127,7 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
               render={({ field, fieldState: { error } }) => (
                 <FormControl mt={4}>
                   <FormLabel>Full name</FormLabel>
-                  <Input {...field} />
+                  <Input {...field} borderColor={error && 'red.400'} />
                   {error?.message && (
                     <FormHelperText color="red.400">
                       {error.message}
@@ -155,6 +155,7 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
                     value={value}
                     options={OPTIONS_CLASS}
                     placeholder="Class"
+                    borderColor={error && 'red.400'}
                   />
                   {error?.message && (
                     <FormHelperText color="red.400">
@@ -181,6 +182,7 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
                     value={value}
                     placeholder="Gender"
                     options={OPTIONS_GENDER}
+                    borderColor={error && 'red.400'}
                   />
                   {error?.message && (
                     <FormHelperText color="red.400">
@@ -207,7 +209,7 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
               render={({ field, fieldState: { error } }) => (
                 <FormControl mt={4}>
                   <FormLabel>Email address</FormLabel>
-                  <Input {...field} />
+                  <Input {...field} borderColor={error && 'red.400'} />
                   {error?.message && (
                     <FormHelperText color="red.400">
                       {error.message}
@@ -230,7 +232,7 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
             render={({ field, fieldState: { error } }) => (
               <FormControl mt={4}>
                 <FormLabel>Phone number</FormLabel>
-                <Input {...field} />
+                <Input {...field} borderColor={error && 'red.400'} />
                 {error?.message && (
                   <FormHelperText color="red.400">
                     {error.message}
@@ -255,7 +257,7 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
               render={({ field, fieldState: { error } }) => (
                 <FormControl mt={4}>
                   <FormLabel>Password</FormLabel>
-                  <PasswordInput {...field} />
+                  <PasswordInput {...field} error={error} />
                   {error?.message && (
                     <FormHelperText color="red.400" width="inherit">
                       {error.message}
@@ -273,7 +275,11 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
               }) => (
                 <FormControl mt={4}>
                   <FormLabel>Age</FormLabel>
-                  <NumberInput {...restField} defaultValue={16}>
+                  <NumberInput
+                    {...restField}
+                    defaultValue={16}
+                    borderColor={error && 'red.400'}
+                  >
                     <NumberInputField ref={ref} name={restField.name} />
                     <NumberInputStepper>
                       <NumberIncrementStepper />
@@ -303,7 +309,7 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
             <Controller
               control={control}
               name="avatar"
-              render={({ field: { value } }) => {
+              render={({ field: { value }, fieldState: { error } }) => {
                 const handleChangeImage = (url: string) => {
                   setValue('avatar', url);
                 };
@@ -324,6 +330,7 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
                       alt="Avatar Image"
                       onChange={handleChangeImage}
                       onRemove={handleRemoveImage}
+                      error={error}
                     />
                   </FormControl>
                 );
