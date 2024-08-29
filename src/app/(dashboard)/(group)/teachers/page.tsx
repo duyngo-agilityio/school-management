@@ -1,5 +1,6 @@
 // Libs
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 
 // Components
 import { NotFound, TableTeacher } from '@/components';
@@ -14,6 +15,13 @@ import { TSearchParams } from '@/types';
 
 // Constants
 import { INPUT_PLACEHOLDER, NOTFOUND } from '@/constants';
+
+export const metadata: Metadata = {
+  title: 'Teachers',
+  description:
+    'Explore our dedicated Teachers page, featuring profiles, qualifications, and expertise of our faculty members to support student success.',
+};
+
 
 const Teachers = async ({ searchParams }: { searchParams?: TSearchParams }) => {
   const { q = '' } = searchParams as TSearchParams;
