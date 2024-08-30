@@ -1,14 +1,14 @@
 'use client';
 
-// Components
-import {
-  Avatar,
-  Flex,
-  FlexProps,
-  Text,
-  useStyleConfig,
-} from '@chakra-ui/react';
+// Libs
 import { memo } from 'react';
+import Image from 'next/image';
+
+// Constants
+import { BLUR_DATA_URL } from '@/constants';
+
+// Components
+import { Box, Flex, FlexProps, Text, useStyleConfig } from '@chakra-ui/react';
 
 export type TCustomFlex = 'xs' | 'sm' | 'md' | 'lg';
 
@@ -30,9 +30,37 @@ const CustomFlex = ({ variant, ...props }: CustomFlexProps) => {
   return <Flex __css={styles} {...props} />;
 };
 
-const Profile = ({ id, title, src, subTitle, variant }: ProfileProps) => {
+const Profile = ({ id, title, src = '', subTitle, variant }: ProfileProps) => {
   const variantText = `profile_${variant}`;
   const ml = variant === 'xs' ? '8px' : '';
+
+  const generateSize = (size: string) => {
+    switch (size) {
+      case 'xs':
+        return {
+          width: '24px',
+          height: '24px',
+        };
+
+      case 'sm':
+        return {
+          width: '65px',
+          height: '65px',
+        };
+
+      case 'md':
+        return {
+          width: '180px',
+          height: '180px',
+        };
+
+      case 'lg':
+        return {
+          width: '280px',
+          height: '280px',
+        };
+    }
+  };
 
   const renderAvatar = id ? (
     <Flex
@@ -42,10 +70,28 @@ const Profile = ({ id, title, src, subTitle, variant }: ProfileProps) => {
       gap="12px"
     >
       <Text variant="tertiary">{id}</Text>
-      <Avatar src={src} size={variant} name={title} />
+      <Box pos="relative" style={generateSize(variant)}>
+        <Image
+          alt={title}
+          src={src}
+          fill
+          placeholder="blur"
+          blurDataURL={BLUR_DATA_URL}
+          style={{ borderRadius: '50%' }}
+        />
+      </Box>
     </Flex>
   ) : (
-    <Avatar src={src} size={variant} name={title} />
+    <Box pos="relative" style={generateSize(variant)}>
+      <Image
+        alt={title}
+        src={src}
+        fill
+        placeholder="blur"
+        blurDataURL={BLUR_DATA_URL}
+        style={{ borderRadius: '50%' }}
+      />
+    </Box>
   );
 
   const renderTitle = subTitle ? (
