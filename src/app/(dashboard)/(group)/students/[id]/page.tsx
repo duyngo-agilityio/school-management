@@ -3,12 +3,10 @@ import { Suspense } from 'react';
 import { Metadata } from 'next';
 
 // Components
-import {
-  InfoStudent,
-  LoadingIndicator,
-  TableStudentWrapper,
-} from '@/components';
+import { InfoStudent, TableStudentWrapper } from '@/components';
 import { Box, Flex } from '@chakra-ui/react';
+import TableSkeleton from '@/components/Skeleton/TableSkeleton';
+import StudentDetailSkeleton from '@/components/Skeleton/StudentDetailSkeleton';
 
 // Types
 import { TSearchParams } from '@/types';
@@ -65,13 +63,13 @@ const StudentDetails = async ({
     <Flex>
       <Flex flexDirection="column" flex={1}>
         <Box w="full" mt="11px">
-          <Suspense fallback={<LoadingIndicator />}>
+          <Suspense fallback={<TableSkeleton />}>
             <TableStudentWrapper searchParams={searchParams} />
           </Suspense>
         </Box>
       </Flex>
       <Box w="313px">
-        <Suspense fallback={<LoadingIndicator />}>
+        <Suspense fallback={<StudentDetailSkeleton />}>
           <InfoStudent params={params} />
         </Suspense>
       </Box>
