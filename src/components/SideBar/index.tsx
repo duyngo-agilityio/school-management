@@ -4,6 +4,8 @@
 import { Box } from '@chakra-ui/react';
 import Profile from '../Profile';
 import Navbar from '../Navbar';
+import Link from 'next/link';
+import { ROUTES } from '@/constants';
 
 const Sidebar = () => {
   return (
@@ -15,7 +17,9 @@ const Sidebar = () => {
       h="full"
     >
       <Box borderBottom="1px" borderBottomColor="borderSecondary">
-        <Profile src="/logo.png" title="Udemy Inter. school" variant="sm" />
+        <Link href={`${ROUTES.DASHBOARD}`}>
+          <Profile src="/logo.png" title="Udemy Inter. school" variant="sm" />
+        </Link>
       </Box>
       <Navbar />
     </Box>
