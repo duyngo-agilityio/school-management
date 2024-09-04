@@ -150,13 +150,13 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
                 field: { value, onChange },
                 fieldState: { error },
               }) => (
-                <FormControl mt={12} mr="45px">
+                <FormControl mt={4} mr="45px">
+                  <FormLabel>Class</FormLabel>
                   <Dropdown
                     width="179px"
                     onChangeValue={onChange}
                     value={value}
                     options={OPTIONS_CLASS}
-                    placeholder="Class"
                     borderColor={error && 'red.400'}
                   />
                   {error?.message && (
@@ -177,12 +177,12 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
                 field: { value, onChange },
                 fieldState: { error },
               }) => (
-                <FormControl mt={12}>
+                <FormControl mt={4}>
+                  <FormLabel>Gender</FormLabel>
                   <Dropdown
                     width="179px"
                     onChangeValue={onChange}
                     value={value}
-                    placeholder="Gender"
                     options={OPTIONS_GENDER}
                     borderColor={error && 'red.400'}
                   />
