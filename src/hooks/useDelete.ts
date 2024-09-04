@@ -1,6 +1,7 @@
+import { IStudent } from '@/types';
 import { useToast } from '@chakra-ui/react';
 
-type DeleteFunc = (id: string) => Promise<boolean>;
+type DeleteFunc = (id: string) => Promise<IStudent>;
 
 interface DeleteOptions {
   successMessage: string;
