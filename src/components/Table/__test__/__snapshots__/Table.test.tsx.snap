@@ -33,12 +33,12 @@ exports[`Table Component should match the snapshot 1`] = `
           class="css-1t3b6fg"
         >
           <td
-            class="css-4e3ndm"
+            class="css-bpcy4k"
           >
             1
           </td>
           <td
-            class="css-4e3ndm"
+            class="css-bpcy4k"
           >
             Item 1
           </td>
@@ -47,12 +47,12 @@ exports[`Table Component should match the snapshot 1`] = `
           class="css-bgbn71"
         >
           <td
-            class="css-4e3ndm"
+            class="css-bpcy4k"
           >
             2
           </td>
           <td
-            class="css-4e3ndm"
+            class="css-bpcy4k"
           >
             Item 2
           </td>
@@ -61,12 +61,12 @@ exports[`Table Component should match the snapshot 1`] = `
           class="css-pb1fbr"
         >
           <td
-            class="css-4e3ndm"
+            class="css-bpcy4k"
           >
             3
           </td>
           <td
-            class="css-4e3ndm"
+            class="css-bpcy4k"
           >
             Item 3
           </td>

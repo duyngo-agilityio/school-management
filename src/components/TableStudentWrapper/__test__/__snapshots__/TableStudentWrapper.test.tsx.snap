@@ -1,0 +1,831 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableStudentWrapper component should match snapshot 1`] = `
+<div>
+  <div
+    class="css-dxx3wj"
+  >
+    <div
+      class="chakra-input__group css-ck76jc"
+      data-group="true"
+    >
+      <div
+        class="chakra-input__left-element css-o84xzr"
+        style="cursor: pointer;"
+      >
+        <svg
+          class="chakra-icon css-nyt2fo"
+          focusable="false"
+          viewBox="0 0 17 16"
+        >
+          <g
+            clip-path="url(#clip0_16_102)"
+          >
+            <path
+              d="M12.0725 10.344C13.0408 9.0227 13.4745 7.3845 13.2869 5.75716C13.0992 4.12982 12.304 2.63335 11.0603 1.56714C9.81666 0.50093 8.2163 -0.0563875 6.57938 0.00668566C4.94247 0.0697588 3.38973 0.748571 2.23182 1.90732C1.0739 3.06606 0.396199 4.61929 0.334297 6.25624C0.272396 7.8932 0.830858 9.49317 1.89796 10.7361C2.96505 11.9789 4.46209 12.7731 6.08957 12.9596C7.71704 13.1461 9.35493 12.7112 10.6755 11.742H10.6745C10.7045 11.782 10.7365 11.82 10.7725 11.857L14.6225 15.707C14.8101 15.8946 15.0644 16.0001 15.3297 16.0002C15.595 16.0003 15.8494 15.895 16.037 15.7075C16.2247 15.52 16.3302 15.2656 16.3303 15.0004C16.3303 14.7351 16.2251 14.4806 16.0375 14.293L12.1875 10.443C12.1518 10.4068 12.1134 10.3734 12.0725 10.343V10.344ZM12.3305 6.50001C12.3305 7.22228 12.1883 7.93748 11.9119 8.60477C11.6355 9.27206 11.2304 9.87837 10.7196 10.3891C10.2089 10.8998 9.6026 11.3049 8.93531 11.5813C8.26802 11.8577 7.55282 12 6.83055 12C6.10828 12 5.39308 11.8577 4.72579 11.5813C4.0585 11.3049 3.45218 10.8998 2.94146 10.3891C2.43074 9.87837 2.02561 9.27206 1.74921 8.60477C1.47281 7.93748 1.33055 7.22228 1.33055 6.50001C1.33055 5.04132 1.91001 3.64237 2.94146 2.61092C3.97291 1.57947 5.37186 1.00001 6.83055 1.00001C8.28924 1.00001 9.68819 1.57947 10.7196 2.61092C11.7511 3.64237 12.3305 5.04132 12.3305 6.50001Z"
+              fill="currentColor"
+            />
+          </g>
+          <defs>
+            <clippath
+              id="clip0_16_102"
+            >
+              <rect
+                fill="white"
+                height="16"
+                transform="translate(0.330566)"
+                width="16"
+              />
+            </clippath>
+          </defs>
+        </svg>
+      </div>
+      <input
+        class="chakra-input css-nqkltn"
+        placeholder="Search for a student by name or email"
+        value="1"
+      />
+      <div
+        class="chakra-input__right-element css-dp9r5f"
+      >
+        <svg
+          baseProfile="tiny"
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          stroke-width="0"
+          style="cursor: pointer;"
+          version="1.2"
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 3c-4.963 0-9 4.038-9 9s4.037 9 9 9 9-4.038 9-9-4.037-9-9-9zm0 16c-3.859 0-7-3.14-7-7s3.141-7 7-7 7 3.14 7 7-3.141 7-7 7zM12.707 12l2.646-2.646c.194-.194.194-.512 0-.707-.195-.194-.513-.194-.707 0l-2.646 2.646-2.646-2.647c-.195-.194-.513-.194-.707 0-.195.195-.195.513 0 .707l2.646 2.647-2.646 2.646c-.195.195-.195.513 0 .707.097.098.225.147.353.147s.256-.049.354-.146l2.646-2.647 2.646 2.646c.098.098.226.147.354.147s.256-.049.354-.146c.194-.194.194-.512 0-.707l-2.647-2.647z"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div
+    class="chakra-table__container css-zipzvv"
+  >
+    <table
+      class="chakra-table css-0"
+    >
+      <thead
+        class="css-0"
+      >
+        <tr
+          class="css-0"
+        >
+          <th
+            class="css-ujzx5o"
+          >
+            Name
+          </th>
+          <th
+            class="css-ujzx5o"
+          >
+            Student ID
+          </th>
+          <th
+            class="css-ujzx5o"
+          >
+            Email Address
+          </th>
+          <th
+            class="css-ujzx5o"
+          >
+            Class
+          </th>
+          <th
+            class="css-ujzx5o"
+          >
+            Gender
+          </th>
+          <th
+            class="css-ujzx5o"
+          >
+            Action
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="css-0"
+      >
+        <tr
+          class="css-pb1fbr"
+        >
+          <td
+            class="css-bpcy4k"
+          >
+            <div
+              class="css-0"
+            >
+              <div
+                class="css-79elbk"
+                style="width: 24px; height: 24px;"
+              >
+                <img
+                  alt="Stacy Prohaska"
+                  data-nimg="fill"
+                  decoding="async"
+                  loading="lazy"
+                  sizes="100vw"
+                  src="/_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F922.jpg&w=3840&q=75"
+                  srcset="/_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F922.jpg&w=640&q=75 640w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F922.jpg&w=750&q=75 750w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F922.jpg&w=828&q=75 828w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F922.jpg&w=1080&q=75 1080w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F922.jpg&w=1200&q=75 1200w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F922.jpg&w=1920&q=75 1920w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F922.jpg&w=2048&q=75 2048w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F922.jpg&w=3840&q=75 3840w"
+                  style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent; border-radius: 50%; background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"
+                />
+              </div>
+              <p
+                class="chakra-text css-1isemmb"
+              >
+                Stacy Prohaska
+              </p>
+            </div>
+          </td>
+          <td
+            class="css-bpcy4k"
+          >
+            6
+          </td>
+          <td
+            class="css-bpcy4k"
+          >
+            Isaiah16@gmail.com
+          </td>
+          <td
+            class="css-bpcy4k"
+          >
+            SD 2
+          </td>
+          <td
+            class="css-bpcy4k"
+          >
+            <div
+              class="css-0"
+            >
+              Female
+            </div>
+          </td>
+          <td
+            class="css-bpcy4k"
+          >
+            <button
+              aria-label="Edit Button"
+              class="chakra-button css-1uiavz5"
+              type="button"
+            >
+              <svg
+                fill="none"
+                height="16"
+                viewBox="0 0 25 24"
+                width="16"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.5499 15.5999L9.7499 19.1999M12.7499 22.1999H22.3499M4.9499 15.5999L16.7813 3.35533C18.0552 2.08143 20.1206 2.08143 21.3945 3.35533C22.6684 4.62923 22.6684 6.69463 21.3945 7.96853L9.1499 19.7999L3.1499 21.5999L4.9499 15.5999Z"
+                  stroke="#4F4F4F"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                />
+              </svg>
+            </button>
+            <button
+              aria-label="Delete Button"
+              class="chakra-button css-4xx2wk"
+              type="button"
+            >
+              <svg
+                fill="none"
+                height="16"
+                viewBox="0 0 24 24"
+                width="16"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4 6.17647H20M10 16.7647V10.4118M14 16.7647V10.4118M16 21H8C6.89543 21 6 20.0519 6 18.8824V7.23529C6 6.65052 6.44772 6.17647 7 6.17647H17C17.5523 6.17647 18 6.65052 18 7.23529V18.8824C18 20.0519 17.1046 21 16 21ZM10 6.17647H14C14.5523 6.17647 15 5.70242 15 5.11765V4.05882C15 3.47405 14.5523 3 14 3H10C9.44772 3 9 3.47405 9 4.05882V5.11765C9 5.70242 9.44772 6.17647 10 6.17647Z"
+                  stroke="#4F4F4F"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                />
+              </svg>
+            </button>
+          </td>
+        </tr>
+        <tr
+          class="css-bgbn71"
+        >
+          <td
+            class="css-bpcy4k"
+          >
+            <div
+              class="css-0"
+            >
+              <div
+                class="css-79elbk"
+                style="width: 24px; height: 24px;"
+              >
+                <img
+                  alt="Victoria Runolfsson"
+                  data-nimg="fill"
+                  decoding="async"
+                  loading="lazy"
+                  sizes="100vw"
+                  src="/_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F1233.jpg&w=3840&q=75"
+                  srcset="/_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F1233.jpg&w=640&q=75 640w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F1233.jpg&w=750&q=75 750w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F1233.jpg&w=828&q=75 828w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F1233.jpg&w=1080&q=75 1080w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F1233.jpg&w=1200&q=75 1200w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F1233.jpg&w=1920&q=75 1920w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F1233.jpg&w=2048&q=75 2048w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F1233.jpg&w=3840&q=75 3840w"
+                  style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent; border-radius: 50%; background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"
+                />
+              </div>
+              <p
+                class="chakra-text css-1isemmb"
+              >
+                Victoria Runolfsson
+              </p>
+            </div>
+          </td>
+          <td
+            class="css-bpcy4k"
+          >
+            7
+          </td>
+          <td
+            class="css-bpcy4k"
+          >
+            Cortez36@hotmail.com
+          </td>
+          <td
+            class="css-bpcy4k"
+          >
+            SS 1
+          </td>
+          <td
+            class="css-bpcy4k"
+          >
+            <div
+              class="css-0"
+            >
+              Female
+            </div>
+          </td>
+          <td
+            class="css-bpcy4k"
+          >
+            <button
+              aria-label="Edit Button"
+              class="chakra-button css-1uiavz5"
+              type="button"
+            >
+              <svg
+                fill="none"
+                height="16"
+                viewBox="0 0 25 24"
+                width="16"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.5499 15.5999L9.7499 19.1999M12.7499 22.1999H22.3499M4.9499 15.5999L16.7813 3.35533C18.0552 2.08143 20.1206 2.08143 21.3945 3.35533C22.6684 4.62923 22.6684 6.69463 21.3945 7.96853L9.1499 19.7999L3.1499 21.5999L4.9499 15.5999Z"
+                  stroke="#4F4F4F"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                />
+              </svg>
+            </button>
+            <button
+              aria-label="Delete Button"
+              class="chakra-button css-4xx2wk"
+              type="button"
+            >
+              <svg
+                fill="none"
+                height="16"
+                viewBox="0 0 24 24"
+                width="16"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4 6.17647H20M10 16.7647V10.4118M14 16.7647V10.4118M16 21H8C6.89543 21 6 20.0519 6 18.8824V7.23529C6 6.65052 6.44772 6.17647 7 6.17647H17C17.5523 6.17647 18 6.65052 18 7.23529V18.8824C18 20.0519 17.1046 21 16 21ZM10 6.17647H14C14.5523 6.17647 15 5.70242 15 5.11765V4.05882C15 3.47405 14.5523 3 14 3H10C9.44772 3 9 3.47405 9 4.05882V5.11765C9 5.70242 9.44772 6.17647 10 6.17647Z"
+                  stroke="#4F4F4F"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                />
+              </svg>
+            </button>
+          </td>
+        </tr>
+        <tr
+          class="css-pb1fbr"
+        >
+          <td
+            class="css-bpcy4k"
+          >
+            <div
+              class="css-0"
+            >
+              <div
+                class="css-79elbk"
+                style="width: 24px; height: 24px;"
+              >
+                <img
+                  alt="Courtney Stroman"
+                  data-nimg="fill"
+                  decoding="async"
+                  loading="lazy"
+                  sizes="100vw"
+                  src="/_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F267.jpg&w=3840&q=75"
+                  srcset="/_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F267.jpg&w=640&q=75 640w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F267.jpg&w=750&q=75 750w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F267.jpg&w=828&q=75 828w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F267.jpg&w=1080&q=75 1080w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F267.jpg&w=1200&q=75 1200w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F267.jpg&w=1920&q=75 1920w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F267.jpg&w=2048&q=75 2048w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F267.jpg&w=3840&q=75 3840w"
+                  style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent; border-radius: 50%; background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"
+                />
+              </div>
+              <p
+                class="chakra-text css-1isemmb"
+              >
+                Courtney Stroman
+              </p>
+            </div>
+          </td>
+          <td
+            class="css-bpcy4k"
+          >
+            8
+          </td>
+          <td
+            class="css-bpcy4k"
+          >
+            Tyrese_Hahn@gmail.com
+          </td>
+          <td
+            class="css-bpcy4k"
+          >
+            DB2
+          </td>
+          <td
+            class="css-bpcy4k"
+          >
+            <div
+              class="css-0"
+            >
+              Female
+            </div>
+          </td>
+          <td
+            class="css-bpcy4k"
+          >
+            <button
+              aria-label="Edit Button"
+              class="chakra-button css-1uiavz5"
+              type="button"
+            >
+              <svg
+                fill="none"
+                height="16"
+                viewBox="0 0 25 24"
+                width="16"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.5499 15.5999L9.7499 19.1999M12.7499 22.1999H22.3499M4.9499 15.5999L16.7813 3.35533C18.0552 2.08143 20.1206 2.08143 21.3945 3.35533C22.6684 4.62923 22.6684 6.69463 21.3945 7.96853L9.1499 19.7999L3.1499 21.5999L4.9499 15.5999Z"
+                  stroke="#4F4F4F"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                />
+              </svg>
+            </button>
+            <button
+              aria-label="Delete Button"
+              class="chakra-button css-4xx2wk"
+              type="button"
+            >
+              <svg
+                fill="none"
+                height="16"
+                viewBox="0 0 24 24"
+                width="16"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4 6.17647H20M10 16.7647V10.4118M14 16.7647V10.4118M16 21H8C6.89543 21 6 20.0519 6 18.8824V7.23529C6 6.65052 6.44772 6.17647 7 6.17647H17C17.5523 6.17647 18 6.65052 18 7.23529V18.8824C18 20.0519 17.1046 21 16 21ZM10 6.17647H14C14.5523 6.17647 15 5.70242 15 5.11765V4.05882C15 3.47405 14.5523 3 14 3H10C9.44772 3 9 3.47405 9 4.05882V5.11765C9 5.70242 9.44772 6.17647 10 6.17647Z"
+                  stroke="#4F4F4F"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                />
+              </svg>
+            </button>
+          </td>
+        </tr>
+        <tr
+          class="css-bgbn71"
+        >
+          <td
+            class="css-bpcy4k"
+          >
+            <div
+              class="css-0"
+            >
+              <div
+                class="css-79elbk"
+                style="width: 24px; height: 24px;"
+              >
+                <img
+                  alt="Daisy Schaden"
+                  data-nimg="fill"
+                  decoding="async"
+                  loading="lazy"
+                  sizes="100vw"
+                  src="/_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F458.jpg&w=3840&q=75"
+                  srcset="/_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F458.jpg&w=640&q=75 640w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F458.jpg&w=750&q=75 750w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F458.jpg&w=828&q=75 828w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F458.jpg&w=1080&q=75 1080w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F458.jpg&w=1200&q=75 1200w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F458.jpg&w=1920&q=75 1920w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F458.jpg&w=2048&q=75 2048w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F458.jpg&w=3840&q=75 3840w"
+                  style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent; border-radius: 50%; background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"
+                />
+              </div>
+              <p
+                class="chakra-text css-1isemmb"
+              >
+                Daisy Schaden
+              </p>
+            </div>
+          </td>
+          <td
+            class="css-bpcy4k"
+          >
+            9
+          </td>
+          <td
+            class="css-bpcy4k"
+          >
+            Jude_Schaefer54@gmail.com
+          </td>
+          <td
+            class="css-bpcy4k"
+          >
+            SS 2
+          </td>
+          <td
+            class="css-bpcy4k"
+          >
+            <div
+              class="css-0"
+            >
+              Male
+            </div>
+          </td>
+          <td
+            class="css-bpcy4k"
+          >
+            <button
+              aria-label="Edit Button"
+              class="chakra-button css-1uiavz5"
+              type="button"
+            >
+              <svg
+                fill="none"
+                height="16"
+                viewBox="0 0 25 24"
+                width="16"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.5499 15.5999L9.7499 19.1999M12.7499 22.1999H22.3499M4.9499 15.5999L16.7813 3.35533C18.0552 2.08143 20.1206 2.08143 21.3945 3.35533C22.6684 4.62923 22.6684 6.69463 21.3945 7.96853L9.1499 19.7999L3.1499 21.5999L4.9499 15.5999Z"
+                  stroke="#4F4F4F"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                />
+              </svg>
+            </button>
+            <button
+              aria-label="Delete Button"
+              class="chakra-button css-4xx2wk"
+              type="button"
+            >
+              <svg
+                fill="none"
+                height="16"
+                viewBox="0 0 24 24"
+                width="16"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4 6.17647H20M10 16.7647V10.4118M14 16.7647V10.4118M16 21H8C6.89543 21 6 20.0519 6 18.8824V7.23529C6 6.65052 6.44772 6.17647 7 6.17647H17C17.5523 6.17647 18 6.65052 18 7.23529V18.8824C18 20.0519 17.1046 21 16 21ZM10 6.17647H14C14.5523 6.17647 15 5.70242 15 5.11765V4.05882C15 3.47405 14.5523 3 14 3H10C9.44772 3 9 3.47405 9 4.05882V5.11765C9 5.70242 9.44772 6.17647 10 6.17647Z"
+                  stroke="#4F4F4F"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                />
+              </svg>
+            </button>
+          </td>
+        </tr>
+        <tr
+          class="css-pb1fbr"
+        >
+          <td
+            class="css-bpcy4k"
+          >
+            <div
+              class="css-0"
+            >
+              <div
+                class="css-79elbk"
+                style="width: 24px; height: 24px;"
+              >
+                <img
+                  alt="Michelle Cormier"
+                  data-nimg="fill"
+                  decoding="async"
+                  loading="lazy"
+                  sizes="100vw"
+                  src="/_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F427.jpg&w=3840&q=75"
+                  srcset="/_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F427.jpg&w=640&q=75 640w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F427.jpg&w=750&q=75 750w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F427.jpg&w=828&q=75 828w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F427.jpg&w=1080&q=75 1080w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F427.jpg&w=1200&q=75 1200w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F427.jpg&w=1920&q=75 1920w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F427.jpg&w=2048&q=75 2048w, /_next/image?url=https%3A%2F%2Fcloudflare-ipfs.com%2Fipfs%2FQmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye%2Favatar%2F427.jpg&w=3840&q=75 3840w"
+                  style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent; border-radius: 50%; background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"
+                />
+              </div>
+              <p
+                class="chakra-text css-1isemmb"
+              >
+                Michelle Cormier
+              </p>
+            </div>
+          </td>
+          <td
+            class="css-bpcy4k"
+          >
+            10
+          </td>
+          <td
+            class="css-bpcy4k"
+          >
+            Courtney_Legros@gmail.com
+          </td>
+          <td
+            class="css-bpcy4k"
+          >
+            SS 3
+          </td>
+          <td
+            class="css-bpcy4k"
+          >
+            <div
+              class="css-0"
+            >
+              Male
+            </div>
+          </td>
+          <td
+            class="css-bpcy4k"
+          >
+            <button
+              aria-label="Edit Button"
+              class="chakra-button css-1uiavz5"
+              type="button"
+            >
+              <svg
+                fill="none"
+                height="16"
+                viewBox="0 0 25 24"
+                width="16"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.5499 15.5999L9.7499 19.1999M12.7499 22.1999H22.3499M4.9499 15.5999L16.7813 3.35533C18.0552 2.08143 20.1206 2.08143 21.3945 3.35533C22.6684 4.62923 22.6684 6.69463 21.3945 7.96853L9.1499 19.7999L3.1499 21.5999L4.9499 15.5999Z"
+                  stroke="#4F4F4F"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                />
+              </svg>
+            </button>
+            <button
+              aria-label="Delete Button"
+              class="chakra-button css-4xx2wk"
+              type="button"
+            >
+              <svg
+                fill="none"
+                height="16"
+                viewBox="0 0 24 24"
+                width="16"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4 6.17647H20M10 16.7647V10.4118M14 16.7647V10.4118M16 21H8C6.89543 21 6 20.0519 6 18.8824V7.23529C6 6.65052 6.44772 6.17647 7 6.17647H17C17.5523 6.17647 18 6.65052 18 7.23529V18.8824C18 20.0519 17.1046 21 16 21ZM10 6.17647H14C14.5523 6.17647 15 5.70242 15 5.11765V4.05882C15 3.47405 14.5523 3 14 3H10C9.44772 3 9 3.47405 9 4.05882V5.11765C9 5.70242 9.44772 6.17647 10 6.17647Z"
+                  stroke="#4F4F4F"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                />
+              </svg>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`TableStudentWrapper component should match snapshot with data empty 1`] = `
+<div>
+  <div
+    class="css-dxx3wj"
+  >
+    <div
+      class="chakra-input__group css-ck76jc"
+      data-group="true"
+    >
+      <div
+        class="chakra-input__left-element css-o84xzr"
+        style="cursor: pointer;"
+      >
+        <svg
+          class="chakra-icon css-nyt2fo"
+          focusable="false"
+          viewBox="0 0 17 16"
+        >
+          <g
+            clip-path="url(#clip0_16_102)"
+          >
+            <path
+              d="M12.0725 10.344C13.0408 9.0227 13.4745 7.3845 13.2869 5.75716C13.0992 4.12982 12.304 2.63335 11.0603 1.56714C9.81666 0.50093 8.2163 -0.0563875 6.57938 0.00668566C4.94247 0.0697588 3.38973 0.748571 2.23182 1.90732C1.0739 3.06606 0.396199 4.61929 0.334297 6.25624C0.272396 7.8932 0.830858 9.49317 1.89796 10.7361C2.96505 11.9789 4.46209 12.7731 6.08957 12.9596C7.71704 13.1461 9.35493 12.7112 10.6755 11.742H10.6745C10.7045 11.782 10.7365 11.82 10.7725 11.857L14.6225 15.707C14.8101 15.8946 15.0644 16.0001 15.3297 16.0002C15.595 16.0003 15.8494 15.895 16.037 15.7075C16.2247 15.52 16.3302 15.2656 16.3303 15.0004C16.3303 14.7351 16.2251 14.4806 16.0375 14.293L12.1875 10.443C12.1518 10.4068 12.1134 10.3734 12.0725 10.343V10.344ZM12.3305 6.50001C12.3305 7.22228 12.1883 7.93748 11.9119 8.60477C11.6355 9.27206 11.2304 9.87837 10.7196 10.3891C10.2089 10.8998 9.6026 11.3049 8.93531 11.5813C8.26802 11.8577 7.55282 12 6.83055 12C6.10828 12 5.39308 11.8577 4.72579 11.5813C4.0585 11.3049 3.45218 10.8998 2.94146 10.3891C2.43074 9.87837 2.02561 9.27206 1.74921 8.60477C1.47281 7.93748 1.33055 7.22228 1.33055 6.50001C1.33055 5.04132 1.91001 3.64237 2.94146 2.61092C3.97291 1.57947 5.37186 1.00001 6.83055 1.00001C8.28924 1.00001 9.68819 1.57947 10.7196 2.61092C11.7511 3.64237 12.3305 5.04132 12.3305 6.50001Z"
+              fill="currentColor"
+            />
+          </g>
+          <defs>
+            <clippath
+              id="clip0_16_102"
+            >
+              <rect
+                fill="white"
+                height="16"
+                transform="translate(0.330566)"
+                width="16"
+              />
+            </clippath>
+          </defs>
+        </svg>
+      </div>
+      <input
+        class="chakra-input css-nqkltn"
+        placeholder="Search for a student by name or email"
+        value="1"
+      />
+      <div
+        class="chakra-input__right-element css-dp9r5f"
+      >
+        <svg
+          baseProfile="tiny"
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          stroke-width="0"
+          style="cursor: pointer;"
+          version="1.2"
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 3c-4.963 0-9 4.038-9 9s4.037 9 9 9 9-4.038 9-9-4.037-9-9-9zm0 16c-3.859 0-7-3.14-7-7s3.141-7 7-7 7 3.14 7 7-3.141 7-7 7zM12.707 12l2.646-2.646c.194-.194.194-.512 0-.707-.195-.194-.513-.194-.707 0l-2.646 2.646-2.646-2.647c-.195-.194-.513-.194-.707 0-.195.195-.195.513 0 .707l2.646 2.647-2.646 2.646c-.195.195-.195.513 0 .707.097.098.225.147.353.147s.256-.049.354-.146l2.646-2.647 2.646 2.646c.098.098.226.147.354.147s.256-.049.354-.146c.194-.194.194-.512 0-.707l-2.647-2.647z"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div
+    class="css-wkpw2c"
+  >
+    <img
+      alt=""
+      data-nimg="1"
+      decoding="async"
+      height="225"
+      loading="lazy"
+      src="/_next/image?url=%2Fno_notification.png&w=750&q=75"
+      srcset="/_next/image?url=%2Fno_notification.png&w=384&q=75 1x, /_next/image?url=%2Fno_notification.png&w=750&q=75 2x"
+      style="color: transparent;"
+      width="340"
+    />
+    <p
+      class="chakra-text css-1uy2b59"
+    >
+      No students at this time
+    </p>
+    <p
+      class="chakra-text css-1fhgjcy"
+    >
+      Students will appear here after they enroll in your school.
+    </p>
+    <a
+      href="/students"
+    >
+      Back to Student List
+    </a>
+  </div>
+</div>
+`;
+
+exports[`TableStudentWrapper component should match snapshot with not found 1`] = `
+<div>
+  <div
+    class="css-dxx3wj"
+  >
+    <div
+      class="chakra-input__group css-ck76jc"
+      data-group="true"
+    >
+      <div
+        class="chakra-input__left-element css-o84xzr"
+        style="cursor: pointer;"
+      >
+        <svg
+          class="chakra-icon css-nyt2fo"
+          focusable="false"
+          viewBox="0 0 17 16"
+        >
+          <g
+            clip-path="url(#clip0_16_102)"
+          >
+            <path
+              d="M12.0725 10.344C13.0408 9.0227 13.4745 7.3845 13.2869 5.75716C13.0992 4.12982 12.304 2.63335 11.0603 1.56714C9.81666 0.50093 8.2163 -0.0563875 6.57938 0.00668566C4.94247 0.0697588 3.38973 0.748571 2.23182 1.90732C1.0739 3.06606 0.396199 4.61929 0.334297 6.25624C0.272396 7.8932 0.830858 9.49317 1.89796 10.7361C2.96505 11.9789 4.46209 12.7731 6.08957 12.9596C7.71704 13.1461 9.35493 12.7112 10.6755 11.742H10.6745C10.7045 11.782 10.7365 11.82 10.7725 11.857L14.6225 15.707C14.8101 15.8946 15.0644 16.0001 15.3297 16.0002C15.595 16.0003 15.8494 15.895 16.037 15.7075C16.2247 15.52 16.3302 15.2656 16.3303 15.0004C16.3303 14.7351 16.2251 14.4806 16.0375 14.293L12.1875 10.443C12.1518 10.4068 12.1134 10.3734 12.0725 10.343V10.344ZM12.3305 6.50001C12.3305 7.22228 12.1883 7.93748 11.9119 8.60477C11.6355 9.27206 11.2304 9.87837 10.7196 10.3891C10.2089 10.8998 9.6026 11.3049 8.93531 11.5813C8.26802 11.8577 7.55282 12 6.83055 12C6.10828 12 5.39308 11.8577 4.72579 11.5813C4.0585 11.3049 3.45218 10.8998 2.94146 10.3891C2.43074 9.87837 2.02561 9.27206 1.74921 8.60477C1.47281 7.93748 1.33055 7.22228 1.33055 6.50001C1.33055 5.04132 1.91001 3.64237 2.94146 2.61092C3.97291 1.57947 5.37186 1.00001 6.83055 1.00001C8.28924 1.00001 9.68819 1.57947 10.7196 2.61092C11.7511 3.64237 12.3305 5.04132 12.3305 6.50001Z"
+              fill="currentColor"
+            />
+          </g>
+          <defs>
+            <clippath
+              id="clip0_16_102"
+            >
+              <rect
+                fill="white"
+                height="16"
+                transform="translate(0.330566)"
+                width="16"
+              />
+            </clippath>
+          </defs>
+        </svg>
+      </div>
+      <input
+        class="chakra-input css-nqkltn"
+        placeholder="Search for a student by name or email"
+        value="1"
+      />
+      <div
+        class="chakra-input__right-element css-dp9r5f"
+      >
+        <svg
+          baseProfile="tiny"
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          stroke-width="0"
+          style="cursor: pointer;"
+          version="1.2"
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 3c-4.963 0-9 4.038-9 9s4.037 9 9 9 9-4.038 9-9-4.037-9-9-9zm0 16c-3.859 0-7-3.14-7-7s3.141-7 7-7 7 3.14 7 7-3.141 7-7 7zM12.707 12l2.646-2.646c.194-.194.194-.512 0-.707-.195-.194-.513-.194-.707 0l-2.646 2.646-2.646-2.647c-.195-.194-.513-.194-.707 0-.195.195-.195.513 0 .707l2.646 2.647-2.646 2.646c-.195.195-.195.513 0 .707.097.098.225.147.353.147s.256-.049.354-.146l2.646-2.647 2.646 2.646c.098.098.226.147.354.147s.256-.049.354-.146c.194-.194.194-.512 0-.707l-2.647-2.647z"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div
+    class="css-wkpw2c"
+  >
+    <img
+      alt=""
+      data-nimg="1"
+      decoding="async"
+      height="225"
+      loading="lazy"
+      src="/_next/image?url=%2Fno_notification.png&w=750&q=75"
+      srcset="/_next/image?url=%2Fno_notification.png&w=384&q=75 1x, /_next/image?url=%2Fno_notification.png&w=750&q=75 2x"
+      style="color: transparent;"
+      width="340"
+    />
+    <p
+      class="chakra-text css-1uy2b59"
+    >
+      No students at this time
+    </p>
+    <p
+      class="chakra-text css-1fhgjcy"
+    >
+      Students will appear here after they enroll in your school.
+    </p>
+    <a
+      href="/students"
+    >
+      Back to Student List
+    </a>
+  </div>
+</div>
+`;
