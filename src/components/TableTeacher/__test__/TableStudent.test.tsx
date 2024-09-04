@@ -30,6 +30,7 @@ const mockData: ITeacher[] = [
 
 jest.mock('next/navigation', () => ({
   useParams: jest.fn(),
+  useRouter: () => ({ push: jest.fn() }),
 }));
 
 describe('TableTeacher Component', () => {

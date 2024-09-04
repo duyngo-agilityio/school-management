@@ -53,50 +53,50 @@ exports[`TableTeacher Component should render correctly and match snapshot 1`] =
           class="css-1t3b6fg"
         >
           <td
-            class="css-4e3ndm"
+            class="css-bpcy4k"
           >
-            <a
-              href="/teachers/1"
+            <div
+              class="css-0"
             >
               <div
-                class="css-0"
+                class="css-79elbk"
+                style="width: 24px; height: 24px;"
               >
-                <span
-                  class="chakra-avatar css-1ruhx4w"
-                >
-                  <div
-                    aria-label="John Doe"
-                    class="chakra-avatar__initials css-0"
-                    role="img"
-                  >
-                    JD
-                  </div>
-                </span>
-                <p
-                  class="chakra-text css-1isemmb"
-                >
-                  John Doe
-                </p>
+                <img
+                  alt="John Doe"
+                  data-nimg="fill"
+                  decoding="async"
+                  loading="lazy"
+                  sizes="100vw"
+                  src="/_next/image?url=%2Fpath%2Fto%2Favatar1.jpg&w=3840&q=75"
+                  srcset="/_next/image?url=%2Fpath%2Fto%2Favatar1.jpg&w=640&q=75 640w, /_next/image?url=%2Fpath%2Fto%2Favatar1.jpg&w=750&q=75 750w, /_next/image?url=%2Fpath%2Fto%2Favatar1.jpg&w=828&q=75 828w, /_next/image?url=%2Fpath%2Fto%2Favatar1.jpg&w=1080&q=75 1080w, /_next/image?url=%2Fpath%2Fto%2Favatar1.jpg&w=1200&q=75 1200w, /_next/image?url=%2Fpath%2Fto%2Favatar1.jpg&w=1920&q=75 1920w, /_next/image?url=%2Fpath%2Fto%2Favatar1.jpg&w=2048&q=75 2048w, /_next/image?url=%2Fpath%2Fto%2Favatar1.jpg&w=3840&q=75 3840w"
+                  style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent; border-radius: 50%; background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"
+                />
               </div>
-            </a>
+              <p
+                class="chakra-text css-1isemmb"
+              >
+                John Doe
+              </p>
+            </div>
           </td>
           <td
-            class="css-4e3ndm"
+            class="css-bpcy4k"
           >
             Physical
           </td>
           <td
-            class="css-4e3ndm"
+            class="css-bpcy4k"
           >
             10A
           </td>
           <td
-            class="css-4e3ndm"
+            class="css-bpcy4k"
           >
             johndoe@example.com
           </td>
           <td
-            class="css-4e3ndm"
+            class="css-bpcy4k"
           >
             <div
               class="css-0"
@@ -105,7 +105,7 @@ exports[`TableTeacher Component should render correctly and match snapshot 1`] =
             </div>
           </td>
           <td
-            class="css-4e3ndm"
+            class="css-bpcy4k"
           >
             <button
               aria-label="Edit Button"
@@ -155,50 +155,50 @@ exports[`TableTeacher Component should render correctly and match snapshot 1`] =
           class="css-bgbn71"
         >
           <td
-            class="css-4e3ndm"
+            class="css-bpcy4k"
           >
-            <a
-              href="/teachers/2"
+            <div
+              class="css-0"
             >
               <div
-                class="css-0"
+                class="css-79elbk"
+                style="width: 24px; height: 24px;"
               >
-                <span
-                  class="chakra-avatar css-1ruhx4w"
-                >
-                  <div
-                    aria-label="Jane Smith"
-                    class="chakra-avatar__initials css-0"
-                    role="img"
-                  >
-                    JS
-                  </div>
-                </span>
-                <p
-                  class="chakra-text css-1isemmb"
-                >
-                  Jane Smith
-                </p>
+                <img
+                  alt="Jane Smith"
+                  data-nimg="fill"
+                  decoding="async"
+                  loading="lazy"
+                  sizes="100vw"
+                  src="/_next/image?url=%2Fpath%2Fto%2Favatar2.jpg&w=3840&q=75"
+                  srcset="/_next/image?url=%2Fpath%2Fto%2Favatar2.jpg&w=640&q=75 640w, /_next/image?url=%2Fpath%2Fto%2Favatar2.jpg&w=750&q=75 750w, /_next/image?url=%2Fpath%2Fto%2Favatar2.jpg&w=828&q=75 828w, /_next/image?url=%2Fpath%2Fto%2Favatar2.jpg&w=1080&q=75 1080w, /_next/image?url=%2Fpath%2Fto%2Favatar2.jpg&w=1200&q=75 1200w, /_next/image?url=%2Fpath%2Fto%2Favatar2.jpg&w=1920&q=75 1920w, /_next/image?url=%2Fpath%2Fto%2Favatar2.jpg&w=2048&q=75 2048w, /_next/image?url=%2Fpath%2Fto%2Favatar2.jpg&w=3840&q=75 3840w"
+                  style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent; border-radius: 50%; background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"
+                />
               </div>
-            </a>
+              <p
+                class="chakra-text css-1isemmb"
+              >
+                Jane Smith
+              </p>
+            </div>
           </td>
           <td
-            class="css-4e3ndm"
+            class="css-bpcy4k"
           >
             Math
           </td>
           <td
-            class="css-4e3ndm"
+            class="css-bpcy4k"
           >
             11B
           </td>
           <td
-            class="css-4e3ndm"
+            class="css-bpcy4k"
           >
             janesmith@example.com
           </td>
           <td
-            class="css-4e3ndm"
+            class="css-bpcy4k"
           >
             <div
               class="css-0"
@@ -207,7 +207,7 @@ exports[`TableTeacher Component should render correctly and match snapshot 1`] =
             </div>
           </td>
           <td
-            class="css-4e3ndm"
+            class="css-bpcy4k"
           >
             <button
               aria-label="Edit Button"

@@ -11,17 +11,21 @@ exports[`SideBar Component should match snapshot for SideBar 1`] = `
       <div
         class="css-0"
       >
-        <span
-          class="chakra-avatar css-1ruhx4w"
+        <div
+          class="css-79elbk"
+          style="width: 65px; height: 65px;"
         >
-          <div
-            aria-label="Udemy Inter. school"
-            class="chakra-avatar__initials css-0"
-            role="img"
-          >
-            Us
-          </div>
-        </span>
+          <img
+            alt="Udemy Inter. school"
+            data-nimg="fill"
+            decoding="async"
+            loading="lazy"
+            sizes="100vw"
+            src="/_next/image?url=%2Flogo.png&w=3840&q=75"
+            srcset="/_next/image?url=%2Flogo.png&w=640&q=75 640w, /_next/image?url=%2Flogo.png&w=750&q=75 750w, /_next/image?url=%2Flogo.png&w=828&q=75 828w, /_next/image?url=%2Flogo.png&w=1080&q=75 1080w, /_next/image?url=%2Flogo.png&w=1200&q=75 1200w, /_next/image?url=%2Flogo.png&w=1920&q=75 1920w, /_next/image?url=%2Flogo.png&w=2048&q=75 2048w, /_next/image?url=%2Flogo.png&w=3840&q=75 3840w"
+            style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent; border-radius: 50%; background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"
+          />
+        </div>
         <p
           class="chakra-text css-10onoed"
         >
