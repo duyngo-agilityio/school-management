@@ -175,13 +175,13 @@ const TeacherModal = ({ onClose, defaultValues }: TeacherModalProps) => {
                 field: { value, onChange },
                 fieldState: { error },
               }) => (
-                <FormControl mt={12} mr="45px">
+                <FormControl mt={4} mr="45px">
+                  <FormLabel>Class</FormLabel>
                   <Dropdown
                     width="179px"
                     onChangeValue={onChange}
                     value={value}
                     options={OPTIONS_CLASS}
-                    placeholder="Class"
                     borderColor={error && 'red.400'}
                   />
                   {error?.message && (
@@ -202,12 +202,12 @@ const TeacherModal = ({ onClose, defaultValues }: TeacherModalProps) => {
                 field: { value, onChange },
                 fieldState: { error },
               }) => (
-                <FormControl mt={12}>
+                <FormControl mt={4}>
+                  <FormLabel>Gender</FormLabel>
                   <Dropdown
                     width="179px"
                     onChangeValue={onChange}
                     value={value}
-                    placeholder="Gender"
                     options={OPTIONS_GENDER}
                     borderColor={error && 'red.400'}
                   />
@@ -315,12 +315,12 @@ const TeacherModal = ({ onClose, defaultValues }: TeacherModalProps) => {
                   field: { value, onChange },
                   fieldState: { error },
                 }) => (
-                  <FormControl mt={12}>
+                  <FormControl mt={4}>
+                    <FormLabel>Subject</FormLabel>
                     <Dropdown
                       onChangeValue={onChange}
                       value={value}
                       options={OPTIONS_SUBJECT}
-                      placeholder="Subject"
                       borderColor={error && 'red.400'}
                     />
                     {error?.message && (
@@ -337,7 +337,7 @@ const TeacherModal = ({ onClose, defaultValues }: TeacherModalProps) => {
                 control={control}
                 name="description"
                 render={({ field }) => (
-                  <Box mt={7}>
+                  <Box>
                     <FormControl mt={4}>
                       <FormLabel>About</FormLabel>
                       <Textarea {...field} size="sm" />
@@ -369,8 +369,8 @@ const TeacherModal = ({ onClose, defaultValues }: TeacherModalProps) => {
                     <UploadImage
                       title="Upload Image"
                       width="full"
-                      height="268px"
-                      boxHeightImage="268px"
+                      height="256px"
+                      boxHeightImage="256px"
                       src={value}
                       alt="Avatar Image"
                       onChange={handleChangeImage}
