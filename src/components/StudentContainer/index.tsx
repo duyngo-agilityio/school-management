@@ -24,7 +24,7 @@ const StudentContainer = async ({
   searchParams,
 }: StudentContainerProps) => {
   const { TITLE, DESCRIPTION } = NOTFOUND.STUDENT;
-  const { q = '' } = searchParams as TSearchParams;
+  const { q = '' } = searchParams;
 
   const data = await getStudentList({ q });
 
