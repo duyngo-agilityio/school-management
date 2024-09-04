@@ -1,34 +1,107 @@
-type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
+import { BASE_URL } from '@/constants/env';
 
-export const apiRequest = async <T>({
-  endpoint,
-  method,
-  payload,
-  configOptions,
-}: {
-  endpoint: string;
-  method: HttpMethod;
-  payload?: T;
-  configOptions?: RequestInit;
-}) => {
-  const requestOptions: RequestInit = {
-    method,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    ...configOptions,
-  };
+interface IApiClient {
+  baseURL: string;
+  headers?: HeadersInit;
+}
 
-  if (method === 'POST' || method === 'PUT') {
-    requestOptions.body = JSON.stringify(payload);
+interface RequestInitExtended extends Omit<RequestInit, 'body'> {
+  body?: object | null;
+}
+
+export class ApiClient {
+  baseURL: string;
+  config: RequestInit;
+  private static apiClientInstance: ApiClient;
+
+  private constructor(baseURL: string, config: RequestInit) {
+    this.baseURL = baseURL;
+    this.config = config;
   }
 
-  const response = await fetch(endpoint, requestOptions);
-  const data = await response.json();
+  static create(params: IApiClient): ApiClient {
+    const { baseURL, headers } = params;
 
-  if (!response.ok) {
-    throw new Error(data?.error?.message);
+    if (!this.apiClientInstance)
+      this.apiClientInstance = new ApiClient(baseURL, { headers });
+
+    return this.apiClientInstance;
   }
 
-  return data;
-};
+  fetchWithConfig(url: string, config?: RequestInit) {
+    return fetch(`${this.baseURL}${url}`, {
+      ...this.config,
+      ...config,
+      headers: {
+        ...this.config.headers,
+        ...config?.headers,
+      },
+    });
+  }
+
+  async get<T>(url: string, config: RequestInit = {}): Promise<T> {
+    const response = await this.fetchWithConfig(url, config);
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch: ${response.statusText}`);
+    }
+
+    const data: T = await response.json();
+    return data;
+  }
+
+  async post<T>(url: string, config: RequestInitExtended = {}): Promise<T> {
+    const response = await this.fetchWithConfig(url, {
+      ...config,
+      method: 'POST',
+      body: JSON.stringify(config.body),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to post: ${response.statusText}`);
+    }
+
+    const data: T = await response.json();
+
+    return data;
+  }
+
+  async put<T>(url: string, config: RequestInitExtended = {}): Promise<T> {
+    const response = await this.fetchWithConfig(url, {
+      ...config,
+      method: 'PUT',
+      body: JSON.stringify(config.body),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to put: ${response.statusText}`);
+    }
+
+    const data: T = await response.json();
+
+    return data;
+  }
+
+  async delete<T>(url: string, config?: RequestInit): Promise<T> {
+    const response = await this.fetchWithConfig(url, {
+      ...config,
+      method: 'DELETE',
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to delete: ${response.statusText}`);
+    }
+
+    const data: T = await response.json();
+
+    return data;
+  }
+}
+
+export const apiClient = ApiClient.create({ baseURL: BASE_URL });

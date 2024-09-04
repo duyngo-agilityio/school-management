@@ -1,11 +1,11 @@
 // Constants
-import { BASE_URL, ROUTES, TAGS } from '@/constants';
+import { ROUTES, TAGS } from '@/constants';
 
 // Types
 import { IStudent } from '@/types';
 
 // Services
-import { apiRequest } from './api';
+import { apiClient } from './api';
 
 export const getStudentList = async ({
   q,
@@ -16,24 +16,19 @@ export const getStudentList = async ({
   params.set('q', `${q}&attr=fullName,email`);
   const query = decodeURIComponent(params.toString());
 
-  const response = await apiRequest<IStudent>({
-    endpoint: `${BASE_URL}${ROUTES.STUDENT}?${query}`,
-    method: 'GET',
-    configOptions: {
+  const response = await apiClient.get<IStudent[]>(
+    `${ROUTES.STUDENT}?${query}`,
+    {
       next: { tags: [TAGS.STUDENTS] },
     },
-  });
+  );
 
   return response;
 };
 
 export const getStudentById = async (id: string): Promise<IStudent> => {
-  const response = await apiRequest<IStudent>({
-    endpoint: `${BASE_URL}${ROUTES.STUDENT}/${id}`,
-    method: 'GET',
-    configOptions: {
-      next: { tags: [TAGS.STUDENT] },
-    },
+  const response = await apiClient.get<IStudent>(`${ROUTES.STUDENT}/${id}`, {
+    next: { tags: [TAGS.STUDENT] },
   });
 
   return response;

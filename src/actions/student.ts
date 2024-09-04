@@ -3,21 +3,20 @@
 import { revalidateTag } from 'next/cache';
 
 // Constants
-import { BASE_URL, ROUTES, TAGS } from '@/constants';
+import { ROUTES, TAGS } from '@/constants';
 
 // Types
 import { IStudent } from '@/types';
 
 // Services
-import { apiRequest } from '@/services';
+import { apiClient } from '@/services';
 
 export const addStudent = async (data: Omit<IStudent, 'id'>) => {
   try {
-    const response = await apiRequest<Omit<IStudent, 'id'>>({
-      endpoint: `${BASE_URL}${ROUTES.STUDENT}`,
-      method: 'POST',
-      payload: data,
-    });
+    const response = await apiClient.post<Omit<IStudent, 'id'>>(
+      `${ROUTES.STUDENT}`,
+      { body: data },
+    );
 
     revalidateTag(TAGS.STUDENTS);
 
@@ -29,10 +28,8 @@ export const addStudent = async (data: Omit<IStudent, 'id'>) => {
 
 export const editStudent = async (data: IStudent, id: string) => {
   try {
-    const response = await apiRequest<IStudent>({
-      endpoint: `${BASE_URL}${ROUTES.STUDENT}/${id}`,
-      method: 'PUT',
-      payload: data,
+    const response = await apiClient.put<IStudent>(`${ROUTES.STUDENT}/${id}`, {
+      body: data,
     });
 
     revalidateTag(TAGS.STUDENTS);
@@ -45,10 +42,9 @@ export const editStudent = async (data: IStudent, id: string) => {
 
 export const deleteStudent = async (id: string) => {
   try {
-    const response = await apiRequest<IStudent>({
-      endpoint: `${BASE_URL}${ROUTES.STUDENT}/${id}`,
-      method: 'DELETE',
-    });
+    const response = await apiClient.delete<IStudent>(
+      `${ROUTES.STUDENT}/${id}`,
+    );
 
     revalidateTag(TAGS.STUDENTS);
 
