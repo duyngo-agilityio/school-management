@@ -14,7 +14,7 @@ import { getTeacherList } from '@/services';
 import { TSearchParams } from '@/types';
 
 // Constants
-import { INPUT_PLACEHOLDER, NOTFOUND } from '@/constants';
+import { INPUT_PLACEHOLDER, NOTFOUND, ROUTES } from '@/constants';
 
 export const metadata: Metadata = {
   title: 'Teachers',
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 
 const Teachers = async ({ searchParams }: { searchParams?: TSearchParams }) => {
   const { q = '' } = searchParams as TSearchParams;
-  const { TITLE, DESCRIPTION } = NOTFOUND.STUDENT;
+  const { TITLE, DESCRIPTION, BACK_BUTTON } = NOTFOUND.TEACHER;
 
   const data = await getTeacherList({ q });
 
@@ -43,7 +43,9 @@ const Teachers = async ({ searchParams }: { searchParams?: TSearchParams }) => {
           <NotFound
             title={TITLE}
             description={DESCRIPTION}
+            backButton={BACK_BUTTON}
             src="/no_notification.png"
+            href={ROUTES.TEACHER}
           />
         )}
       </Box>

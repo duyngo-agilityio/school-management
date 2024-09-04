@@ -2,7 +2,7 @@
 import { notFound } from 'next/navigation';
 
 // Constants
-import { INPUT_PLACEHOLDER, NOTFOUND } from '@/constants';
+import { INPUT_PLACEHOLDER, NOTFOUND, ROUTES } from '@/constants';
 
 // Components
 import NoResults from '../NoResults';
@@ -23,7 +23,7 @@ interface TableStudentWrapperProps {
 const TableStudentWrapper = async ({
   searchParams,
 }: TableStudentWrapperProps) => {
-  const { TITLE, DESCRIPTION } = NOTFOUND.STUDENT;
+  const { TITLE, DESCRIPTION, BACK_BUTTON } = NOTFOUND.STUDENT;
   const { q = '' } = searchParams as TSearchParams;
 
   const data = await getStudentList({ q });
@@ -41,7 +41,9 @@ const TableStudentWrapper = async ({
         <NoResults
           title={TITLE}
           description={DESCRIPTION}
+          backButton={BACK_BUTTON}
           src="/no_notification.png"
+          href={ROUTES.STUDENT}
         />
       )}
     </>

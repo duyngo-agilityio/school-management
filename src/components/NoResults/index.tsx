@@ -5,12 +5,14 @@ import Link from 'next/link';
 import { Flex, Text } from '@chakra-ui/react';
 
 // Constants
-import { PAGE_NOT_FOUND_IMAGE, ROUTES } from '@/constants';
+import { PAGE_NOT_FOUND_IMAGE } from '@/constants';
 
 interface NoResultsProps {
   title: string;
   src?: string;
   description?: string;
+  backButton?: string;
+  href?: string;
   width?: number;
   height?: number;
 }
@@ -19,6 +21,8 @@ const NoResults = ({
   src = PAGE_NOT_FOUND_IMAGE,
   title,
   description,
+  backButton,
+  href = '',
   width = 340,
   height = 225,
 }: NoResultsProps) => {
@@ -31,7 +35,7 @@ const NoResults = ({
       <Text variant="primary" size="sm" mt="4px">
         {description}
       </Text>
-      <Link href={ROUTES.STUDENT}>Back to Student List</Link>
+      <Link href={href}>{backButton}</Link>
     </Flex>
   );
 };

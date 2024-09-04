@@ -7,7 +7,7 @@ import SearchInputWrapper from '../SearchInput/Wrapper';
 import NoResults from '../NoResults';
 
 // Constants
-import { INPUT_PLACEHOLDER, NOTFOUND } from '@/constants';
+import { INPUT_PLACEHOLDER, NOTFOUND, ROUTES } from '@/constants';
 
 // Types
 import { TSearchParams } from '@/types';
@@ -23,7 +23,7 @@ const StudentContainer = async ({
   children,
   searchParams,
 }: StudentContainerProps) => {
-  const { TITLE, DESCRIPTION } = NOTFOUND.STUDENT;
+  const { TITLE, DESCRIPTION, BACK_BUTTON } = NOTFOUND.STUDENT;
   const { q = '' } = searchParams;
 
   const data = await getStudentList({ q });
@@ -43,7 +43,9 @@ const StudentContainer = async ({
             <NoResults
               title={TITLE}
               description={DESCRIPTION}
+              backButton={BACK_BUTTON}
               src="/no_notification.png"
+              href={ROUTES.STUDENT}
             />
           )}
         </Box>
