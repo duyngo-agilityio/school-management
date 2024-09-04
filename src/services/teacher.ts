@@ -20,6 +20,7 @@ export const getTeacherList = async ({
     `${ROUTES.TEACHER}?${query}`,
     {
       next: { tags: [TAGS.TEACHERS] },
+      cache: 'no-store',
     },
   );
 
@@ -29,6 +30,7 @@ export const getTeacherList = async ({
 export const getTeacherById = async (id: string): Promise<ITeacher> => {
   const response = await apiClient.get<ITeacher>(`${ROUTES.TEACHER}/${id}`, {
     next: { tags: [TAGS.TEACHER] },
+    cache: 'no-store',
   });
 
   return response;
