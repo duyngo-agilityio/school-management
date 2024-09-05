@@ -5,7 +5,7 @@ import { Box, Flex } from '@chakra-ui/react';
 import NavItem from '.';
 
 // Icons
-import { TeacherIcon } from '@/icons';
+import { StudentIcon } from '@/icons';
 
 // Constants
 import { ROUTES } from '@/constants';
@@ -45,7 +45,7 @@ export const Default: Story = {
     ),
   ],
   args: {
-    icon: <TeacherIcon stroke="white" />,
+    icon: <StudentIcon stroke="white" />,
     href: ROUTES.DASHBOARD,
     isActive: true,
     children: <Box>Dashboard</Box>,

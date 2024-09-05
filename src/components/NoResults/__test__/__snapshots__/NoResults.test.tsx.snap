@@ -27,10 +27,8 @@ exports[`NoResults Component should match snapshot for NoResults 1`] = `
       Back home page
     </p>
     <a
-      href="/students"
-    >
-      Back to Student List
-    </a>
+      href=""
+    />
   </div>
 </div>
 `;

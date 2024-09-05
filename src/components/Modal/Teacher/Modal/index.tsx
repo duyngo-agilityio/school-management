@@ -65,10 +65,10 @@ const TeacherModal = ({ onClose, defaultValues }: TeacherModalProps) => {
     formState: { isDirty, isValid, isSubmitting },
   } = useForm<ITeacher>({
     defaultValues: {
-      ...defaultValues,
       subject: OPTIONS_SUBJECT[0].value,
       gender: Number(OPTIONS_GENDER[0].value),
       className: OPTIONS_CLASS[0].value,
+      ...defaultValues,
     },
     mode: 'onBlur',
   });

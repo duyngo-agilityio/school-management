@@ -2,10 +2,12 @@ import { render } from '@testing-library/react';
 
 // Components
 import Icon from '..';
-import { TeacherIcon } from '@/icons';
+
+// Icons
+import { StudentIcon } from '@/icons';
 
 const IconProps = {
-  icon: <TeacherIcon />,
+  icon: <StudentIcon />,
   width: '24',
   height: '24',
   bg: 'red',

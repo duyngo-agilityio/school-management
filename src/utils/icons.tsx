@@ -1,4 +1,4 @@
-import { CallIcon, SmsIcon, TeacherIcon } from '@/icons';
+import { CallIcon, SmsIcon, StudentIcon } from '@/icons';
 
 // The icons used on the information details page
 export const createIcons = (
@@ -8,7 +8,7 @@ export const createIcons = (
 ) => [
   {
     id: 1,
-    icon: <TeacherIcon width={width} height={height} stroke={stroke} />,
+    icon: <StudentIcon width={width} height={height} stroke={stroke} />,
   },
   {
     id: 2,

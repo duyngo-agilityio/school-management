@@ -1,6 +1,7 @@
 export { default as SearchIcon } from './SearchIcon';
 export { default as ProfileAddIcon } from './ProfileAddIcon';
 export { default as BankIcon } from './BankIcon';
+export { default as StudentIcon } from './StudentIcon';
 export { default as TeacherIcon } from './TeacherIcon';
 export { default as EyeHiddenIcon } from './EyeHiddenIcon';
 export { default as EyeShowIcon } from './EyeShowIcon';
