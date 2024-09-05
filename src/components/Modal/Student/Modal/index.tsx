@@ -57,14 +57,16 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
     handleSubmit,
     control,
     setValue,
-    watch,
+    clearErrors,
     formState: { isSubmitting, isValid, isDirty },
   } = useForm<IStudent>({
-    defaultValues,
+    defaultValues: {
+      ...defaultValues,
+      className: OPTIONS_CLASS[0].value,
+      gender: Number(OPTIONS_GENDER[0].value),
+    },
     mode: 'onBlur',
   });
-
-  const watchAvatar = watch('avatar');
 
   const onSubmit = async (data: IStudent) => {
     const {
@@ -143,13 +145,7 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
             <Controller
               control={control}
               name="className"
-              rules={{
-                required: VALIDATE_MESSAGE.EMPTY,
-              }}
-              render={({
-                field: { value, onChange },
-                fieldState: { error },
-              }) => (
+              render={({ field: { value, onChange } }) => (
                 <FormControl mt={4} mr="45px">
                   <FormLabel>Class</FormLabel>
                   <Dropdown
@@ -157,26 +153,14 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
                     onChangeValue={onChange}
                     value={value}
                     options={OPTIONS_CLASS}
-                    borderColor={error && 'red.400'}
                   />
-                  {error?.message && (
-                    <FormHelperText color="red.400">
-                      {error.message}
-                    </FormHelperText>
-                  )}
                 </FormControl>
               )}
             />
             <Controller
               control={control}
               name="gender"
-              rules={{
-                required: VALIDATE_MESSAGE.EMPTY,
-              }}
-              render={({
-                field: { value, onChange },
-                fieldState: { error },
-              }) => (
+              render={({ field: { value, onChange } }) => (
                 <FormControl mt={4}>
                   <FormLabel>Gender</FormLabel>
                   <Dropdown
@@ -184,13 +168,7 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
                     onChangeValue={onChange}
                     value={value}
                     options={OPTIONS_GENDER}
-                    borderColor={error && 'red.400'}
                   />
-                  {error?.message && (
-                    <FormHelperText color="red.400">
-                      {error.message}
-                    </FormHelperText>
-                  )}
                 </FormControl>
               )}
             />
@@ -311,13 +289,20 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
             <Controller
               control={control}
               name="avatar"
-              render={({ field: { value }, fieldState: { error } }) => {
+              rules={{
+                required: VALIDATE_MESSAGE.EMPTY,
+              }}
+              render={({ field: { value, onBlur }, fieldState: { error } }) => {
                 const handleChangeImage = (url: string) => {
-                  setValue('avatar', url);
+                  setValue('avatar', url, { shouldDirty: true });
+                  onBlur();
+                  clearErrors('avatar');
                 };
 
                 const handleRemoveImage = () => {
-                  setValue('avatar', '');
+                  setValue('avatar', '', { shouldDirty: true });
+                  onBlur();
+                  clearErrors('avatar');
                 };
 
                 return (
@@ -349,7 +334,7 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
             isLoading={isSubmitting}
             type="submit"
             colorScheme="blue"
-            isDisabled={!isDirty || !isValid || !watchAvatar}
+            isDisabled={!isDirty || !isValid}
           >
             {defaultValues ? 'Edit Student' : 'Add Student'}
           </Button>

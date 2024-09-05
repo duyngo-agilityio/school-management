@@ -58,14 +58,17 @@ const TeacherModal = ({ onClose, defaultValues }: TeacherModalProps) => {
     handleSubmit,
     control,
     setValue,
-    watch,
+    clearErrors,
     formState: { isDirty, isValid, isSubmitting },
   } = useForm<ITeacher>({
-    defaultValues,
+    defaultValues: {
+      ...defaultValues,
+      subject: OPTIONS_SUBJECT[0].value,
+      gender: Number(OPTIONS_GENDER[0].value),
+      className: OPTIONS_CLASS[0].value,
+    },
     mode: 'onBlur',
   });
-
-  const watchAvatar = watch('avatar');
 
   const onSubmit = async (data: ITeacher) => {
     const {
@@ -168,13 +171,7 @@ const TeacherModal = ({ onClose, defaultValues }: TeacherModalProps) => {
             <Controller
               control={control}
               name="className"
-              rules={{
-                required: VALIDATE_MESSAGE.EMPTY,
-              }}
-              render={({
-                field: { value, onChange },
-                fieldState: { error },
-              }) => (
+              render={({ field: { value, onChange } }) => (
                 <FormControl mt={4} mr="45px">
                   <FormLabel>Class</FormLabel>
                   <Dropdown
@@ -182,26 +179,14 @@ const TeacherModal = ({ onClose, defaultValues }: TeacherModalProps) => {
                     onChangeValue={onChange}
                     value={value}
                     options={OPTIONS_CLASS}
-                    borderColor={error && 'red.400'}
                   />
-                  {error?.message && (
-                    <FormHelperText color="red.400">
-                      {error.message}
-                    </FormHelperText>
-                  )}
                 </FormControl>
               )}
             />
             <Controller
               control={control}
               name="gender"
-              rules={{
-                required: VALIDATE_MESSAGE.EMPTY,
-              }}
-              render={({
-                field: { value, onChange },
-                fieldState: { error },
-              }) => (
+              render={({ field: { value, onChange } }) => (
                 <FormControl mt={4}>
                   <FormLabel>Gender</FormLabel>
                   <Dropdown
@@ -209,13 +194,7 @@ const TeacherModal = ({ onClose, defaultValues }: TeacherModalProps) => {
                     onChangeValue={onChange}
                     value={value}
                     options={OPTIONS_GENDER}
-                    borderColor={error && 'red.400'}
                   />
-                  {error?.message && (
-                    <FormHelperText color="red.400">
-                      {error.message}
-                    </FormHelperText>
-                  )}
                 </FormControl>
               )}
             />
@@ -308,26 +287,14 @@ const TeacherModal = ({ onClose, defaultValues }: TeacherModalProps) => {
               <Controller
                 control={control}
                 name="subject"
-                rules={{
-                  required: VALIDATE_MESSAGE.EMPTY,
-                }}
-                render={({
-                  field: { value, onChange },
-                  fieldState: { error },
-                }) => (
+                render={({ field: { value, onChange } }) => (
                   <FormControl mt={4}>
                     <FormLabel>Subject</FormLabel>
                     <Dropdown
                       onChangeValue={onChange}
                       value={value}
                       options={OPTIONS_SUBJECT}
-                      borderColor={error && 'red.400'}
                     />
-                    {error?.message && (
-                      <FormHelperText color="red.400">
-                        {error.message}
-                      </FormHelperText>
-                    )}
                   </FormControl>
                 )}
               />
@@ -354,13 +321,17 @@ const TeacherModal = ({ onClose, defaultValues }: TeacherModalProps) => {
               rules={{
                 required: VALIDATE_MESSAGE.EMPTY,
               }}
-              render={({ field: { value }, fieldState: { error } }) => {
+              render={({ field: { value, onBlur }, fieldState: { error } }) => {
                 const handleChangeImage = (url: string) => {
-                  setValue('avatar', url);
+                  setValue('avatar', url, { shouldDirty: true });
+                  onBlur();
+                  clearErrors('avatar');
                 };
 
                 const handleRemoveImage = () => {
-                  setValue('avatar', '');
+                  setValue('avatar', '', { shouldDirty: true });
+                  onBlur();
+                  clearErrors('avatar');
                 };
 
                 return (
@@ -391,7 +362,7 @@ const TeacherModal = ({ onClose, defaultValues }: TeacherModalProps) => {
             isLoading={isSubmitting}
             type="submit"
             colorScheme="blue"
-            isDisabled={!isDirty || !isValid || !watchAvatar}
+            isDisabled={!isDirty || !isValid}
           >
             {defaultValues ? 'Edit Teacher' : 'Add Teacher'}
           </Button>
