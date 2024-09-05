@@ -1,6 +1,6 @@
 'use client';
 
-import { ChangeEvent, memo, useState } from 'react';
+import { ChangeEvent, memo, useEffect, useRef } from 'react';
 
 // Icons
 import { SearchIcon } from '@/icons';
@@ -27,17 +27,25 @@ const SearchInput = ({
   onSearch,
   disableInput = false,
 }: SearchInputProps) => {
-  const [value, setValue] = useState(defaultValue);
+  const ref = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (defaultValue === '' && ref.current) {
+      ref.current.value = '';
+    }
+  }, [defaultValue]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
 
     onSearch(value);
-    setValue(value);
   };
 
   const handleClearInput = () => {
-    setValue('');
+    if (ref.current) {
+      ref.current.value = '';
+    }
+
     onSearch('');
   };
 
@@ -47,14 +55,15 @@ const SearchInput = ({
         <SearchIcon />
       </InputLeftElement>
       <Input
+        ref={ref}
         bgColor="backgroundWhiteHint"
         pl={10}
         placeholder={placeholder}
-        value={value}
+        defaultValue={defaultValue}
         onChange={handleChange}
         disabled={disableInput}
       />
-      {value && (
+      {defaultValue && (
         <InputRightElement>
           <TiDeleteOutline
             style={{ cursor: 'pointer' }}
