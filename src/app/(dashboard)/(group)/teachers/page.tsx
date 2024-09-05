@@ -22,11 +22,9 @@ export const metadata: Metadata = {
     'Explore our dedicated Teachers page, featuring profiles, qualifications, and expertise of our faculty members to support student success.',
 };
 
-
 const Teachers = async ({ searchParams }: { searchParams?: TSearchParams }) => {
   const { q = '' } = searchParams as TSearchParams;
   const { TITLE, DESCRIPTION, BACK_BUTTON } = NOTFOUND.TEACHER;
-
   const data = await getTeacherList({ q });
 
   if (!data) notFound();
