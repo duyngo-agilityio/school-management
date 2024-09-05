@@ -4,7 +4,7 @@
 import { Controller, useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import isEqual from 'react-fast-compare';
-import { memo } from 'react';
+import { ChangeEvent, memo } from 'react';
 
 // Types
 import { ITeacher } from '@/types';
@@ -45,6 +45,9 @@ import Modal from '../..';
 
 // Services
 import { addTeacher, editTeacher } from '@/actions';
+
+// Utils
+import { formatPhoneNumber } from '@/utils';
 
 interface TeacherModalProps {
   onClose: () => void;
@@ -236,17 +239,32 @@ const TeacherModal = ({ onClose, defaultValues }: TeacherModalProps) => {
                   message: VALIDATE_MESSAGE.PHONE_NUMBER,
                 },
               }}
-              render={({ field, fieldState: { error } }) => (
-                <FormControl mt={4}>
-                  <FormLabel>Phone number</FormLabel>
-                  <Input {...field} borderColor={error && 'red.400'} />
-                  {error?.message && (
-                    <FormHelperText color="red.400">
-                      {error.message}
-                    </FormHelperText>
-                  )}
-                </FormControl>
-              )}
+              render={({
+                field: { value, onChange },
+                fieldState: { error },
+              }) => {
+                const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+                  const formattedNumber = formatPhoneNumber(e.target.value);
+
+                  onChange(formattedNumber);
+                };
+
+                return (
+                  <FormControl mt={4}>
+                    <FormLabel>Phone number</FormLabel>
+                    <Input
+                      value={value}
+                      onChange={handleChange}
+                      borderColor={error && 'red.400'}
+                    />
+                    {error?.message && (
+                      <FormHelperText color="red.400">
+                        {error.message}
+                      </FormHelperText>
+                    )}
+                  </FormControl>
+                );
+              }}
             />
           </Box>
         </Flex>
