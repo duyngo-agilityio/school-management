@@ -64,9 +64,9 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
     formState: { isSubmitting, isValid, isDirty },
   } = useForm<IStudent>({
     defaultValues: {
-      ...defaultValues,
       className: OPTIONS_CLASS[0].value,
       gender: Number(OPTIONS_GENDER[0].value),
+      ...defaultValues,
     },
     mode: 'onBlur',
   });

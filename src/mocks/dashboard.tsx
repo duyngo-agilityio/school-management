@@ -1,5 +1,5 @@
 // Icons
-import { BankIcon, ProfileAddIcon, TeacherIcon } from '@/icons';
+import { BankIcon, ProfileAddIcon, StudentIcon } from '@/icons';
 
 export const CONTENT_DASHBOARD = [
   {
@@ -18,7 +18,7 @@ export const CONTENT_DASHBOARD = [
   },
   {
     id: 3,
-    icon: <TeacherIcon />,
+    icon: <StudentIcon />,
     title: 'Add students',
     description:
       'Create rich course content and coaching products for your students. When you give them a pricing plan, they’ll appear on your site!',

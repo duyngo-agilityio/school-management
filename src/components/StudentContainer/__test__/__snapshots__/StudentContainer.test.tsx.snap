@@ -738,7 +738,7 @@ exports[`StudentContainer component should match snapshot with data return empty
           <p
             class="chakra-text css-1uy2b59"
           >
-            No students at this time
+            No Students at this time
           </p>
           <p
             class="chakra-text css-1fhgjcy"
@@ -853,7 +853,7 @@ exports[`StudentContainer component should match snapshot with not found 1`] = `
           <p
             class="chakra-text css-1uy2b59"
           >
-            No students at this time
+            No Students at this time
           </p>
           <p
             class="chakra-text css-1fhgjcy"

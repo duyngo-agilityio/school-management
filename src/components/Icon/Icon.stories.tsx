@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 // Components
 import Icon from '@/components/Icon';
 
-import { CallIcon, TeacherIcon } from '@/icons';
+import { CallIcon, StudentIcon } from '@/icons';
 
 const meta: Meta<typeof Icon> = {
   title: 'components/Icon',
@@ -28,7 +28,7 @@ type Story = StoryObj<typeof Icon>;
 
 export const Default: Story = {
   args: {
-    icon: <TeacherIcon />,
+    icon: <StudentIcon />,
     width: '16',
     height: '16',
   },

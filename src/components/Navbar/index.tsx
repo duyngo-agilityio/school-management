@@ -8,14 +8,14 @@ import NavItem from './Item';
 import { ROUTES } from '@/constants';
 
 // Icons
-import { HomeIcon, TeacherIcon } from '@/icons';
+import { HomeIcon, StudentIcon, TeacherIcon } from '@/icons';
 
 export const LINK_ITEMS = [
   { name: 'Dashboard', icon: <HomeIcon />, href: ROUTES.DASHBOARD },
-  { name: 'Teachers', icon: <HomeIcon />, href: ROUTES.TEACHER },
+  { name: 'Teachers', icon: <TeacherIcon />, href: ROUTES.TEACHER },
   {
     name: 'Students/ classes',
-    icon: <TeacherIcon width="16" height="16" stroke="white" />,
+    icon: <StudentIcon width="16" height="16" stroke="white" />,
     href: ROUTES.STUDENT,
   },
 ];
