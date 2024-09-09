@@ -2,7 +2,8 @@ export const VALIDATE_MESSAGE = {
   EMPTY: 'The input is required',
   EMAIL: 'Invalid email',
   PASSWORD:
-    'Password must be at least 8 characters, include an uppercase letter, a lowercase letter, a number, and a special character.',
+    'Password must have at least 8 characters, 1 special character and 1 number',
+  REPEAT_PASSWORD: 'Password not matching',
   PHONE_NUMBER: 'Invalid phone number format',
 };
 
