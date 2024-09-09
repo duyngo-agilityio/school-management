@@ -15,6 +15,7 @@ interface PasswordInputProps {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   onBlur?: () => void;
   error?: FieldError;
+  placeholder?: string;
 }
 
 const PasswordInput = ({
@@ -22,6 +23,7 @@ const PasswordInput = ({
   onChange,
   onBlur,
   error,
+  placeholder,
 }: PasswordInputProps) => {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
@@ -35,6 +37,7 @@ const PasswordInput = ({
         value={value}
         onChange={onChange}
         onBlur={onBlur}
+        placeholder={placeholder}
         borderColor={error && 'red.400'}
       />
       <InputRightElement width="4.5rem">
