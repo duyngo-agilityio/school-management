@@ -17,12 +17,17 @@ import {
   Input,
 } from '@chakra-ui/react';
 
+interface SignInFormData {
+  username: string;
+  password: string;
+}
+
 const SignInForm = () => {
   const {
     handleSubmit,
     control,
     formState: { isSubmitting, isValid, isDirty },
-  } = useForm<{ username: string; password: string }>({
+  } = useForm<SignInFormData>({
     defaultValues: {
       username: '',
       password: '',
