@@ -5,6 +5,7 @@ export const VALIDATE_MESSAGE = {
     'Password must have at least 8 characters, 1 special character and 1 number',
   REPEAT_PASSWORD: 'Password not matching',
   PHONE_NUMBER: 'Invalid phone number format',
+  USERNAME_PASSWORD: 'Email or password invalid. Please help to try again!',
 };
 
 export const SUCCESS_MESSAGES = {
@@ -14,6 +15,8 @@ export const SUCCESS_MESSAGES = {
   DELETE_STUDENT: 'Delete Student success!',
   EDIT_TEACHER: 'Edit Teacher success!',
   EDIT_STUDENT: 'Edit Student success!',
+  SIGNIN_SUCCESS: 'SignIn success!',
+  SIGNUP_SUCCESS: 'SignUp success!',
 };
 
 export const ERROR_MESSAGES = {

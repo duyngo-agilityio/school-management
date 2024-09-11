@@ -2,12 +2,19 @@
 
 // Libs
 import { Controller, useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
 
 // Components
 import PasswordInput from '@/components/PasswordInput';
 
 // Constants
-import { REGEX_PASSWORD, VALIDATE_MESSAGE } from '@/constants';
+import {
+  REGEX_EMAIL,
+  REGEX_PASSWORD,
+  ROUTES,
+  SUCCESS_MESSAGES,
+  VALIDATE_MESSAGE,
+} from '@/constants';
 import {
   Box,
   Button,
@@ -15,44 +22,69 @@ import {
   FormControl,
   FormHelperText,
   Input,
+  useToast,
 } from '@chakra-ui/react';
 
-interface SignInFormData {
-  username: string;
-  password: string;
-}
+// Types
+import { SignInFormData } from '@/types';
+
+// Services
+import { signin } from '@/actions';
 
 const SignInForm = () => {
+  const router = useRouter();
+  const toast = useToast();
+
   const {
     handleSubmit,
     control,
     formState: { isSubmitting, isValid, isDirty },
   } = useForm<SignInFormData>({
     defaultValues: {
-      username: '',
+      email: '',
       password: '',
     },
     mode: 'onBlur',
   });
 
-  const onSubmit = () => {};
+  const onSubmit = async (data: SignInFormData) => {
+    const response = await signin(data);
+
+    if (typeof response === 'string') {
+      toast({
+        title: response,
+        status: 'error',
+      });
+    } else {
+      toast({
+        title: SUCCESS_MESSAGES.SIGNIN_SUCCESS,
+        status: 'success',
+      });
+      router.push(ROUTES.DASHBOARD);
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Flex flexDirection="row" justifyContent="space-between">
+      <Flex flexDirection="row" justifyContent="space-between" w="248px">
         <Box w="full">
           <Controller
             control={control}
-            name="username"
+            name="email"
             rules={{
               required: VALIDATE_MESSAGE.EMPTY,
+              pattern: {
+                value: REGEX_EMAIL,
+                message: VALIDATE_MESSAGE.EMAIL,
+              },
             }}
             render={({ field, fieldState: { error } }) => (
               <FormControl mt={4}>
                 <Input
                   {...field}
+                  type="email"
                   borderColor={error && 'red.400'}
-                  placeholder="Enter the name of admin"
+                  placeholder="Enter email"
                   w="248px"
                 />
                 {error?.message && (

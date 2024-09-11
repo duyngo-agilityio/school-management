@@ -4,4 +4,5 @@ export const ROUTES = {
   TEACHER: '/teachers',
   SIGN_IN: '/signin',
   SIGN_UP: '/signup',
+  USERS: '/users',
 };
