@@ -163,7 +163,7 @@ const SignUpForm = () => {
             isDisabled={!isDirty || !isValid}
             w="full"
           >
-            Sign In
+            Sign Up
           </Button>
         </Box>
       </Flex>

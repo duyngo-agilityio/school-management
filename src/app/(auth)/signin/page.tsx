@@ -1,12 +1,19 @@
 // Libs
 import Link from 'next/link';
+import { Metadata } from 'next';
 
 // Components
 import SignInForm from '@/components/Form/SignIn';
 import { Flex, Text } from '@chakra-ui/react';
 
 // Constants
-import { ROUTES } from '@/constants';
+import { customColors, ROUTES } from '@/constants';
+
+export const metadata: Metadata = {
+  title: 'Sign In',
+  description:
+    'Sign in to manage your student or teacher account and access your dashboard.',
+};
 
 const SignInPage = () => {
   return (
@@ -28,7 +35,13 @@ const SignInPage = () => {
         </Text>
         <SignInForm />
         <Text size="xs" mt="14px">
-          Already have an account? <Link href={ROUTES.SIGN_UP}>Sign up</Link>
+          Already have an account?{' '}
+          <Link
+            href={ROUTES.SIGN_UP}
+            style={{ fontWeight: 'bold', color: `${customColors.cornflower}` }}
+          >
+            Sign up
+          </Link>
         </Text>
       </Flex>
     </>
