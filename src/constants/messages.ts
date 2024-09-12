@@ -15,8 +15,8 @@ export const SUCCESS_MESSAGES = {
   DELETE_STUDENT: 'Delete Student success!',
   EDIT_TEACHER: 'Edit Teacher success!',
   EDIT_STUDENT: 'Edit Student success!',
-  SIGNIN_SUCCESS: 'SignIn success!',
-  SIGNUP_SUCCESS: 'SignUp success!',
+  SIGNIN_SUCCESS: 'Signed In successfully!',
+  SIGNUP_SUCCESS: 'Signed Up successfully!',
 };
 
 export const ERROR_MESSAGES = {
