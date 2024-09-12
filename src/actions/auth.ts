@@ -1,6 +1,6 @@
 'use server';
 
-import { signIn } from '@/auth';
+import { signIn, signOut } from '@/auth';
 import { AuthError } from 'next-auth';
 
 // Constants
@@ -43,4 +43,8 @@ export const signup = async (data: SignUpFormData) => {
   } catch (error) {
     throw new Error((error as Error).message);
   }
+};
+
+export const logout = async () => {
+  await signOut();
 };
