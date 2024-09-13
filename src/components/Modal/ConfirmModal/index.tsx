@@ -7,6 +7,7 @@ import Modal from '..';
 
 interface ConfirmModalProps {
   title: string;
+  labelButton?: string;
   subTitle?: string;
   onClose: () => void;
   onSubmit: () => void;
@@ -14,12 +15,13 @@ interface ConfirmModalProps {
 
 const ConfirmModal = ({
   title,
+  labelButton = 'Delete',
   subTitle,
   onClose,
   onSubmit,
 }: ConfirmModalProps) => {
   return (
-    <Modal onClose={onClose} title={title} size="xs">
+    <Modal onClose={onClose} title={title} size="xs" isCentered>
       <Text variant="primary" size="md">
         {subTitle}
       </Text>
@@ -28,7 +30,7 @@ const ConfirmModal = ({
           Cancel
         </Button>
         <Button colorScheme="red" onClick={onSubmit}>
-          Delete
+          {labelButton}
         </Button>
       </Flex>
     </Modal>
