@@ -19,7 +19,29 @@ interface SignUpFormData {
 
 export const signin = async (formData: SignInFormData) => {
   try {
-    await signIn('credentials', formData);
+    const response = await signIn('credentials', {
+      redirect: false, // This prevents automatic redirects so we can handle the response
+      ...formData,
+    });
+
+    if (response?.error) {
+      switch (response.status) {
+        case 401:
+          return VALIDATE_MESSAGE.UNAUTHORIZED;
+        case 403:
+          return VALIDATE_MESSAGE.FORBIDDEN;
+        case 404:
+          return VALIDATE_MESSAGE.NOT_FOUND;
+        case 500:
+          return VALIDATE_MESSAGE.INTERNAL_SERVER_ERROR;
+        case 503:
+          return VALIDATE_MESSAGE.SERVICE_UNAVAILABLE;
+        default:
+          return VALIDATE_MESSAGE.SOMETHING_WENT_WRONG;
+      }
+    }
+
+    return response;
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
@@ -27,7 +49,7 @@ export const signin = async (formData: SignInFormData) => {
           return VALIDATE_MESSAGE.USERNAME_PASSWORD;
 
         default:
-          return 'Something went wrong!';
+          return VALIDATE_MESSAGE.SOMETHING_WENT_WRONG;
       }
     }
 

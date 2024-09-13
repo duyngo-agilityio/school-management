@@ -50,7 +50,7 @@ const SignInForm = () => {
   const onSubmit = async (data: SignInFormData) => {
     const response = await signin(data);
 
-    if (typeof response === 'string') {
+    if (response.error) {
       toast({
         title: response,
         status: 'error',
