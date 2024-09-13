@@ -2,9 +2,16 @@
 
 // Libs
 import { Controller, useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
 
 // Constants
-import { REGEX_PASSWORD, VALIDATE_MESSAGE } from '@/constants';
+import {
+  REGEX_EMAIL,
+  REGEX_PASSWORD,
+  ROUTES,
+  SUCCESS_MESSAGES,
+  VALIDATE_MESSAGE,
+} from '@/constants';
 
 // Components
 import {
@@ -14,16 +21,23 @@ import {
   FormControl,
   FormHelperText,
   Input,
+  useToast,
 } from '@chakra-ui/react';
 import PasswordInput from '@/components/PasswordInput';
 
+// Services
+import { signup } from '@/actions';
+
 interface SignUpFormData {
-  username: string;
+  email: string;
   password: string;
   confirmPassword: string;
 }
 
 const SignUpForm = () => {
+  const router = useRouter();
+  const toast = useToast();
+
   const {
     handleSubmit,
     control,
@@ -31,14 +45,33 @@ const SignUpForm = () => {
     formState: { isSubmitting, isValid, isDirty },
   } = useForm<SignUpFormData>({
     defaultValues: {
-      username: '',
+      email: '',
       password: '',
       confirmPassword: '',
     },
     mode: 'onBlur',
   });
 
-  const onSubmit = () => {};
+  const onSubmit = async (data: SignUpFormData) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { confirmPassword, ...rest } = data;
+
+    const response = await signup(rest);
+
+    if (typeof response === 'string') {
+      toast({
+        title: response,
+        status: 'error',
+      });
+    } else {
+      toast({
+        title: SUCCESS_MESSAGES.SIGNUP_SUCCESS,
+        status: 'success',
+      });
+
+      router.replace(ROUTES.SIGN_IN);
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -46,16 +79,21 @@ const SignUpForm = () => {
         <Box w="full">
           <Controller
             control={control}
-            name="username"
+            name="email"
             rules={{
               required: VALIDATE_MESSAGE.EMPTY,
+              pattern: {
+                value: REGEX_EMAIL,
+                message: VALIDATE_MESSAGE.EMAIL,
+              },
             }}
             render={({ field, fieldState: { error } }) => (
               <FormControl mt={4}>
                 <Input
                   {...field}
+                  type="email"
                   borderColor={error && 'red.400'}
-                  placeholder="Enter the name of admin"
+                  placeholder="Enter email"
                   w="248px"
                 />
                 {error?.message && (
@@ -125,7 +163,7 @@ const SignUpForm = () => {
             isDisabled={!isDirty || !isValid}
             w="full"
           >
-            Sign In
+            Sign Up
           </Button>
         </Box>
       </Flex>

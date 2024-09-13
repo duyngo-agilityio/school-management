@@ -35,3 +35,8 @@ export type APIResponse<T> = {
 export type TSearchParams = {
   q: string;
 };
+
+export interface SignInFormData {
+  email: string;
+  password: string;
+}
