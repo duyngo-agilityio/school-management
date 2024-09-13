@@ -1,5 +1,6 @@
 // Libs
 import { notFound } from 'next/navigation';
+import { Suspense } from 'react';
 
 // Constants
 import { INPUT_PLACEHOLDER, NOTFOUND, ROUTES } from '@/constants';
@@ -7,14 +8,15 @@ import { INPUT_PLACEHOLDER, NOTFOUND, ROUTES } from '@/constants';
 // Components
 import NoResults from '../NoResults';
 import TableStudent from '../TableStudent';
+import TableSkeleton from '../Skeleton/TableSkeleton';
+import { Box } from '@chakra-ui/react';
+import SearchInputWrapper from '../SearchInput/Wrapper';
 
 // Types
 import { TSearchParams } from '@/types';
 
 // Services
 import { getStudentList } from '@/services';
-import { Box } from '@chakra-ui/react';
-import SearchInputWrapper from '../SearchInput/Wrapper';
 
 interface TableStudentWrapperProps {
   searchParams: TSearchParams;
@@ -36,7 +38,9 @@ const TableStudentWrapper = async ({
         <SearchInputWrapper placeholder={INPUT_PLACEHOLDER.STUDENT} />
       </Box>
       {data?.length ? (
-        <TableStudent data={data} />
+        <Suspense fallback={<TableSkeleton />}>
+          <TableStudent data={data} />
+        </Suspense>
       ) : (
         <NoResults
           title={TITLE}
