@@ -41,7 +41,11 @@ const PasswordInput = ({
         borderColor={error && 'red.400'}
       />
       <InputRightElement width="4.5rem">
-        <Button variant="icon" onClick={handleClick}>
+        <Button
+          variant="icon"
+          onClick={handleClick}
+          aria-label="password-button"
+        >
           {show ? <EyeHiddenIcon /> : <EyeShowIcon />}
         </Button>
       </InputRightElement>

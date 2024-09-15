@@ -2,7 +2,7 @@ const bluePallet = {
   zodiac: '#152259',
   koamaru: '#13296A',
   havelock: '#1C5A8C',
-  cornflower: '#3182ce',
+  cornflower: '#225891',
   solitude: '#EBF6FF',
   catSkill: '#E2E8F0',
   linkWater: '#EFF3FA',
