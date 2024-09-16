@@ -50,9 +50,9 @@ const SignInForm = () => {
   const onSubmit = async (data: SignInFormData) => {
     const response = await signin(data);
 
-    if (typeof response === 'string') {
+    if (response?.error) {
       toast({
-        title: response,
+        title: response.error.message,
         status: 'error',
       });
     } else {
@@ -60,7 +60,7 @@ const SignInForm = () => {
         title: SUCCESS_MESSAGES.SIGNIN_SUCCESS,
         status: 'success',
       });
-      router.push(ROUTES.DASHBOARD);
+      router.replace(ROUTES.DASHBOARD);
     }
   };
 
