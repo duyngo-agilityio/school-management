@@ -8,6 +8,14 @@ const HeaderBarProps = {
   width: '357px',
 };
 
+jest.mock('next/navigation', () => ({
+  useRouter() {
+    return {
+      replace: jest.fn(),
+    };
+  },
+}));
+
 const HeaderBarComponent = () => render(<HeaderBar {...HeaderBarProps} />);
 
 describe('HeaderBar Component', () => {

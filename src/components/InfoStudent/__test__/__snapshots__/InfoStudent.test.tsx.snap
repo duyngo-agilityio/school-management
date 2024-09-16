@@ -223,6 +223,7 @@ exports[`InfoStudent match snapshot with not found 1`] = `
         style="width: 180px; height: 180px;"
       >
         <img
+          alt=""
           data-nimg="fill"
           decoding="async"
           src=""
