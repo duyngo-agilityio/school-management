@@ -102,7 +102,7 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
 
     onClose();
 
-    push(ROUTES.STUDENT);
+    push(defaultValues ? `${ROUTES.STUDENT}/${id}` : ROUTES.STUDENT);
 
     toast({
       title: dataResponse
@@ -212,10 +212,7 @@ const StudentModal = ({ defaultValues, onClose }: StudentModalProps) => {
                 message: VALIDATE_MESSAGE.PHONE_NUMBER,
               },
             }}
-            render={({
-              field: { value, onChange },
-              fieldState: { error },
-            }) => {
+            render={({ field: { value, onChange }, fieldState: { error } }) => {
               const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
                 const formattedNumber = formatPhoneNumber(e.target.value);
 

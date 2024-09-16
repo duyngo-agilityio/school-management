@@ -76,6 +76,7 @@ const TableStudent = ({ data }: TableStudentProps) => {
 
   const handleDelete = () => {
     handleSubmitDelete(idItem);
+    push(ROUTES.STUDENT);
   };
 
   const handleNavigate = (id: string) => {
