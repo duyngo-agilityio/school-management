@@ -1,10 +1,9 @@
 'use server';
 
 import { signIn, signOut } from '@/auth';
-import { AuthError } from 'next-auth';
 
 // Constants
-import { ERROR_MESSAGES, ROUTES, VALIDATE_MESSAGE } from '@/constants';
+import { ERROR_MESSAGES, ROUTES } from '@/constants';
 
 // Types
 import { SignInFormData } from '@/types';
@@ -19,31 +18,32 @@ interface SignUpFormData {
 
 export const signin = async (formData: SignInFormData) => {
   try {
-    const response = await signIn('credentials', formData);
+    const result = await signIn('credentials', {
+      redirect: false,
+      ...formData,
+    });
 
-    return response;
-  } catch (error) {
-    if (error instanceof Error) {
-      return error.message;
-    } else if (error instanceof AuthError) {
-      switch (error.type) {
-        case 'CredentialsSignin':
-          return VALIDATE_MESSAGE.USERNAME_PASSWORD;
-
-        default:
-          return VALIDATE_MESSAGE.SOMETHING_WENT_WRONG;
-      }
+    if (result.error) {
+      return {
+        error: { message: result.error || ERROR_MESSAGES.UNKNOWN_ERROR },
+      };
     }
 
-    throw error;
+    return result;
+  } catch (error) {
+    if (error instanceof Error) {
+      return { error: { message: error.message } };
+    }
+
+    return {
+      error: { message: ERROR_MESSAGES.UNKNOWN_ERROR },
+    };
   }
 };
 
 export const signup = async (data: SignUpFormData) => {
   try {
-    const response = await apiClient.post(ROUTES.USERS, { body: data });
-
-    return response;
+    await apiClient.post(ROUTES.USERS, { body: data });
   } catch (error) {
     if (error instanceof Error) {
       return error.message;

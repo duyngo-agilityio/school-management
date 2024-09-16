@@ -41,10 +41,7 @@ export const CredentialsProvider = credentials({
 
       if (!user) return null;
 
-      const isPasswordsMatch = await bcrypt.compare(
-        String(password),
-        user.password,
-      );
+      const isPasswordsMatch = await bcrypt.compare(password, user.password);
 
       if (isPasswordsMatch) return user;
     }
