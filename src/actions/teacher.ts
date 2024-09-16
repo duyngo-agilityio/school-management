@@ -33,6 +33,7 @@ export const editTeacher = async (data: ITeacher, id: string) => {
     });
 
     revalidateTag(TAGS.TEACHERS);
+    revalidateTag(TAGS.TEACHER);
 
     return response;
   } catch (error) {

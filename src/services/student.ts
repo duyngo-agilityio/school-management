@@ -20,7 +20,6 @@ export const getStudentList = async ({
     `${ROUTES.STUDENT}?${query}`,
     {
       next: { tags: [TAGS.STUDENTS] },
-      cache: 'no-store',
     },
   );
 
@@ -30,7 +29,6 @@ export const getStudentList = async ({
 export const getStudentById = async (id: string): Promise<IStudent> => {
   const response = await apiClient.get<IStudent>(`${ROUTES.STUDENT}/${id}`, {
     next: { tags: [TAGS.STUDENT] },
-    cache: 'no-store',
   });
 
   return response;
