@@ -30,7 +30,13 @@ const CustomFlex = ({ variant, ...props }: CustomFlexProps) => {
   return <Flex __css={styles} {...props} />;
 };
 
-const Profile = ({ id, title, src = '', subTitle, variant }: ProfileProps) => {
+const Profile = ({
+  id,
+  title = '',
+  src = '',
+  subTitle,
+  variant,
+}: ProfileProps) => {
   const variantText = `profile_${variant}`;
   const ml = variant === 'xs' ? '8px' : '';
 
