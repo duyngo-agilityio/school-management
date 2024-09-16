@@ -1,11 +1,13 @@
 // Libs
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
+import { Suspense } from 'react';
 
 // Components
 import { NotFound, TableTeacher } from '@/components';
 import { Box } from '@chakra-ui/react';
 import SearchInputWrapper from '@/components/SearchInput/Wrapper';
+import TableSkeleton from '@/components/Skeleton/TableSkeleton';
 
 // Services
 import { getTeacherList } from '@/services';
@@ -36,7 +38,9 @@ const Teachers = async ({ searchParams }: { searchParams?: TSearchParams }) => {
       </Box>
       <Box mt="11px">
         {data.length ? (
-          <TableTeacher data={data} />
+          <Suspense fallback={<TableSkeleton />}>
+            <TableTeacher data={data} />
+          </Suspense>
         ) : (
           <NotFound
             title={TITLE}
