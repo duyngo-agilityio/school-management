@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://school-management-admin-dashboard.vercel.app/sitemap.xml',
+    // sitemap: 'https://school-management-admin-dashboard.vercel.app/sitemap.xml',
   };
 }
