@@ -33,6 +33,7 @@ export const editStudent = async (data: IStudent, id: string) => {
     });
 
     revalidateTag(TAGS.STUDENTS);
+    revalidateTag(TAGS.STUDENT);
 
     return response;
   } catch (error) {
